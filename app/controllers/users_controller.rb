@@ -7,19 +7,18 @@ class UsersController < ApplicationController
     Deal.all.each do |deal|
       @deal_requests << deal if @requester_items.include?(answerer.item)
     end
-    authorize @user
   end
 
 
   def edit
     @user = User.find(params[:id])
     redirect_to root_path if @user != current_user
-    authorize @user
+
   end
 
   def update
     @user = current_user
-    authorize @user
+
 
     if @user.update(user_params)
       redirect_to user_path(current_user)

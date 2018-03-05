@@ -1,0 +1,2 @@
+class DealItemsController < ApplicationController
+end

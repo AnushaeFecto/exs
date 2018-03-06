@@ -1,1 +1,22 @@
-<h1>hi</h1>
+<div class="container">
+<%= simple_form_for :item_category, url: items_path, method: :get do |f| %>
+  <%= f.input :category, :collection => @categories %>
+  <%= f.input :search, :as => :hidden, :input_html => { :value => @search} %>
+  <%= f.button :submit %>
+<% end %>
+
+<%= simple_form_for :item_size, url: items_path, method: :get do |f| %>
+  <%= f.input :size %>
+  <%= f.input :search, :as => :hidden, :input_html => { :value => @search} %>
+  <%= f.button :submit %>
+<% end %>
+
+<%= simple_form_for :item_color, url: items_path, method: :get do |f| %>
+  <%= f.input :color %>
+  <%= f.input :search, :as => :hidden, :input_html => { :value => @search} %>
+  <%= f.button :submit %>
+<% end %>
+</div>
+<%= @items.each do|item| %>
+  <%= item.name %>
+<% end %>

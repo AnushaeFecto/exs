@@ -1,4 +1,16 @@
 class Item < ApplicationRecord
+  # include PgSearch
+
+  # multisearchable against: [ :category, :description, :size, :color]
+  include PgSearch
+    pg_search_scope :search,
+      against: [ :category, :description, :size, :color ],
+      using: {
+        tsearch: { prefix: true } # <-- now `superman batm` will return something!
+      }
+        pg_search_scope :searchsize, against: [:size]
+    pg_search_scope :searchcategory, against: [:category]
+    pg_search_scope :searchcolor, against: [:color]
   belongs_to :user
 
   CATEGORIES = ["Dress", "Shoes", "Shirts", "Bags", "Blouse", "Skirt", "Trousers", "Suits", "Shirts", "Tuxedo"]

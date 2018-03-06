@@ -16,6 +16,6 @@ class Item < ApplicationRecord
   has_many :deals, through: :deal_items
 
   CATEGORIES = ["Dress", "Shoes", "Shirts", "Bags", "Blouse", "Skirt", "Trousers", "Suits", "Shirts", "Tuxedo"]
-  validates :size, :color, :description, presence: :true
+  validates :size, :name, :color, :description, presence: :true
   validates :category, presence: true, inclusion: { in: CATEGORIES}
 end

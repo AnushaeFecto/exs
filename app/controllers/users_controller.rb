@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
   def show
     @user = current_user
-    @requester_items = current_user.items
-    @answerer_items = current_user.requests
-    @deal_requests = []
-    Deal.all.each do |deal|
-      @deal_requests << deal if @requester_items.include?(answerer.item)
-    end
+    # @requester_items = current_user.items
+    # @answerer_items = current_user.requests
+    # @deal_requests = []
+    # Deal.all.each do |deal|
+    #   @deal_requests << deal if @requester_items.include?(answerer.item)
+    # end
   end
 
 

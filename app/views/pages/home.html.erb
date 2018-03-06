@@ -1,2 +1,15 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<%-# THIS IS BANNER SECTION -%>
+
+<%-# THIS IS SEARCH SECTION -%>
+<div class="container">
+  <div class="searchbox">
+    <%= form_tag items_path, method: :get, class:'form-inline' do %>
+    <div class="input-field">
+      <%= text_field_tag :search, params[:search], class: 'input-search form-control', placeholder: "Search"%>
+       <%= submit_tag "Search", name: nil, class: "btn btn-search" %>
+        </p>
+    </div>
+    <% end %>
+  </div>
+</div>
+

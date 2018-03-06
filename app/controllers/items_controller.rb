@@ -1,8 +1,28 @@
 class ItemsController < ApplicationController
   before_action :find_item, only: [:show, :edit, :update, :destroy]
 
-  def index
-    @items = Item.all
+ def index
+  puts params
+    @categories = ["Dress", "Shoes", "Shirts", "Bags", "Blouse", "Skirt", "Trousers", "Suits", "Shirts", "Tuxedo"]
+    # @items = policy_scope(Item).order(created_at: :desc)
+    # search from the homepage
+    @search = params[:search]
+    if params[:search].present?
+      @items = Item.search(params[:search])
+    end
+    #additional search filter from index
+    if params[:item_size]
+      @items = Item.search(params[:item_size][:search]).searchsize(params[:item_size][:size])
+    end
+
+    if params[:item_category]
+      @items = Item.search(params[:item_category][:search]).searchcategory(params[:item_cate][:category])
+    end
+
+    if params[:item_color]
+      @items = Item.search(params[:item_color][:search]).searchcolor(params[:item_color][:color])
+    end
+
   end
 
   def show
@@ -36,8 +56,9 @@ class ItemsController < ApplicationController
   end
 
   private
+
   def item_params
-    params.require(:item).permit(:name, :category, :size, :color, :description)
+    params.require(:item).permit(:name,:item, :category, :size, :color, :description)
   end
 
   def find_item

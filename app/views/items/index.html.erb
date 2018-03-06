@@ -1,1 +1,14 @@
 <h1>hi</h1>
+
+<div class="container align-middle content">
+<center><h2>Exchange!</h2></center>
+  <div class="row">
+    <% @items.each do |item| %>
+    <div class="col-xs-12 col-sm-4">
+
+      <%= link_to "link to item", item_path(item)%>
+    </div>
+    <%end%>
+
+  </div>
+</div>

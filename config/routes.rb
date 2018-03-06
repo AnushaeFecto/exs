@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   resources :deals do
     resources :deal_items
+    resources :payments, only: [:new, :create]
   end
 
   resources :items do

@@ -12,6 +12,8 @@ class Item < ApplicationRecord
     pg_search_scope :searchcategory, against: [:category]
     pg_search_scope :searchcolor, against: [:color]
   belongs_to :user
+  has_many :deal_items
+  has_many :deals, through: :deal_items
 
   CATEGORIES = ["Dress", "Shoes", "Shirts", "Bags", "Blouse", "Skirt", "Trousers", "Suits", "Shirts", "Tuxedo"]
   validates :size, :color, :description, presence: :true

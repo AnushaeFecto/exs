@@ -1,0 +1,18 @@
+<h1>Making your payment</h1>
+<%= form_tag deal_payments_path(@deal) do %>
+  <article>
+    <label class="amount">
+      <span>Amount to pay: <%= humanized_money_with_symbol(@deal.price) %></span>
+    </label>
+  </article>
+
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+    data-name="My Deal"
+    data-email="<%= current_user.email %>"
+    data-description="Deal number <%= @deal.id %>"
+    data-amount="<%= @deal.amount_cents %>"
+    data-currency="<%= @deal.amount.currency %>">
+  </script>
+
+<% end %>

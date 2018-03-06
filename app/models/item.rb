@@ -1,5 +1,7 @@
 class Item < ApplicationRecord
   belongs_to :user
+  has_many :deal_items
+  has_many :deals, through: :deal_items
 
   CATEGORIES = ["Dress", "Shoes", "Shirts", "Bags", "Blouse", "Skirt", "Trousers", "Suits", "Shirts", "Tuxedo"]
   validates :size, :color, :description, presence: :true

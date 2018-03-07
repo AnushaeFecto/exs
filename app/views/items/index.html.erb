@@ -26,14 +26,11 @@
 <center><h2>Exchange!</h2></center>
   <div class="row">
     <% @items.each do |item| %>
-
     <div class="col-xs-12 col-sm-4">
-      <%=  item.category %>
-      <%=  item.name %>
-
     <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
       url(<%= cl_image_path item.photo, height: 300, width: 400, crop: :fill if item.photo.present? %>);">
     </div>
+    <%=  item.name %>
 
 
 

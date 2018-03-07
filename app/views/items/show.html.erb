@@ -1,11 +1,10 @@
-<p><%= @item.name %></p>
-<p><%= @item.description %></p>
-
 <div class="container">
     <div class="row">
     <div class="col-xs-12 col-md-4 col-md-offset-2">
     <div class="card" style="background-image: url('<%= cl_image_path @item.photo %>')">
     </div>
+    <p><%= @item.name %></p>
+    <p><%= @item.description %></p>
 </div>
 </div>
 </div>
@@ -14,8 +13,10 @@
   <%= f.input :item_id, as: :hidden, input_html: {value: @item.id}   %>
   <%= f.button :submit, "Make a deal"  %>
 <% end %>
+<div class="btn-space">
+<%= link_to "Edit", edit_item_path(@item), class: "btn-edit" %>
 
-<%= link_to "Edit", edit_item_path(@item) %>
 
-<%= link_to 'Destroy', { controller: :items, action: :destroy }, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Destroy', { controller: :items, action: :destroy }, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-delete" %>
 
+</div>

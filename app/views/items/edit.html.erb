@@ -1,5 +1,4 @@
-
-<h1>new</h1>
+<h1>Edit</h1>
 <div class="container">
 <div class=create-position>
 <div class="create-form">
@@ -7,8 +6,8 @@
 
   <%= render 'form', item: @item %>
 
+<%= link_to 'Destroy', { controller: :items, action: :destroy }, method: :delete, data: { confirm: 'Are you sure?' } %>
 
 </div>
 </div>
 </div>
-

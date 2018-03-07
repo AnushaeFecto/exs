@@ -5,17 +5,18 @@ class ItemsController < ApplicationController
 
   # @items_index = Item.all
 
-  puts params
+    puts params
     @categories = ["Dress", "Shoes", "Shirts", "Bags", "Blouse", "Skirt", "Trousers", "Suits", "Shirts", "Tuxedo"]
     # @items = policy_scope(Item).order(created_at: :desc)
     # search from the homepage
     @search = params[:search]
     if params[:search].present?
       @items = Item.search(params[:search])
+    else
+      @items = Item.all
     end
     #additional search filter from index
     if params[:item_size]
-
       @items = Item.search(params[:item_size][:search]).searchsize(params[:item_size][:size])
     end
 
@@ -50,13 +51,15 @@ class ItemsController < ApplicationController
   end
 
   def update
-    @item.update(item_params)
-    #redirect_to user_path(current_user)
-  end
+    if @item.update(item_params)
+      redirect_to item_path(@item)
+    else
+      render :edit
+    end  end
 
   def destroy
     @item.destroy
-    #redirect_to user_path(current_user)
+    @item.update(item_params)
   end
 
   private

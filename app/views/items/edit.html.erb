@@ -5,9 +5,9 @@
 
 
   <%= render 'form', item: @item %>
-
-<%= link_to 'Destroy', { controller: :items, action: :destroy }, method: :delete, data: { confirm: 'Are you sure?' } %>
-
+<div class="btn-space">
+<%= link_to 'Destroy', { controller: :items, action: :destroy }, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-delete" %>
+</div>
 </div>
 </div>
 </div>

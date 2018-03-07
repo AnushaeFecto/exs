@@ -1,6 +1,15 @@
 <p><%= @item.name %></p>
 <p><%= @item.description %></p>
 
+
+
+<%= link_to "Make a deal", deals_path, method: 'post', params: {id: @item.id} %>
+<%= simple_form_for (@deal) do |f|%>
+  <%= f.input :id_item, as: :hidden, input_html: {value: @item.id}   %>
+  <%= f.button :submit, "Make a deal"  %>
+<% end %>
+
 <%= link_to "Edit", edit_item_path(@item) %>
 
 <%= link_to 'Destroy', { controller: :items, action: :destroy }, method: :delete, data: { confirm: 'Are you sure?' } %>
+

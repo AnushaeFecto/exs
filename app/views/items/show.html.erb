@@ -1,24 +1,30 @@
 <div class="container">
-    <div class="row">
-    <div class="col-xs-12 col-md-4 col-md-offset-2">
-    <div class="card" style="background-image: url('<%= cl_image_path @item.photo %>')">
+  <div class="centered">
+    <div class="card-main">
+      <div class="card-photo" style="background-image: url('<%= cl_image_path @item.photo %>')">
+      </div>
+
+      <div class="top-right">
+
+        <div class="card-text">
+          <p><%= @item.name %></p>
+          <p><%= @item.description %></p>
+        </div>
+
+        <div class="card-button btn-space"><%= link_to "Edit", edit_item_path(@item), class: "btn-edit" %>
+          <%= link_to 'Destroy', { controller: :items, action: :destroy }, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-delete" %>
+        </div>
+
+      </div>
+
+      <div class="form-button">
+        <%= simple_form_for (@deal) do |f| %>
+        <%= f.input :item_id, as: :hidden, input_html: {value: @item.id}   %>
+        <%= f.button :submit, "Make a deal"  %>
+        <% end %>
+      </div>
+
     </div>
-    <p><%= @item.name %></p>
-    <p><%= @item.description %></p>
-
-
-</div>
-</div>
+  </div>
 </div>
 
-<%= simple_form_for (@deal) do |f| %>
-  <%= f.input :item_id, as: :hidden, input_html: {value: @item.id}   %>
-  <%= f.button :submit, "Make a deal"  %>
-<% end %>
-<div class="btn-space">
-<%= link_to "Edit", edit_item_path(@item), class: "btn-edit" %>
-
-
-<%= link_to 'Destroy', { controller: :items, action: :destroy }, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-delete" %>
-
-</div>

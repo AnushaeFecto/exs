@@ -6,15 +6,16 @@ class DealsController < ApplicationController
   end
 
   def new
-    @deal = Deal.new
+    # @deal = Deal.new
   end
 
   def create
-    @item = Item.find(params[:deal][:id_item])
+    @item = Item.find(params[:deal][:item_id])
     @deal = Deal.new
-    @deal.requester = current_user
-    @deal.answerer = @item.user
+    @deal.requester_id = current_user.id
+    @deal.answerer_id = @item.user.id
     if @deal.save
+      DealItem.create(item: @item, deal: @deal)
       redirect_to deal_path(@deal)
     else
       render :new
@@ -51,7 +52,7 @@ class DealsController < ApplicationController
   private
 
   def deal_params
-    params.require(:deal).permit(:requester_id, :answerer_id, :status, :price, :id_item)
+    params.require(:deal).permit(:requester_id, :answerer_id, :status, :price, :item_id)
   end
 
 end

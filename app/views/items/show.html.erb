@@ -8,11 +8,15 @@
 </div>
 </div>
 </div>
+<div class="form">
+  <% if @item.user != current_user %>
+    <%= simple_form_for (@deal) do |f| %>
+      <%= f.input :item_id, as: :hidden, input_html: {value: @item.id}   %>
+      <%= f.button :submit, "Make a deal"  %>
+    <% end %>
+  <% end %>
+</div>
 
-<%= simple_form_for (@deal) do |f| %>
-  <%= f.input :item_id, as: :hidden, input_html: {value: @item.id}   %>
-  <%= f.button :submit, "Make a deal"  %>
-<% end %>
 <div class="btn-space">
 <%= link_to "Edit", edit_item_path(@item), class: "btn-edit" %>
 
@@ -20,3 +24,5 @@
 <%= link_to 'Destroy', { controller: :items, action: :destroy }, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-delete" %>
 
 </div>
+
+

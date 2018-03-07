@@ -1,11 +1,42 @@
-<h1>Deal</h1>
-
-
-<ul>
-  <li>Status: <%= @deal.status %></li>
-  <li>Deal ID: <%= @deal.id %></li>
-  <li>Amount: <%# humanized_money_with_symbol(@deal.amount) %></li>
-<ul>
-
+<div>
+  <h1 style="text-align: center">Deal</h1>
+  <div class="deals-details">
+    <div class="writen-details section" style="text-align: center">
+      <ul>
+        <li>Status: <%= @deal.status %></li>
+        <li>Deal ID: <%= @deal.id %></li>
+        <li>Amount: <%# humanized_money_with_symbol(@deal.amount) %></li>
+      <ul>
+    </div>
+    <div class="items-in-deal section">
+      <div class="requester-items">
+        <h3>Your items in deal</h3>
+        <% @deal.items_from(current_user).each do |item| %>
+          <h2><%= item.name %> from <%= item.user.email %></h2>
+        <% end %>
+      </div>
+      <div class="answerer-items">
+        <h3>Their items in deal</h3>
+        <% @deal.items_from(@deal.answerer).each do |item| %>
+          <h2><%= item.category %> from <%= item.user.email %></h2>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="items-outside section">
+    <div class="requester-items">
+      <h3>Your items out of deal</h3>
+      <% @deal.requester.items.all.each do |item| %>
+       <p><%= item.category %></p>
+       <% end %>
+    </div>
+    <div class="answerer-items">
+      <h3>Their items out of deal</h3>
+      <% @deal.answerer.items.all.each do |item| %>
+       <p><%= item.category %></p>
+       <% end %>
+    </div>
+  </div>
+</div>
 
   <%= link_to 'Destroy', { controller: :deals, action: :destroy }, method: :delete, data: { confirm: 'Are you sure?' } %>

@@ -31,6 +31,7 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @deal = Deal.new
   end
 
   def new
@@ -58,14 +59,15 @@ class ItemsController < ApplicationController
     end  end
 
   def destroy
+    @item = Item.find(params[:id])
     @item.destroy
-    @item.update(item_params)
+    redirect_to user_path(current_user)
   end
 
   private
 
   def item_params
-    params.require(:item).permit(:name,:item, :category, :size, :color, :description)
+    params.require(:item).permit(:name,:item, :category, :size, :color, :description, :photo)
   end
 
   def find_item

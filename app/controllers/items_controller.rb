@@ -58,8 +58,9 @@ class ItemsController < ApplicationController
     end  end
 
   def destroy
+    @item = Item.find(params[:id])
     @item.destroy
-    @item.update(item_params)
+    redirect_to user_path(current_user)
   end
 
   private

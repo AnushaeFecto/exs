@@ -2,6 +2,9 @@ class ItemsController < ApplicationController
   before_action :find_item, only: [:show, :edit, :update, :destroy]
 
  def index
+
+  # @items_index = Item.all
+
   puts params
     @categories = ["Dress", "Shoes", "Shirts", "Bags", "Blouse", "Skirt", "Trousers", "Suits", "Shirts", "Tuxedo"]
     # @items = policy_scope(Item).order(created_at: :desc)
@@ -12,11 +15,12 @@ class ItemsController < ApplicationController
     end
     #additional search filter from index
     if params[:item_size]
+
       @items = Item.search(params[:item_size][:search]).searchsize(params[:item_size][:size])
     end
 
     if params[:item_category]
-      @items = Item.search(params[:item_category][:search]).searchcategory(params[:item_cate][:category])
+      @items = Item.search(params[:item_category][:search]).searchcategory(params[:item_category][:category])
     end
 
     if params[:item_color]

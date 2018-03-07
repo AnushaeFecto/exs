@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      <div class="edit-profile-form">
+        <h3>Edit Profile</h3>
+        <%= simple_form_for(@user) do |f| %>
+        <%= f.error_notification %>
+        <div class="form-inputs">
+
+          <%= f.input :email, required: false %>
+          <%= f.input :password %>
+       </div>
+         <div class="form-actions">
+          <%= f.button :submit, "Update", class: "btn-medium" %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+  <div class="delete-profile col-xs-12 col-sm-6 col-sm-offset-3">
+    <%= link_to 'Delete Profile', { controller: :users, action: :destroy }, method: :delete, data: { confirm: 'Are you sure?', class: "btn-delete"}%>
+    </div>
+</div>

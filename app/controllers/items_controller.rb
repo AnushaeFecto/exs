@@ -32,6 +32,7 @@ class ItemsController < ApplicationController
 
   def show
     @deal = Deal.new
+    @item = Item.find(params[:id])
   end
 
   def new

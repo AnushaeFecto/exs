@@ -3,9 +3,8 @@
 
 
 
-<%= link_to "Make a deal", deals_path, method: 'post', params: {id: @item.id} %>
-<%= simple_form_for (@deal) do |f|%>
-  <%= f.input :id_item, as: :hidden, input_html: {value: @item.id}   %>
+<%= simple_form_for (@deal) do |f| %>
+  <%= f.input :item_id, as: :hidden, input_html: {value: @item.id}   %>
   <%= f.button :submit, "Make a deal"  %>
 <% end %>
 

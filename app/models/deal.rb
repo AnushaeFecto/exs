@@ -4,4 +4,9 @@ class Deal < ApplicationRecord
   monetize :price_cents
   has_many :deal_items
   has_many :items, through: :deal_items
+
+
+  def items_from(user)
+    self.items.where(user_id: user.id)
+  end
 end

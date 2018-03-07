@@ -31,6 +31,7 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @deal = Deal.new
   end
 
   def new

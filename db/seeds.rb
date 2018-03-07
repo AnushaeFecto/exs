@@ -8,26 +8,26 @@
   # Item.create!(user_id: 1, name: "blouse", category: "Blouse", size: "small", color: "yellow", description: "yellow pretty blouse")
   # Item.create!(user_id: 1, name: "", category: "Trousers", size: "small", color: "blue", description: "blue pretty trousers")
 
-puts "Cleaning db"
-User.destroy_all
-Item.destroy_all
-Deal.destroy_all
+# puts "Cleaning db"
+# User.destroy_all
+# Item.destroy_all
+# Deal.destroy_all
 
-puts "Creating users"
-requester = User.create!(email: "1@abc.com", password: "123456")
-answerer = User.create!(email: "2@abc.com", password: "123456")
+# puts "Creating users"
+# requester = User.create!(email: "1@abc.com", password: "123456")
+# answerer = User.create!(email: "2@abc.com", password: "123456")
 
-puts "Creating items"
-item = Item.create!(size: "4", color: "cream", description: "1", category: "Dress", user: answerer)
-item2 = Item.create!(size: "6", color: "pink", description: "1", category: "Dress", user: answerer)
-item3 = Item.create!(size: "8", color: "cream", description: "1", category: "Shoes", user: requester)
+# puts "Creating items"
+# item = Item.create!(size: "4", color: "cream", description: "1", category: "Dress", user: answerer)
+# item2 = Item.create!(size: "6", color: "pink", description: "1", category: "Dress", user: answerer)
+# item3 = Item.create!(size: "8", color: "cream", description: "1", category: "Shoes", user: requester)
 
-puts "Creating deal"
-newdeal = Deal.new()
-newdeal.requester_id = requester.id
-newdeal.answerer_id = answerer.id
-newdeal.save
+# puts "Creating deal"
+# newdeal = Deal.new()
+# newdeal.requester_id = requester.id
+# newdeal.answerer_id = answerer.id
+# newdeal.save
 
-puts "Adding items to deal"
-deal_item1 = DealItem.create!(deal: newdeal, item: item)
-deal_item2 = DealItem.create!(deal: newdeal, item: item3)
+# puts "Adding items to deal"
+# deal_item1 = DealItem.create!(deal: newdeal, item: item)
+# deal_item2 = DealItem.create!(deal: newdeal, item: item3)

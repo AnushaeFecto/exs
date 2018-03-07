@@ -1,23 +1,23 @@
 
-<div class="container">
-<%= simple_form_for :item_category, url: items_path, method: :get do |f| %>
-  <%= f.input :category, :collection => @categories %>
-  <%= f.input :search, :as => :hidden, :input_html => { :value => @search} %>
-  <%= f.button :submit %>
-<% end %>
+<!-- <div class="container">
+<%#= simple_form_for :item_category, url: items_path, method: :get do |f| %>
+  <%#= f.input :category, :collection => @categories %>
+  <%#= f.input :search, :as => :hidden, :input_html => { :value => @search} %>
+  <%#= f.button :submit %>
+<%# end %>
 
-<%= simple_form_for :item_size, url: items_path, method: :get do |f| %>
-  <%= f.input :size %>
-  <%= f.input :search, :as => :hidden, :input_html => { :value => @search} %>
-  <%= f.button :submit %>
-<% end %>
+<%#= simple_form_for :item_size, url: items_path, method: :get do |f| %>
+  <%#= f.input :size %>
+  <%#= f.input :search, :as => :hidden, :input_html => { :value => @search} %>
+  <%#= f.button :submit %>
+<%# end %>
 
-<%= simple_form_for :item_color, url: items_path, method: :get do |f| %>
-  <%= f.input :color %>
-  <%= f.input :search, :as => :hidden, :input_html => { :value => @search} %>
-  <%= f.button :submit %>
-<% end %>
-</div>
+<%#= simple_form_for :item_color, url: items_path, method: :get do |f| %>
+  <%#= f.input :color %>
+  <%#= f.input :search, :as => :hidden, :input_html => { :value => @search} %>
+  <%#= f.button :submit %>
+<%# end %>
+</div> -->
 
 
 
@@ -26,9 +26,10 @@
 <center><h2>Exchange!</h2></center>
   <div class="row">
     <% @items.each do |item| %>
-    <%=  item.category %>
-    <div class="col-xs-12 col-sm-4">
 
+    <div class="col-xs-12 col-sm-4">
+      <%=  item.category %>
+      <%=  item.name %>
       <%= link_to "link to item", item_path(item)%>
     </div>
     <%end%>

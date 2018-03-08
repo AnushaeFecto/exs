@@ -5,7 +5,6 @@ class Deal < ApplicationRecord
   has_many :deal_items, dependent: :destroy
   has_many :items, through: :deal_items
 
-
   def items_from(user)
     self.items.where(user_id: user.id)
   end

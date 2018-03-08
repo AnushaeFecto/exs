@@ -1,13 +1,104 @@
-
-<div class="container">
-  <div class="searchbox">
-    <%= form_tag items_path, method: :get, class:'form-inline' do %>
-    <div class="input-field">
-      <%= text_field_tag :search, params[:search], class: 'input-search form-control', placeholder: "Search"%>
-       <%= submit_tag "Search", name: nil, class: "btn btn-search" %>
-        </p>
+<!-- Carousel -->
+<div id="myCarousel" class="carousel slide">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="item active">
+      <%= cl_image_tag "homepage1.jpg"%>
+      <div class="container">
+        <div class="carousel-caption">
+          <h3>Experience an ever-changing wardrobe</h3>
+        </div>
+      </div>
     </div>
+    <div class="item">
+      <%= cl_image_tag("homepage2.jpg", :html_width => 1500, :html_height =>800, :crop => :fill)%>
+      <div class="container">
+        <div class="carousel-caption">
+          <h3>Join us today!</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="form-group col-sm-4 col-sm-offset-4" id="searchForm">
+  <%= form_tag items_path, method: :get, class:'form-inline' do %>
+    <div class="input-field">
+      <%= text_field_tag :search, params[:search], class: 'carousel-search-text-input', placeholder: "Search"%>
+      <%= button_tag(type: "submit", class: "carousel-icon-input btn btn-default") do %>
+      <span class="glyphicon glyphicon-search"></span>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+    <i class="glyphicon glyphicon-chevron-left"></i>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" data-slide="next">
+    <i class="glyphicon glyphicon-chevron-right"></i>
+  </a>
+</div>
+<!-- /.carousel -->
+
+<!-- /Items Cards -->
+
+<div class="homepagecards container align-middle content">
+  <div class="row">
+    <% @items.each do |item| %>
+      <div class="col-xs-12 col-sm-4">
+            <%= link_to item_path(item), :class => "rent-link" do %>
+        <div class="card-homepage" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+            url(<%= cl_image_path item.photo, height: 300, width: 400, crop: :fill if item.photo.present? %>);">
+              <p> Xchange! </p>
+              <h5><%= item.name %></h5>
+        </div>
+      </div>
+      <%end%>
     <% end %>
   </div>
 </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%= javascript_pack_tag 'home' %>
+<%= javascript_pack_tag 'application' %>

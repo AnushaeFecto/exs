@@ -27,3 +27,38 @@
   }
 
 }
+
+.newitemimages{
+}
+
+.newimage-2 {
+  background: url('clothes2.jpg');
+
+}
+
+.newimage-1 {
+  background: url('clothes1.jpg');
+}
+
+.newitems-image {
+  flex: 0 0 30%;
+  background-size: cover;
+}
+
+.newitems-box {
+  display: flex;
+  justify-content: space-between;
+}
+
+.newitem-form {
+  margin-top: 10px;
+  flex: 1;
+  background-color: $white;
+  padding: 20px 40px 20px 40px;
+  border-radius: 10px;
+  border: 2px dotted $red;
+}
+
+.form-control{
+  border-radius: 5px;
+}

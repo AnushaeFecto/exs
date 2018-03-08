@@ -28,6 +28,8 @@
           <%= simple_form_for (@deal) do |f| %>
           <%= f.input :item_id, as: :hidden, input_html: {value: @item.id}   %>
           <%= f.button :submit, "Make a deal"  %>
+
+          <%= link_to "Visit Their Profile", user_path(@item.user) %>
           <% end %>
       <% end %>
 

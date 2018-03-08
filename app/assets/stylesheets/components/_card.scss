@@ -7,6 +7,7 @@
   color: white;
   position: relative;
   opacity: 0.9;
+  margin-top: 20px;
 }
 
 .centered {
@@ -75,5 +76,14 @@
   bottom: 30px;
   left: 300px;
 
+
+}
+
+.card-profile {
+  position: relative;
+  width: 1150px;
+  height: 300px;
+  background-color: white;
+  box-shadow: 0.3px 0.3px 0.3px;
 
 }

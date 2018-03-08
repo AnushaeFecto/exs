@@ -12,12 +12,18 @@
       <div class="requester-items">
         <h3>Your items in deal</h3>
         <% @deal.items_from(current_user).each do |item| %>
+        <%= link_to item_path(item) do %>
+          <%= cl_image_tag item.photo, width: 150, height: 150, radius: 10, crop: :scale %>
+        <% end %>
           <h2><%= item.name %> from <%= item.user.email %></h2>
         <% end %>
       </div>
       <div class="answerer-items">
         <h3>Their items in deal</h3>
         <% @deal.items_from(@deal.answerer).each do |item| %>
+        <%= link_to item_path(item) do %>
+          <%= cl_image_tag item.photo, width: 150, height: 150, radius: 10, crop: :scale %>
+        <% end %>
           <h2><%= item.category %> from <%= item.user.email %></h2>
         <% end %>
       </div>
@@ -25,18 +31,31 @@
   </div>
   <div class="items-outside section">
     <div class="requester-items">
-      <h3>Your items out of deal</h3>
-      <% @deal.requester.items.all.each do |item| %>
-       <p><%= item.category %></p>
+      <h3>Your items</h3>
+      <% @deal.requester.items.each do |item| %>
+         <%= link_to item_path(item) do %>
+          <%= cl_image_tag item.photo, width: 150, height: 150, radius: 10, crop: :scale %>
+        <% end %>
+         <p><%= item.category %></p>
        <% end %>
     </div>
     <div class="answerer-items">
-      <h3>Their items out of deal</h3>
-      <% @deal.answerer.items.all.each do |item| %>
-       <p><%= item.category %></p>
-       <% end %>
+      <h3>Their items</h3>
+      <% @deal.answerer.items.each do |item| %>
+        <%= link_to item_path(item) do %>
+          <%= cl_image_tag item.photo, width: 150, height: 150, radius: 10, crop: :scale %>
+        <% end %>
+      <p><%= item.category %></p>
+      <% end %>
     </div>
+  </div>
+  <div style="text-align: center" class="section">
+    <%= link_to 'Destroy', { controller: :deals, action: :destroy }, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= link_to 'Accept', { controller: :deals, action: :destroy }, method: :delete, data: { confirm: 'Are you sure you?' } %>
   </div>
 </div>
 
-  <%= link_to 'Destroy', { controller: :deals, action: :destroy }, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+
+
+

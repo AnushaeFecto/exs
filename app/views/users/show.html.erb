@@ -1,9 +1,6 @@
 
-<div class="container">
-
     <center>
     <h1> Hi <%= @user.name %></h1>
-
   </center>
 
   <center>
@@ -14,7 +11,7 @@
     <% else %>
         <%= image_tag "smiley.jpg", width: 200, height: 200, radius: :max, crop: :fill %>
     <% end %>
-    </div>
+  </div>
       <div class="profile-text">
         <p><%= @user.name %></p>
         <p><%= @user.description %></p>
@@ -31,24 +28,26 @@
   </center>
   <center>
     <h2> <%=@user.name %>'s Items </h2>
-    <div class="profile-container">
-    <div class="row">
-      <% @user.items.each do |item| %>
-      <div class="col-xs-12 col-sm-4">
-            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-                url(<%= cl_image_path item.photo, height: 300, width: 400, crop: :fill if item.photo.present? %>);">
-            </div>
-            <div class="card-text">
-              <%= link_to "View", item_path(item), id: "card-text-1"%>
-              <% if @user == current_user %>
-              <%= link_to "Edit", edit_item_path(item), id: "card-text-2"%>
-              <%= link_to "Delete", item_path(item), id: "card-text-3", method: :delete, data: { confirm: "Are you sure?" } %>
-              <%end%>
-            </div>
-      </div>
 
-    </div>
+    <div class="profile-container">
+      <div class="row">
+          <% @user.items.each do |item| %>
+        <div class="col-xs-12 col-sm-4">
+          <div>
+              <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+                    url(<%= cl_image_path item.photo, height: 300, width: 400, crop: :fill if item.photo.present? %>);">
+              </div>
+              <div class="card-text">
+                  <%= link_to "View", item_path(item), id: "card-text-1"%>
+                  <% if @user == current_user %>
+                  <%= link_to "Edit", edit_item_path(item), id: "card-text-2"%>
+                  <%= link_to "Delete", item_path(item), id: "card-text-3", method: :delete, data: { confirm: "Are you sure?" } %>
+                  <% end %>
+              </div>
+          </div>
+        </div>
+          <% end %>
+      </div>
     </div>
 </center>
-</div>
-<% end %>
+

@@ -52,7 +52,7 @@ class DealsController < ApplicationController
   private
 
   def deal_params
-    params.require(:deal).permit(:requester_id, :answerer_id, :status, :price, :item_id)
+    params.require(:deal).permit(:requester_id, :answerer_id, :status, :price, :item_id, :payer)
   end
 
 end

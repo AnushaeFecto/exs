@@ -1,48 +1,79 @@
 .card {
-  height: 175px;
+  height: 200px;
   text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  padding: 10px;
   background-size: cover !important;
   background-position: center;
   color: white;
   position: relative;
+  opacity: 0.9;
 }
-.card-user {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  width: 40px;
-  border-radius: 50%;
+
+.centered {
+  display: flex;
+  justify-content: space-around;
 }
-.card-category {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  font-size: 15px;
-  text-transform: uppercase;
-}
-.card-description {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-}
-.card-description h2 {
-  font-size: 24px;
-}
-.card-description p {
-  font-size: 14px;
+.card:hover {
   opacity: 0.7;
-  font-weight: lighter;
+  text-decoration: none;
+  color: $white;
+  background-color: $white;
 }
-.card-link {
+.card-position {
+  margin-top: 20px;
+}
+
+.card-border {
+  width: 700px;
+  height: 500px;
+  background-color: white;
+  align: center;
+  position: relative;
+}
+
+.card-show {
+  height:300px;
+  width: 400px;
+  padding: 10px;
+  background-size: cover !important;
+  background-position: center;
+  color: white;
+  position: relative;
+  opacity: 0.9;
+}
+
+.card-photo {
+  height:400px;
+  width: 500px;
+  padding: 10px;
+  background-size: cover !important;
+  background-position: center;
+  color: white;
+  opacity: 0.9;
   position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  width: 100%;
-  z-index: 2;
-  background: black;
-  opacity: 0;
+  top: 0px;
+  left: 0px;
 }
-.card-link:hover {
-  opacity: 0.1;
+.card-main {
+  position: relative;
+  width: 750px;
+  height: 550px;
+  background-color: white;
+  box-shadow: 0.3px 0.3px 0.3px;
+  margin-top: 100px;
+}
+.top-right {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  margin-right: 20px;
+  margin-top: 20px;
+  padding: 20px;
+}
+.form-button {
+  position: absolute;
+  bottom: 30px;
+  left: 300px;
+
+
 }

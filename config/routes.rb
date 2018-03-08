@@ -5,7 +5,6 @@ Rails.application.routes.draw do
 
   resources :users
 
-  resources :deals
   resources :items
 
   resources :deals do

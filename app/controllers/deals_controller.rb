@@ -27,9 +27,9 @@ class DealsController < ApplicationController
   end
 
   def update
-    @deal = deal.find(params[:id])
+    @deal = Deal.find(params[:id])
     @deal.update(deal_params)
-    redirect_to user_path(current_user)
+    redirect_to deal_path(@deal)
   end
 
   def destroy
@@ -52,7 +52,7 @@ class DealsController < ApplicationController
   private
 
   def deal_params
-    params.require(:deal).permit(:requester_id, :answerer_id, :status, :price, :item_id)
+    params.require(:deal).permit(:requester_id, :answerer_id, :status, :price, :item_id, :payer)
   end
 
 end

@@ -5,7 +5,9 @@
       <ul>
         <li>Status: <%= @deal.status %></li>
         <li>Deal ID: <%= @deal.id %></li>
-        <li>Amount: <%# humanized_money_with_symbol(@deal.amount) %></li>
+        <li>Proposed payment: <%= humanized_money_with_symbol(@deal.price) %></li>
+        <li>To be paid by: <%= @deal.payer %></li>
+        <%= render 'form', item: @item %>
       <ul>
     </div>
     <div class="items-in-deal section">

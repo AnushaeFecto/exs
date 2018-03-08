@@ -1,8 +1,7 @@
 class UsersController < ApplicationController
-  before_action :find_user, only: [:edit, :update, :destroy]
+  before_action :find_user, only: [:show, :edit, :update, :destroy]
 
   def show
-    @user = current_user
     # @requester_items = current_user.items
     # @answerer_items = current_user.requests
     # @deal_requests = []
@@ -36,7 +35,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :address, :email, :description, :password)
+    params.require(:user).permit(:name, :address, :email, :description, :password, :photo)
   end
 
   def find_user

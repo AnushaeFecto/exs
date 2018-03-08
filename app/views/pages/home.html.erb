@@ -46,6 +46,59 @@
 </div>
 <!-- /.carousel -->
 
+<!-- /Items Cards -->
+
+<div class="homepagecards container align-middle content">
+  <div class="row">
+    <% @items.each do |item| %>
+      <div class="col-xs-12 col-sm-4">
+            <%= link_to item_path(item), :class => "rent-link" do %>
+        <div class="card-homepage" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+            url(<%= cl_image_path item.photo, height: 300, width: 400, crop: :fill if item.photo.present? %>);">
+              <p> Xchange! </p>
+              <h5><%= item.name %></h5>
+        </div>
+      </div>
+      <%end%>
+    <% end %>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <%= javascript_pack_tag 'home' %>
 <%= javascript_pack_tag 'application' %>

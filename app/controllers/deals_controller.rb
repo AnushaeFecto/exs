@@ -1,8 +1,7 @@
 class DealsController < ApplicationController
-
+  before_action :find_deal, only: [:show, :edit, :update, :destroy]
 
   def show
-    @deal = Deal.find(params[:id])
   end
 
   def new
@@ -15,6 +14,7 @@ class DealsController < ApplicationController
     @deal.requester_id = current_user.id
     @deal.answerer_id = @item.user.id
     if @deal.save
+      authorize @deal
       DealItem.create(item: @item, deal: @deal)
       redirect_to deal_path(@deal)
     else
@@ -23,17 +23,15 @@ class DealsController < ApplicationController
   end
 
   def edit
-    @deal = deal.find(params[:id])
   end
 
   def update
-    @deal = Deal.find(params[:id])
+
     @deal.update(deal_params)
     redirect_to deal_path(@deal)
   end
 
   def destroy
-    @deal = Deal.find(params[:id])
     @deal.destroy
     redirect_to user_path(current_user)
   end
@@ -53,6 +51,11 @@ class DealsController < ApplicationController
 
   def deal_params
     params.require(:deal).permit(:requester_id, :answerer_id, :status, :price, :item_id, :payer)
+  end
+
+  def find_deal
+    @deal = Deal.find(params[:id])
+    authorize @deal
   end
 
 end

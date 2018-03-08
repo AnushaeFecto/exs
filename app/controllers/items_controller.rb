@@ -3,9 +3,9 @@ class ItemsController < ApplicationController
   before_action :find_item, only: [:show, :edit, :update, :destroy]
 
  def index
+  @items = policy_scope(Item).order(created_at: :desc)
 
   # @items_index = Item.all
-
     puts params
     @categories = ["Dress", "Shoes", "Shirts", "Bags", "Blouse", "Skirt", "Trousers", "Suits", "Shirts", "Tuxedo"]
     # @items = policy_scope(Item).order(created_at: :desc)
@@ -28,7 +28,6 @@ class ItemsController < ApplicationController
     if params[:item_color]
       @items = Item.search(params[:item_color][:search]).searchcolor(params[:item_color][:color])
     end
-
   end
 
   def show
@@ -38,12 +37,14 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    authorize @item
   end
 
   def create
     @item = Item.new(item_params)
     @item.user = current_user
      if @item.save
+      authorize @item
       redirect_to item_path(@item)
     else
       render :new
@@ -74,5 +75,6 @@ class ItemsController < ApplicationController
 
   def find_item
     @item = Item.find(params[:id])
+    authorize @item
   end
 end

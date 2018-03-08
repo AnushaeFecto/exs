@@ -11,6 +11,8 @@
   border-radius: 10px;
 }
 
-.a #signup{
-  color:red;
+
+a:-webkit-any-link{
+  text-decoration: none;
+  color: #616668;
 }

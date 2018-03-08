@@ -2,51 +2,72 @@
   <h1 style="text-align: center">Deal</h1>
   <div class="deals-details">
     <div class="writen-details section" style="text-align: center">
-      <ul>
+      <ul class="list-unstyled">
         <li>Status: <%= @deal.status %></li>
         <li>Deal ID: <%= @deal.id %></li>
         <li>Amount: <%# humanized_money_with_symbol(@deal.amount) %></li>
       <ul>
     </div>
     <div class="items-in-deal section">
-      <div class="requester-items">
-        <h3>Your items in deal</h3>
-        <% @deal.items_from(current_user).each do |item| %>
-        <%= link_to item_path(item) do %>
-          <%= cl_image_tag item.photo, width: 150, height: 150, radius: 10, crop: :scale %>
-        <% end %>
-          <h2><%= item.name %> from <%= item.user.email %></h2>
-        <% end %>
+      <div class="left">
+        <div class="requester-items margin-bottom">
+          <h3 style="text-align: center">Your items in deal</h3>
+          <div class="items-display">
+            <% @deal.items_from(current_user).each do |item| %>
+            <div class="item">
+              <%= link_to item_path(item) do %>
+                <%= cl_image_tag item.photo, width: 150, height: 150, radius: 10, crop: :scale %>
+              <% end %>
+                <h2><%= item.name %> from <%= item.user.email %></h2>
+            </div>
+            <% end %>
+          </div>
+        </div>
       </div>
-      <div class="answerer-items">
-        <h3>Their items in deal</h3>
-        <% @deal.items_from(@deal.answerer).each do |item| %>
-        <%= link_to item_path(item) do %>
-          <%= cl_image_tag item.photo, width: 150, height: 150, radius: 10, crop: :scale %>
-        <% end %>
-          <h2><%= item.category %> from <%= item.user.email %></h2>
-        <% end %>
+      <div class="right">
+      <div class="answerer-items margin-bottom">
+        <h3 style="text-align: center">Their items in deal</h3>
+        <div class="items-display">
+          <% @deal.items_from(@deal.answerer).each do |item| %>
+          <div class="item">
+            <%= link_to item_path(item) do %>
+              <%= cl_image_tag item.photo, width: 150, height: 150, radius: 10, crop: :scale %>
+            <% end %>
+              <h2><%# item.category %> <%# item.user.email %></h2>
+          </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
   <div class="items-outside section">
-    <div class="requester-items">
-      <h3>Your items</h3>
-      <% @deal.requester.items.each do |item| %>
-         <%= link_to item_path(item) do %>
-          <%= cl_image_tag item.photo, width: 150, height: 150, radius: 10, crop: :scale %>
-        <% end %>
-         <p><%= item.category %></p>
-       <% end %>
+    <div class="left">
+      <div class="requester-items margin-bottom">
+        <h3 style="text-align: center">Your items</h3>
+        <div class="items-display">
+          <% @deal.requester.items.each do |item| %>
+            <div class="item">
+               <%= link_to item_path(item) do %>
+                <%= cl_image_tag item.photo, width: 150, height: 150, radius: 10, crop: :scale %>
+              <% end %>
+               <p><%= item.category %></p>
+            </div>
+          <% end %>
+        </div>
+      </div>
     </div>
-    <div class="answerer-items">
-      <h3>Their items</h3>
-      <% @deal.answerer.items.each do |item| %>
-        <%= link_to item_path(item) do %>
-          <%= cl_image_tag item.photo, width: 150, height: 150, radius: 10, crop: :scale %>
-        <% end %>
-      <p><%= item.category %></p>
-      <% end %>
+    <div class="right">
+      <div class="answerer-items margin-bottom">
+        <h3 style="text-align: center">Their items</h3>
+        <div class="items-display">
+          <% @deal.answerer.items.each do |item| %>
+            <%= link_to item_path(item) do %>
+              <%= cl_image_tag item.photo, width: 150, height: 150, radius: 10, crop: :scale %>
+            <% end %>
+          <p><%= item.category %></p>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
   <div style="text-align: center" class="section">

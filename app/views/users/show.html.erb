@@ -2,5 +2,11 @@
 <h1> Hi <%= current_user.email %></h1>
 <%= link_to "List new items" , new_item_path(current_user) %>
 
+<div class="card-button btn-space">
+    <% if @user == current_user %>
+    <%= link_to "Edit", edit_user_path(@user), class: "btn-edit" %>
+    <%= link_to 'Destroy', { controller: :users, action: :destroy }, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-delete" %>
+    <% end %>
+</div>
 
 

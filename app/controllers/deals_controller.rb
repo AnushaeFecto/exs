@@ -27,9 +27,9 @@ class DealsController < ApplicationController
   end
 
   def update
-    @deal = deal.find(params[:id])
+    @deal = Deal.find(params[:id])
     @deal.update(deal_params)
-    redirect_to user_path(current_user)
+    redirect_to deal_path(@deal)
   end
 
   def destroy

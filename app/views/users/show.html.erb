@@ -1,9 +1,7 @@
 
     <center>
     <h1> Hi <%= @user.name %></h1>
-  </center>
 
-  <center>
   <div class="card-profile">
   <div class="card-photo">
     <% if @user.photo.present? %>
@@ -25,8 +23,7 @@
         <% end %>
       </div>
     </div>
-  </center>
-  <center>
+
     <h2> <%=@user.name %>'s Items </h2>
 
     <div class="profile-container">
@@ -50,4 +47,3 @@
       </div>
     </div>
 </center>
-

@@ -15,8 +15,9 @@
 
         <div class="card-button btn-space">
           <% if @item.user == current_user %>
-          <%= link_to "Edit", edit_item_path(@item), class: "btn-edit" %>
-          <%= link_to 'Destroy', { controller: :items, action: :destroy }, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-delete" %>
+          <%= link_to "Edit", edit_item_path(@item), class: "exs-btn btn-edit" %>
+
+          <%= link_to 'Delete', { controller: :items, action: :destroy }, method: :delete, data: { confirm: 'Are you sure?' }, class: "exs-btn btn-destroy" %>
           <% end %>
         </div>
 
@@ -27,11 +28,14 @@
       <% if @item.user != current_user %>
           <%= simple_form_for (@deal) do |f| %>
           <%= f.input :item_id, as: :hidden, input_html: {value: @item.id}   %>
-          <%= f.button :submit, "Make a deal"  %>
+
+          <%= f.button :submit, "Make a deal", class: "exs-btn btn-submit" %>
+
         <center>
         <%= link_to "Visit Profile", user_path(@item.user) %>
       </center>
         <% end %>
+
       <% end %>
 
       </div>

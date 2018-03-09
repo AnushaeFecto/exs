@@ -1,13 +1,13 @@
-<center><h1>Edit</h1></center>
-<div class="container">
-<div class=create-position>
-<div class="create-form">
+<div class="editems-box">
+  <div class="editem-image" style="width: 50%; height: 630px; background-image: url(<%= image_path @item.photo, height: 500 %>); background-size: cover">
+     <div class="edit-button btn-space">
+      <%= link_to 'Delete', { controller: :items, action: :destroy }, method: :delete, data: { confirm: 'Are you sure?' }, class: "exs-btn btn-destroy" %>
+    </div>
+  </div>
+  <div class="editem-form">
+    <center><h3> Edit Item</h3></center>
+    <%= render 'form', item: @item %>
+  </div>
+</div>
 
 
-  <%= render 'form', item: @item %>
-<div class="btn-space">
-<%= link_to 'Destroy', { controller: :items, action: :destroy }, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-delete" %>
-</div>
-</div>
-</div>
-</div>

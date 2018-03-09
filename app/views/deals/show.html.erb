@@ -9,7 +9,7 @@
         <li>Proposed payment: <%= humanized_money_with_symbol(@deal.price) %></li>
         <li>To be paid by: <%= @deal.payer %></li>
         <% if @deal.status == "In negotiation" %>
-        <%= render 'form', item: @item %>
+          <%= render 'form', item: @item %>
         <% end %>
       <ul>
       <% if @deal.status == "In negotiation" %>
@@ -52,7 +52,7 @@
           </div>
         </div>
       </div>
-      
+
       <div class="right-in-deal">
         <div class="answerer-items margin-bottom">
         <h3 style="text-align: center">Their items in deal</h3>
@@ -84,7 +84,7 @@
   </div>
 
   <div class="items-outside section">
-    
+
     <div class="left-in-deal">
       <div class="requester-items margin-bottom">
         <h3 style="text-align: center">Your items</h3>
@@ -112,7 +112,7 @@
         </div>
       </div>
     </div>
-    
+
     <div class="right-in-deal">
       <div class="answerer-items margin-bottom">
         <h3 style="text-align: center">Their items</h3>

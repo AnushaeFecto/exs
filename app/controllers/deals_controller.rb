@@ -12,6 +12,7 @@ class DealsController < ApplicationController
   def create
     @item = Item.find(params[:deal][:item_id])
     @deal = Deal.new
+    @deal.status = "In negotiation"
     @deal.requester_id = current_user.id
     @deal.answerer_id = @item.user.id
     authorize @deal
@@ -35,6 +36,29 @@ class DealsController < ApplicationController
     @deal.destroy
     redirect_to user_path(current_user)
   end
+
+  def accept_deal
+    @deal = Deal.find(params[:deal_id])
+    authorize @deal
+    if @deal.status == "In negotiation"
+      @deal.status = "Offer made"
+    else
+      @deal.status = "Finalised"
+    end
+    @deal.last_changed_by = current_user.id
+    @deal.save
+    redirect_to deal_path(@deal)
+  end
+
+  def reject_deal
+    @deal = Deal.find(params[:deal_id])
+    authorize @deal
+    @deal.status = "In negotiation"
+    @deal.save
+    redirect_to deal_path(@deal)
+  end
+
+
 
   # def include_item(item)
   #   @item = Item.find(params[:id])
@@ -69,6 +93,8 @@ class DealsController < ApplicationController
     @deal = Deal.find(params[:id])
     authorize @deal
   end
+
+
 
 end
 

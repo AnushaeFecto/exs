@@ -1,5 +1,5 @@
 
-    <center>
+    <center style= "padding-bottom: 30px;">
     <h1> Hi <%= @user.name %></h1>
 
   <div class="card-profile">
@@ -21,13 +21,20 @@
       <div class="bottom-right">
         <% if @user == current_user %>
         <%= link_to "Edit", edit_user_path(@user), class: "btn-edit" %>
-
         <%= link_to "List new items" , new_item_path(current_user) %>
         <% end %>
       </div>
     </div>
 
-    <h2> <%=@user.name %>'s Items </h2>
+
+
+    <div>
+      <% if @user == current_user %>
+        <h2>My Items</h2>
+        <% else %>
+        <h2><%= @user.name %>'s Items</h2>
+        <% end %>
+    </div>
 
     <div class="profile-container">
       <div class="row">

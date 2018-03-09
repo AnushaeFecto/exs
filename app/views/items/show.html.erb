@@ -6,7 +6,7 @@
         <div class="card-left">
            <div class="card-photo" style="background-image: url('<%= cl_image_path @item.photo %>')">
           </div>
-          <div class="form-button">
+          <div>
             <% if @item.user != current_user %>
               <%= simple_form_for (@deal) do |f| %>
                 <%= f.input :item_id, as: :hidden, input_html: {value: @item.id}   %>

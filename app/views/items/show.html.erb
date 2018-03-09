@@ -28,8 +28,14 @@
       <% if @item.user != current_user %>
           <%= simple_form_for (@deal) do |f| %>
           <%= f.input :item_id, as: :hidden, input_html: {value: @item.id}   %>
+
           <%= f.button :submit, "Make a deal", class: "exs-btn btn-submit" %>
-          <% end %>
+
+        <center>
+        <%= link_to "Visit Profile", user_path(@item.user) %>
+      </center>
+        <% end %>
+
       <% end %>
 
       </div>

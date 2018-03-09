@@ -1,6 +1,20 @@
 
-<h1> Hi <%= current_user.email %></h1>
-<%= link_to "List new items" , new_item_path(current_user) %>
+    <center>
+    <h1> Hi <%= @user.name %></h1>
+
+
+  <div class="card-profile">
+  <div class="card-photo">
+    <% if @user.photo.present? %>
+        <%= cl_image_tag @user.photo, width: 200, height: 200, radius: :max, crop: :fill %>
+    <% else %>
+        <%= image_tag "smiley.jpg", width: 200, height: 200, radius: :max, crop: :fill %>
+    <% end %>
+  </div>
+      <div class="profile-text">
+        <p><%= @user.name %></p>
+        <p><%= @user.description %></p>
+      </div>
 
 <div class="card-button btn-space">
     <% if @user == current_user %>
@@ -10,3 +24,35 @@
 </div>
 
 
+      <div class="bottom-right">
+        <% if @user == current_user %>
+        <%= link_to "Edit", edit_user_path(@user), class: "btn-edit" %>
+
+        <%= link_to "List new items" , new_item_path(current_user) %>
+        <% end %>
+      </div>
+    </div>
+
+    <h2> <%=@user.name %>'s Items </h2>
+
+    <div class="profile-container">
+      <div class="row">
+          <% @user.items.each do |item| %>
+        <div class="col-xs-12 col-sm-4">
+          <div>
+              <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+                    url(<%= cl_image_path item.photo, height: 300, width: 400, crop: :fill if item.photo.present? %>);">
+              </div>
+              <div class="card-text">
+                  <%= link_to "View", item_path(item), id: "card-text-1"%>
+                  <% if @user == current_user %>
+                  <%= link_to "Edit", edit_item_path(item), id: "card-text-2"%>
+                  <%= link_to "Delete", item_path(item), id: "card-text-3", method: :delete, data: { confirm: "Are you sure?" } %>
+                  <% end %>
+              </div>
+          </div>
+        </div>
+          <% end %>
+      </div>
+    </div>
+</center>

@@ -2,6 +2,7 @@ class DealsController < ApplicationController
   before_action :find_deal, only: [:show, :edit, :update, :destroy]
 
   def show
+
   end
 
   def new
@@ -14,8 +15,8 @@ class DealsController < ApplicationController
     @deal.status = "In negotiation"
     @deal.requester_id = current_user.id
     @deal.answerer_id = @item.user.id
+    authorize @deal
     if @deal.save
-      authorize @deal
       DealItem.create(item: @item, deal: @deal)
       redirect_to deal_path(@deal)
     else
@@ -58,10 +59,23 @@ class DealsController < ApplicationController
   end
 
 
-  # def accept
+
+  # def include_item(item)
+  #   @item = Item.find(params[:id])
   #   @deal = Deal.find(params[:id])
-  #   if deal.answerer == @deal.requester
-  #   @deal.accept
+  #   DealItem.create(item: @item, deal: @deal)
+  #   if @deal.save
+  #     redirect_to deal_path(@deal)
+  #   end
+  # end
+
+  # def exclude_item(item)
+  #   @item = Item.find(params[:id])
+  #   @deal = Deal.find(params[:id])
+  #   DealItem.destroy(item: @item, deal: @deal)
+  #   if @deal.save
+  #     redirect_to deal_path(@deal)
+  #   end
   # end
 
   # def reject

@@ -19,8 +19,8 @@ class DealItemsController < ApplicationController
   def create
     @dealitem = DealItem.new(dealitem_params)
     @dealitem.user = current_user
-    if @dealitem.save
     authorize @dealitem
+    if @dealitem.save
       redirect_to item_path(@dealitem.deal)
     else
       render :new

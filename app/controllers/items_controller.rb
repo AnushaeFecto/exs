@@ -43,8 +43,8 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     @item.user = current_user
+    authorize @item
      if @item.save
-      authorize @item
       redirect_to item_path(@item)
     else
       render :new

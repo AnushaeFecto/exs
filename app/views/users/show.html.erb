@@ -2,7 +2,6 @@
     <center>
     <h1> Hi <%= @user.name %></h1>
 
-
   <div class="card-profile">
   <div class="card-photo">
     <% if @user.photo.present? %>
@@ -16,12 +15,7 @@
         <p><%= @user.description %></p>
       </div>
 
-<div class="card-button btn-space">
-    <% if @user == current_user %>
-    <%= link_to "Edit", edit_user_path(@user), class: "btn-edit" %>
-    <%= link_to 'Destroy', { controller: :users, action: :destroy }, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-delete" %>
-    <% end %>
-</div>
+
 
 
       <div class="bottom-right">
@@ -55,4 +49,7 @@
           <% end %>
       </div>
     </div>
+
+
 </center>
+

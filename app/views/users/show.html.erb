@@ -1,9 +1,11 @@
-<center>
+
+<center style= "padding-bottom: 30px;">
   <% if @user == current_user %>
     <h3>Hope you're having a Saunier day, <%= @user.name %></h3>
   <% else %>
     <h3>Like <%= @user.name %>'s style?</h3>
   <% end %>
+
 
   <div class="card-profile">
     <div class="card-photo">
@@ -32,7 +34,13 @@
     </div>
   </div>
 
-  <h2> <%=@user.name %>'s Items </h2>
+    <div>
+      <% if @user == current_user %>
+        <h2>My Items</h2>
+        <% else %>
+        <h2><%= @user.name %>'s Items</h2>
+        <% end %>
+    </div>
 
     <div class="profile-container">
       <div class="row">

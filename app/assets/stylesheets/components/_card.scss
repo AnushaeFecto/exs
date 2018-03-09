@@ -11,10 +11,7 @@
   margin-right: 20px;
   margin-left: 20px;
 }
-.centered {
-  display: flex;
-  justify-content: space-around;
-}
+
 .card:hover {
   opacity: 0.7;
   text-decoration: none;
@@ -41,36 +38,27 @@
   position: relative;
   opacity: 0.9;
 }
+.flexleft{
+  flex-direction:column;
+  }
 .card-photo {
   height:400px;
-  width: 450px;
-  padding: 10px;
-  margin-right:10px;
+  width: 370px;
   background-size: cover !important;
   background-position: center;
-  color: white;
-  opacity: 0.9;
-  position: absolute;
-  top: 0px;
-  left: 0px;
+  background-repeat: no-repeat;
+  border-radius: 10px;
 }
 .card-main {
-  position: relative;
-  width: 750px;
-  height: 550px;
-  background-color: white;
-  box-shadow: 0.3px 0.3px 0.3px;
-  margin-top: 100px;
+width: 700px;
+height: 600px;
+background-color: white;
+margin: 30px;
+display: flex;
+justify-content: space-around;
+border-radius: 10px;
 }
-.top-right {
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  margin-right: 10px;
-  margin-left: 10px;
-  margin-top: 20px;
-  padding: 20px;
-}
+
 .form-button {
   position: absolute;
   bottom: 30px;
@@ -147,6 +135,9 @@
 }
 .background{
   opacity: 0.1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .deal-container {
   position: relative;
@@ -165,4 +156,8 @@
 }
 .deal-container-position {
   margin-bottom: 20px;
+}
+
+.card-text {
+  padding: 20px;
 }

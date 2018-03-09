@@ -1,40 +1,38 @@
 <div class="container">
 
   <div class="background" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1470309864661-68328b2cd0a5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=d7f4285ea420ec7ff9755dcf7500a8b1&auto=format&fit=crop&w=1650&q=80')">
-    <div class="centered">
+
       <div class="card-main">
-
-        <div class="card-photo" style="background-image: url('<%= cl_image_path @item.photo %>')">
+        <div class="card-left">
+           <div class="card-photo" style="background-image: url('<%= cl_image_path @item.photo %>')">
+          </div>
+          <div class="form-button">
+            <% if @item.user != current_user %>
+              <%= simple_form_for (@deal) do |f| %>
+                <%= f.input :item_id, as: :hidden, input_html: {value: @item.id}   %>
+                <%= f.button :submit, "Make a deal", class: "exs-btn btn-submit" %>
+                <center>
+                  <%= link_to "Visit Profile", user_path(@item.user) %>
+                </center>
+              <% end %>
+            <% end %>
+          </div>
+           <div>
+            <% if @item.user == current_user %>
+            <%= link_to "Edit", edit_item_path(@item), class: "btn btn-primary center-button" %>
+            <%= link_to 'Delete', { controller: :items, action: :destroy }, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary center-button" %>
+            <% end %>
+          </div>
         </div>
-
-        <div class="top-right">
+        <div class="card-right">
           <div class="card-text">
-            <p><%= @item.name %></p>
+            <h4><%= @item.name %></h4>
             <p><%= @item.description %></p>
           </div>
-          <div class="card-button btn-space">
-            <% if @item.user == current_user %>
-            <%= link_to "Edit", edit_item_path(@item), class: "exs-btn btn-edit" %>
-            <%= link_to 'Delete', { controller: :items, action: :destroy }, method: :delete, data: { confirm: 'Are you sure?' }, class: "exs-btn btn-destroy" %>
-            <% end %>
-          </div>
-        </div>
 
-        <div class="form-button">
-          <% if @item.user != current_user %>
-            <%= simple_form_for (@deal) do |f| %>
-              <%= f.input :item_id, as: :hidden, input_html: {value: @item.id}   %>
-              <%= f.button :submit, "Make a deal", class: "exs-btn btn-submit" %>
-              <center>
-                <%= link_to "Visit Profile", user_path(@item.user) %>
-              </center>
-            <% end %>
-          <% end %>
         </div>
-
       </div>
-    </div>
-  </div>
 
+  </div>
 </div>
 

@@ -1,4 +1,5 @@
 class DealItemsController < ApplicationController
+  before_action :find_deal_item, only: [:show, :edit, :update, :destroy]
 
   def index
     @dealitems = policy_scope(DealItem).order(created_at: :desc)
@@ -8,9 +9,6 @@ class DealItemsController < ApplicationController
   end
 
   def show
-    @rental = Rental.new
-    @dealitem = DealItem.find(params[:id])
-    authorize @dealitem
   end
 
   def new
@@ -20,30 +18,24 @@ class DealItemsController < ApplicationController
 
   def create
     @dealitem = DealItem.new(dealitem_params)
-    authorize @dealitem
     @dealitem.user = current_user
     if @dealitem.save
-      redirect_to item_path(@dealitem)
+    authorize @dealitem
+      redirect_to item_path(@dealitem.deal)
     else
       render :new
     end
   end
 
   def edit
-    @dealitem = DealItem.find(params[:id])
-    authorize @dealitem
   end
 
   def update
-    @dealitem = DealItem.find(params[:id])
-    authorize @dealitem
     @dealitem.update(dealitem_params)
     redirect_to user_path(current_user)
   end
 
   def destroy
-    @dealitem = DealItem.find(params[:id])
-    authorize @dealitem
     @dealitem.destroy
     redirect_to user_path(current_user)
   end
@@ -52,6 +44,11 @@ class DealItemsController < ApplicationController
 
   def dealitem_params
     params.require(:item).permit(:deal_id, :item_id)
+  end
+
+  def find_deal_item
+    @dealitem = DealItem.find(params[:id])
+    authorize @dealitem
   end
 
 end

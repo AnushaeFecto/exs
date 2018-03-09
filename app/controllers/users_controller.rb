@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :find_user, only: [:show, :edit, :update, :destroy]
 
   def show
-    @item = Item.find(params[:id])
+    # @item = Item.find(params[:id])
     # @requester_items = current_user.items
     # @answerer_items = current_user.requested_deals
     # @deal = DealItem.all

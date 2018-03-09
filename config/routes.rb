@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   resources :items
 
   resources :deals do
+    post "accept_deal", to: "deals#accept_deal"
+    post "reject_deal", to: "deals#reject_deal"
     resources :deal_items
     resources :payments, only: [:new, :create]
   end

@@ -1,32 +1,13 @@
-  <div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-      <div class="edit-profile-form">
-        <h3>Edit Profile</h3>
-        <%= simple_form_for(@user) do |f| %>
-        <%= f.error_notification %>
-        <div class="form-inputs">
-
-          <%= f.input :email, required: false %>
-          <%= f.input :password %>
-          <%= f.input :name %>
-          <%= f.input :description %>
-          <%= f.input :photo, required: true %>
-          <%= f.input :photo_cache, as: :hidden %>
-
-       </div>
-         <div class="form-actions">
-          <%= f.button :submit, "Update", class: "btn-medium" %>
-        </div>
-        <% end %>
-      </div>
+<div class="editprofile-box">
+  <div class="editprofile-background" style="background-image: url('https://images.unsplash.com/photo-1501349800519-48093d60bde0?ixlib=rb-0.3.5&s=c42f57ee27eaef62a8b49335d1f13ab5&auto=format&fit=crop&w=750&q=80');">
+    <div class="editprofile-image" style="width: 40%; height: 200px; background-image: url(<%= image_path @user.photo, height: 200 %>); background-size: cover">
     </div>
-
-  </div>
-
-  <div class="btn-space">
-  <div class="delete-profile col-xs-12 col-sm-6 col-sm-offset-3">
-    <%= link_to 'Delete Profile', { controller: :users, action: :destroy }, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-delete" %>
+    <div class="delete-profile">
+      <%= link_to 'Delete Profile', { controller: :users, action: :destroy }, method: :delete, data: { confirm: 'Are you sure?' }, class: "exs-btn btn-destroy" %>
     </div>
   </div>
+  <div class="editprofile-form">
+    <center><h3> Edit Profile</h3></center>
+    <%= render 'form', user: @user %>
   </div>
+</div>

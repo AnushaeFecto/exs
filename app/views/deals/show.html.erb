@@ -1,4 +1,5 @@
 <div>
+
   <h1 style="text-align: center">Deal</h1>
   <div class="deals-details">
     <div class="writen-details section" style="text-align: center">
@@ -7,76 +8,143 @@
         <li>Deal ID: <%= @deal.id %></li>
         <li>Proposed payment: <%= humanized_money_with_symbol(@deal.price) %></li>
         <li>To be paid by: <%= @deal.payer %></li>
+        <% if @deal.status == "In negotiation" %>
         <%= render 'form', item: @item %>
+        <% end %>
       <ul>
+      <% if @deal.status == "In negotiation" %>
+        <%= button_to "Accept",  deal_accept_deal_path(@deal) %>
+      <% elsif @deal.last_changed_by != current_user.id %>
+        <%= button_to "Accept",  deal_accept_deal_path(@deal) %>
+      <% end %>
+      <% if @deal.status != "Finalised" %>
+        <%= button_to "Change",  deal_reject_deal_path(@deal) %>
+        <%= link_to "Reject", { controller: :deals, action: :destroy }, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
     </div>
+
     <div class="items-in-deal section">
+
       <div class="left-in-deal">
         <div class="requester-items margin-bottom">
           <h3 style="text-align: center">Your items in deal</h3>
           <div class="items-display">
+            <% count = 0 %>
+            <div class="box">
             <% @deal.items_from(current_user).each do |item| %>
-            <div class="item">
-              <%= link_to item_path(item) do %>
-                <%= cl_image_tag item.photo, width: 150, height: 150, radius: 10, crop: :scale %>
+              <% if count <= 2 %>
+                <div class="item">
+                   <%= link_to item_path(item) do %>
+                    <%= cl_image_tag item.photo, width: 150, height: 150, radius: 10, crop: :scale %>
+                  <% end %>
+                   <p class="center-deal"><%= item.category %></p>
+                   <%# link_to "Add item into deal", deal_path(@deal), class: "btn-edit" %>
+                </div>
+                <% count+= 1 %>
+                <% if count == 3 %>
+                  </div>
+                  <div class="box">
+                  <% count = 0 %>
+                <% end %>
               <% end %>
-                <h2><%= item.name %> from <%= item.user.email %></h2>
-            </div>
             <% end %>
+          </div>
           </div>
         </div>
       </div>
+      
       <div class="right-in-deal">
-      <div class="answerer-items margin-bottom">
+        <div class="answerer-items margin-bottom">
         <h3 style="text-align: center">Their items in deal</h3>
-        <div class="items-display">
-          <% @deal.items_from(@deal.answerer).each do |item| %>
-          <div class="item">
-            <%= link_to item_path(item) do %>
-              <%= cl_image_tag item.photo, width: 150, height: 150, radius: 10, crop: :scale %>
+          <div class="items-display">
+            <% count = 0 %>
+            <div class="box">
+            <% @deal.items_from(@deal.answerer).each do |item| %>
+              <% if count <= 2 %>
+                <div class="item">
+                   <%= link_to item_path(item) do %>
+                    <%= cl_image_tag item.photo, width: 150, height: 150, radius: 10, crop: :scale %>
+                  <% end %>
+                   <p class="center-deal"><%= item.category %></p>
+                   <%# link_to "Add item into deal", deal_path(@deal), class: "btn-edit" %>
+                </div>
+                <% count+= 1 %>
+                <% if count == 3 %>
+                  </div>
+                  <div class="box">
+                  <% count = 0 %>
+                <% end %>
+              <% end %>
             <% end %>
-              <h2><%# item.category %> <%# item.user.email %></h2>
           </div>
-          <% end %>
         </div>
       </div>
     </div>
+
   </div>
+
   <div class="items-outside section">
+    
     <div class="left-in-deal">
       <div class="requester-items margin-bottom">
         <h3 style="text-align: center">Your items</h3>
         <div class="items-display">
+          <% count = 0 %>
+          <div class="box">
           <% @deal.requester.items.each do |item| %>
-            <div class="item">
-               <%= link_to item_path(item) do %>
-                <%= cl_image_tag item.photo, width: 150, height: 150, radius: 10, crop: :scale %>
+            <% if count <= 2 %>
+              <div class="item">
+                 <%= link_to item_path(item) do %>
+                  <%= cl_image_tag item.photo, width: 150, height: 150, radius: 10, crop: :scale %>
+                <% end %>
+                 <p class="center-deal"><%= item.category %></p>
+                 <%# link_to "Add item into deal", deal_path(@deal), class: "btn-edit" %>
+              </div>
+              <% count+= 1 %>
+              <% if count == 3 %>
+                </div>
+                <div class="box">
+                <% count = 0 %>
               <% end %>
-               <p><%= item.category %></p>
-            </div>
+            <% end %>
           <% end %>
+        </div>
         </div>
       </div>
     </div>
+    
     <div class="right-in-deal">
       <div class="answerer-items margin-bottom">
         <h3 style="text-align: center">Their items</h3>
         <div class="items-display">
+          <% count = 0 %>
+          <div class="box">
           <% @deal.answerer.items.each do |item| %>
-            <%= link_to item_path(item) do %>
-              <%= cl_image_tag item.photo, width: 150, height: 150, radius: 10, crop: :scale %>
+            <% if count <= 2 %>
+              <div class="item">
+                 <%= link_to item_path(item) do %>
+                  <%= cl_image_tag item.photo, width: 150, height: 150, radius: 10, crop: :scale %>
+                <% end %>
+                 <p class="center-deal"><%= item.category %></p>
+                 <%# link_to "Add item into deal", deal_path(@deal), class: "btn-edit" %>
+              </div>
+              <% count+= 1 %>
+              <% if count == 3 %>
+                </div>
+                <div class="box">
+                <% count = 0 %>
+              <% end %>
             <% end %>
-          <p><%= item.category %></p>
           <% end %>
+        </div>
         </div>
       </div>
     </div>
+
   </div>
-  <div style="text-align: center" class="section">
-    <%= link_to 'Destroy', { controller: :deals, action: :destroy }, method: :delete, data: { confirm: 'Are you sure?' } %>
-    <%= link_to 'Accept', { controller: :deals, action: :destroy }, method: :delete, data: { confirm: 'Are you sure you?' } %>
-  </div>
+
 </div>
+
 
 
 

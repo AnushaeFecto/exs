@@ -28,7 +28,7 @@
   <%= form_tag items_path, method: :get, class:'form-inline' do %>
     <div class="input-field">
       <%= text_field_tag :search, params[:search], class: 'carousel-search-text-input', placeholder: "Search"%>
-      <%= button_tag(type: "submit", class: "carousel-icon-input btn btn-default") do %>
+      <%= button_tag(type: "submit", class: "carousel-icon-input") do %>
       <span class="glyphicon glyphicon-search"></span>
       <% end %>
     </div>

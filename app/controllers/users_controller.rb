@@ -3,11 +3,11 @@ class UsersController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
-    @requester_items = current_user.items
-    @answerer_items = current_user.requested_deals
+    # @requester_items = current_user.items
+    # @answerer_items = current_user.requested_deals
     # @deal = DealItem.all
     # @deal_requests = []
-    @deal = DealItem.includes(:item).all
+
 
     # Deal.all.each do |deal|
     # @deal_requests << deal if @requester_items.include?(@answerer_items)

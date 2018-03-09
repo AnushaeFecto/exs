@@ -50,22 +50,6 @@
       </div>
     </div>
 
-    <h2> Items Acquired Through Deals </h2>
-    <div class="deal-container-position">
-    <div class="deal-container">
-      <div class="row">
-        <% @deal.each do |deal| %>
-        <div class="deal-position">
-        <div class="col-xs-12 col-sm-4">
-              <%= link_to item_path(deal.item) do %>
-                <%= cl_image_tag deal.item.photo, width: 150, height: 150, radius: 10, crop: :scale %>
-              <% end %>
-              <p><%= deal.item.name %> from <%= deal.item.user.name %></p>
-          </div>
-            <% end %>
-      </div>
-    </div>
-</div>
-</div>
+
 </center>
 

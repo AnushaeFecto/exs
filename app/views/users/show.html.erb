@@ -2,7 +2,6 @@
     <center>
     <h1> Hi <%= @user.name %></h1>
 
-
   <div class="card-profile">
   <div class="card-photo">
     <% if @user.photo.present? %>
@@ -16,12 +15,7 @@
         <p><%= @user.description %></p>
       </div>
 
-<div class="card-button btn-space">
-    <% if @user == current_user %>
-    <%= link_to "Edit", edit_user_path(@user), class: "btn-edit" %>
-    <%= link_to 'Destroy', { controller: :users, action: :destroy }, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn-delete" %>
-    <% end %>
-</div>
+
 
 
       <div class="bottom-right">
@@ -55,4 +49,23 @@
           <% end %>
       </div>
     </div>
+
+    <h2> Items Acquired Through Deals </h2>
+    <div class="deal-container-position">
+    <div class="deal-container">
+      <div class="row">
+        <% @deal.each do |deal| %>
+        <div class="deal-position">
+        <div class="col-xs-12 col-sm-4">
+              <%= link_to item_path(deal.item) do %>
+                <%= cl_image_tag deal.item.photo, width: 150, height: 150, radius: 10, crop: :scale %>
+              <% end %>
+              <p><%= deal.item.name %> from <%= deal.item.user.name %></p>
+          </div>
+            <% end %>
+      </div>
+    </div>
+</div>
+</div>
 </center>
+

@@ -1,38 +1,45 @@
 <div class="container">
+  <!-- <div class="background" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1470309864661-68328b2cd0a5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=d7f4285ea420ec7ff9755dcf7500a8b1&auto=format&fit=crop&w=1650&q=80')"> -->
 
-  <div class="background" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1470309864661-68328b2cd0a5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=d7f4285ea420ec7ff9755dcf7500a8b1&auto=format&fit=crop&w=1650&q=80')">
-
-      <div class="card-main">
-        <div class="card-left">
-           <div class="card-photo" style="background-image: url('<%= cl_image_path @item.photo %>')">
-          </div>
-          <div>
-            <% if @item.user != current_user %>
-              <%= simple_form_for (@deal) do |f| %>
-                <%= f.input :item_id, as: :hidden, input_html: {value: @item.id}   %>
-                <%= f.button :submit, "Make a deal", class: "exs-btn btn-submit" %>
-                <center>
-                  <%= link_to "Visit Profile", user_path(@item.user) %>
-                </center>
-              <% end %>
-            <% end %>
-          </div>
-           <div>
-            <% if @item.user == current_user %>
-            <%= link_to "Edit", edit_item_path(@item), class: "btn btn-primary center-button" %>
-            <%= link_to 'Delete', { controller: :items, action: :destroy }, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary center-button" %>
-            <% end %>
-          </div>
-        </div>
-        <div class="card-right">
-          <div class="card-text">
-            <h4><%= @item.name %></h4>
-            <p><%= @item.description %></p>
-          </div>
-
+  <div id="item-content">
+    <div class="showitem-left">
+      <div class="showitem-photo" style="background-image: url('<%= cl_image_path @item.photo %>')">
+      </div>
+      <div class="show-icons">
+        <div class="like-counter">
+         <i class="fa fa-heart"></i><span class="click-text"><a id="clicks"></span>
+          <i class="fa fa-share"></i>
+          <i class="fa fa-envelope"></i>
         </div>
       </div>
-
+    </div>
+    <div class="showitem-right">
+      <h3 class="showitem-title"><%= @item.name %></h3>
+      <% if @item.user != current_user %>
+       <%= link_to user_path(@item.user) do%>
+       <i class="fa fa-user"> View Owner's Profile</i>
+       <% end %>
+       <% end %>
+      <button class="accordion">Show More Details</button>
+      <div class="panel">
+        <p><strong>Category:</strong> <%= @item.category %></p>
+        <p><strong>Size:</strong> <%= @item.size %></p>
+        <p><strong>Description:</strong> <%= @item.description %></p>
+      </div>
+      <div class="showitem-buttons">
+          <% if @item.user != current_user %>
+            <%= simple_form_for (@deal) do |f| %>
+              <%= f.input :item_id, as: :hidden, input_html: {value: @item.id}   %>
+              <%= f.button :submit, "Make a deal", class: "exs-btn btn-submit itemshow-btn " %>
+            <% end %>
+          <% else %>
+          <%= link_to "Edit Item", edit_item_path(@item), class: "showitem-style exs-btn btn-edit itemshow-btn" %>
+          <%= link_to 'Delete', { controller: :items, action: :destroy }, method: :delete, data: { confirm: 'Are you sure?' }, class: "showitem-style exs-btn btn-destroy itemshow-btn" %>
+          <% end %>
+      </div>
+    </div>
   </div>
+ <!--  </div> -->
 </div>
 
+<%= javascript_pack_tag 'show' %>

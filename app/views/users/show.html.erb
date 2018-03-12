@@ -1,6 +1,6 @@
 
 <center style= "padding-bottom: 30px;">
-  <% if @user == current_user %>
+  <% if current_user %>
     <h3>Hope you're having a Saunier day, <%= @user.name %></h3>
   <% else %>
     <h3>Like <%= @user.name %>'s style?</h3>
@@ -65,23 +65,17 @@
 
     <div class="profile-container">
       <div clas="row">
-         <% @user.requested_deal_ids.each do |requested_deal_ids| %>
-
+      <% @user.requested_deals.each do |requested_deal| %>
         <div class="col-xs-12 col-sm-4">
-
-         <div class="card-homepage" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path @user.photo, height: 300, width: 400, crop: :fill if @user.photo.present? %>);">
+          <div class="card-homepage" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path requested_deal.answerer.photo, height: 300, width: 400, crop: :fill if requested_deal.answerer.photo.present? %>);">
            <p> status </p>
-           <%= link_to "deal", deals_path(@deal), id: "card-text-2"%>
+           <%= link_to "deal", deal_path(requested_deal), id: "card-text-2"%>
           </div>
-
-          </div>
-           <% end %>
-
-
+        </div>
+      <% end %>
+      </div>
     </div>
   </div>
-</div>
-
-
 </center>
+
 

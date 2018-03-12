@@ -26,8 +26,10 @@
 
 
   <% if @user == current_user %>
-        <h2>My Items</h2>
+
         <div class="profile-container">
+          <h3>My Items</h3>
+          <div class="container">
           <div class="row">
           <% @user.items.each do |item| %>
             <div class="col-xs-12 col-sm-4">
@@ -46,12 +48,14 @@
             </div>
             <% end %>
           </div>
+        </div>
             <div class="bottom-right">
                 <%= link_to "Add items" , new_item_path(current_user), class: "exs-btn btn-submit" %>
             </div>
         </div>
-            <h1> My Offers </h1>
-            <div class="profile-container">
+          <div class="profile-container">
+            <h3> My Offers </h3>
+            <div class="container">
               <div clas="row">
               <% @user.requested_deals.each do |requested_deal| %>
                 <div class="col-xs-12 col-sm-4">
@@ -73,6 +77,8 @@
                 <% end %>
               </div>
             </div>
+          </div>
+        </div>
 
             <% else %> <!-- if not the current user's page -->
 
@@ -94,7 +100,6 @@
                 <div class="row">
                 <% @user.items.each do |item| %>
                   <div class="col-xs-12 col-sm-4">
-                    <p> fml </p>
                     <div>
                       <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
                             url(<%= cl_image_path item.photo, height: 300, width: 400, crop: :fill if item.photo.present? %>);">

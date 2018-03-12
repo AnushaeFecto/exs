@@ -42,23 +42,7 @@
 .flexleft{
   flex-direction:column;
   }
-.card-photo {
-  height:400px;
-  width: 370px;
-  background-size: cover !important;
-  background-position: center;
-  background-repeat: no-repeat;
-  border-radius: 10px;
-}
-.card-main {
-width: 700px;
-height: 600px;
-background-color: white;
-margin: 30px;
-display: flex;
-justify-content: space-around;
-border-radius: 10px;
-}
+
 
 .form-button {
   position: absolute;

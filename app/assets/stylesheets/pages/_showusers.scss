@@ -1,0 +1,66 @@
+//moved specific css for user show page aka user profile page to this file
+.card-profile {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 900px;
+  background-color: white;
+  box-shadow: 0.3px 0.3px 0.3px;
+  border-radius: 80px;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+
+.profile-container {
+  width: 1000px;
+  background-color: white;
+  box-shadow: 0.3px 0.3px 0.3px;
+  margin-top: 20px;
+  border-radius: 10px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.my-deals-container {
+  width: 1000px;
+  background-color: white;
+  box-shadow: 0.3px 0.3px 0.3px;
+  margin-top: 20px;
+  border-radius: 10px;
+}
+
+.profile-container-deals {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 1000px;
+  height: 500px;
+  background-color: white;
+  box-shadow: 0.3px 0.3px 0.3px;
+  margin-top: 20px;
+  border-radius: 10px;
+}
+.profile-container-deals-user1 {
+  width: 500px;
+  height: 500px;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.profile-container-deals-user2 {
+  width: 500px;
+  height: 500px;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.bottom-right {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.card-text {
+  padding: 20px;
+}
+

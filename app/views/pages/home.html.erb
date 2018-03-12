@@ -58,49 +58,23 @@
             <%= link_to item_path(item), :class => "rent-link" do %>
         <div class="card-homepage" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
             url(<%= cl_image_path item.photo, height: 300, width: 400, crop: :fill if item.photo.present? %>);">
+          <div class="homepage-desc">
               <p> Xchange! </p>
               <h5><%= item.name %></h5>
+          </div>
+          <div class="ownerphoto-card">
+            <% if item.user.photo.present? %>
+              <%= cl_image_tag item.user.photo, class: "owner-avatar" %>
+            <% else %>
+              <%= image_tag "smiley.jpg", class: "owner-avatar" %>
+          <% end %>
+          </div>
         </div>
       </div>
       <%end%>
     <% end %>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <%= javascript_pack_tag 'home' %>

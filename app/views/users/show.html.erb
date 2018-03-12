@@ -14,8 +14,8 @@
     <% end %>
     <div class="profile-text">
       <% if current_user %>
-        <h3>My name: <%= @current_user.name %></h3>
-        <h3>My story: <%= @current_user.description %></h3>
+        <h3><%= @current_user.name %></h3>
+        <h3><%= @current_user.description %></h3>
       <% else %>
         <h3>Learn some more about <%= @user.name %>:</h3>
         <h3><%= @user.description %></h3>
@@ -28,6 +28,7 @@
       <% end %>
     </div>
   </div>
+
   <div>
     <% if current_user %>
     <h2>My Items</h2>

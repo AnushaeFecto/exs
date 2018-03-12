@@ -33,7 +33,7 @@
             <div class="box">
             <% @deal.items_from(current_user).each do |item| %>
               <% if count <= 2 %>
-                <div class="item">
+                <div class="item-2">
                    <%= link_to item_path(item) do %>
                     <%= cl_image_tag item.photo, width: 150, height: 150, radius: 10, crop: :scale %>
                   <% end %>
@@ -93,7 +93,7 @@
           <div class="box">
           <% @deal.requester.items.each do |item| %>
             <% if count <= 2 %>
-              <div class="item">
+              <div class="item-2">
                  <%= link_to item_path(item) do %>
                   <%= cl_image_tag item.photo, width: 150, height: 150, radius: 10, crop: :scale %>
                 <% end %>
@@ -121,7 +121,7 @@
           <div class="box">
           <% @deal.answerer.items.each do |item| %>
             <% if count <= 2 %>
-              <div class="item">
+              <div class="item-2">
                  <%= link_to item_path(item) do %>
                   <%= cl_image_tag item.photo, width: 150, height: 150, radius: 10, crop: :scale %>
                 <% end %>

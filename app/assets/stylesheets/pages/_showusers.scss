@@ -26,3 +26,28 @@
 }
 
 
+.profile-container-deals {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 1000px;
+  height: 500px;
+  background-color: white;
+  box-shadow: 0.3px 0.3px 0.3px;
+  margin-top: 20px;
+  border-radius: 10px;
+}
+.profile-container-deals-user1 {
+  width: 500px;
+  height: 500px;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.profile-container-deals-user2 {
+  width: 500px;
+  height: 500px;
+  background-color: white;
+  border-radius: 10px;
+}
+

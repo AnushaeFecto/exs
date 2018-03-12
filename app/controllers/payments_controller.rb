@@ -2,9 +2,11 @@ class PaymentsController < ApplicationController
   before_action :set_deal
 
   def new
+    authorize @deal
   end
 
   def create
+    authorize @deal
     customer = Stripe::Customer.create(
       source: params[:stripeToken],
       email:  params[:stripeEmail]
@@ -12,12 +14,12 @@ class PaymentsController < ApplicationController
 
     charge = Stripe::Charge.create(
       customer:     customer.id,
-      amount:       @deal.amount_cents,
+      amount:       @deal.price_cents,
       description:  "Payment for deal #{@deal.id} from exs",
-      currency:     @deal.amount.currency
+      currency:     @deal.price.currency
     )
 
-    @deal.update(payment: charge.to_json, state: 'paid')
+    @deal.update(payment: charge.to_json, status: "paid")
     redirect_to deal_path(@deal)
 
     rescue Stripe::CardError => e
@@ -28,7 +30,7 @@ class PaymentsController < ApplicationController
    private
 
   def set_deal
-    @deal = Deal.where(state: 'pending').find(params[:deal_id])
+    @deal = Deal.where(status: "Finalised").find(params[:deal_id])
   end
 
 end

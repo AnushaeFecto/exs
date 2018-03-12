@@ -72,6 +72,10 @@
  justify-content: center;
 }
 .item-delete{
+  position: relative;
+  z-index: 10;
+  margin-left:61%;
+  padding: 20px;
 
 }
 .editem-form{

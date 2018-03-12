@@ -43,8 +43,6 @@
     <div class="profile-container">
       <div class="row">
           <% @user.items.each do |item| %>
-
-
         <div class="col-xs-12 col-sm-4">
           <div>
               <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
@@ -67,11 +65,17 @@
       <div clas="row">
       <% @user.requested_deals.each do |requested_deal| %>
         <div class="col-xs-12 col-sm-4">
-          <div class="card-homepage" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path requested_deal.answerer.photo, height: 300, width: 400, crop: :fill if requested_deal.answerer.photo.present? %>);">
+          <% if requested_deal.answerer.photo.present? %>
+          <div class="card-homepage" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path requested_deal.answerer.photo, height: 300, width: 400, crop: :fill %>);">
+            <p> status </p>
+           <%= link_to "deal", deal_path(requested_deal), id: "card-text-2"%>
+            <% else %>
+            <div class="card-homepage" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),<%= image_tag "smiley.jpg", width: 200, height: 200, radius: :max, crop: :fill %>;">
            <p> status </p>
            <%= link_to "deal", deal_path(requested_deal), id: "card-text-2"%>
           </div>
         </div>
+      <% end %>
       <% end %>
       </div>
     </div>

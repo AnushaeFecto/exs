@@ -1,6 +1,7 @@
 class DealsController < ApplicationController
   before_action :find_deal, only: [:show, :edit, :update, :destroy]
 
+
   def show
 
   end

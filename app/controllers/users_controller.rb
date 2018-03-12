@@ -2,6 +2,9 @@ class UsersController < ApplicationController
   before_action :find_user, only: [:show, :edit, :update, :destroy]
 
   def show
+
+
+
   end
 
   def edit

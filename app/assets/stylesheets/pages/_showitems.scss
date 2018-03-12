@@ -1,0 +1,144 @@
+#item-content {
+
+background-color: white;
+margin: 10px;
+display: flex;
+justify-content: left;
+border-radius: 10px;
+}
+
+.showitem-photo {
+  flex: 50%;
+  height:400px;
+  width: 370px;
+  background-size: cover !important;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-top: 8%;
+  margin-left: 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.showitem-left{
+  flex: 50%;
+  padding-left: 75px;
+  justify-content: left;
+}
+
+.like-counter {
+  padding-top: 10px;
+  font-size: 25px;
+  color:$icon-before !important;
+  text-decoration: none !important;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+
+.show-icons{
+  display:flex;
+  justify-content: space-between;
+  padding-left:33%;
+}
+
+
+.fa-heart :hover{
+  opacity: 0.5;
+}
+
+.fa-share{
+  color:$icon-before;
+}
+
+#clicks{
+  text-decoration: none !important;
+}
+.fa-envelope{
+  color:$icon-before;
+}
+
+.accordion {
+    background-color: $white;
+    color: $magenta;
+    cursor: pointer;
+    padding: 18px;
+    width: 85%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+    border-radius: 10px;
+    align-items: center;
+    margin-top: 5px;
+
+}
+
+.active, .accordion:hover {
+    background-color: $white;
+}
+
+.accordion:after {
+    content: '\002B';
+    color: #777;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+}
+
+.active:after {
+    content: "\2212";
+}
+
+.panel {
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0px;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    width:80%;
+  & p{
+      color: $magenta;
+    }
+}
+
+.showitem-right{
+  flex:50%;
+  margin-top:15px;
+}
+
+.showitem-title{
+  text-align: left;
+  color: $magenta;
+}
+
+.showitem-buttons{
+  display: flex;
+  justify-content: space-around;
+  width: 75%;
+  height: 75px;
+}
+
+.itemshow-btn{
+  flex-grow: 1;
+  padding: 10px;
+  margin: 0 5px;
+}
+
+.showitem-style{
+  height: 45px;
+  margin-left:50px;
+  align-items: center;
+}
+
+.owner-profile{
+  color:$magenta;
+}
+
+.fa-user{
+  color:$magenta;
+}
+.fa-user:hover{
+  opacity: 0.7;
+}

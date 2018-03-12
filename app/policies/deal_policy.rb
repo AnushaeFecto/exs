@@ -21,4 +21,13 @@ class DealPolicy < ApplicationPolicy
     def destroy?
       show?
     end
+
+    def accept_deal?
+      record.requester_id == user.id || record.answerer_id == user.id
+
+    end
+
+    def reject_deal?
+      record.requester_id == user.id || record.answerer_id == user.id
+    end
 end

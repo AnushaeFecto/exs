@@ -2,15 +2,7 @@ class UsersController < ApplicationController
   before_action :find_user, only: [:show, :edit, :update, :destroy]
 
   def show
-    @user = current_user
-    # @requester_items = current_user.items
-    # @answerer_items = current_user.requests
-    # @deal_requests = []
-    # Deal.all.each do |deal|
-    #   @deal_requests << deal if @requester_items.include?(answerer.item)
-    # end
   end
-
 
   def edit
     redirect_to root_path if @user != current_user
@@ -35,11 +27,12 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :address, :email, :description, :password)
+    params.require(:user).permit(:name, :address, :email, :description, :password, :photo)
   end
 
   def find_user
     @user = User.find(params[:id])
     authorize @user
   end
+
 end

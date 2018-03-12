@@ -41,12 +41,16 @@
 
 .items-display{
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 
 .requester-items {
+  margin-left: 3%;
+}
+
+.answerer-items {
   margin-left: 3%;
 }
 
@@ -60,4 +64,17 @@
   justify-content: space-around;
   margin-bottom: 50px;
   background-color: #F4F4F4;
+}
+
+.center-deal{
+  text-align: center;
+}
+
+.box{
+  max-width: 450px;
+  display: flex;
+}
+
+.item{
+  margin: 10px;
 }

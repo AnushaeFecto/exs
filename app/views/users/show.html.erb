@@ -11,22 +11,18 @@
       <% else %>
           <%= image_tag "smiley.jpg", width: 200, height: 200, radius: :max, crop: :fill %>
       <% end %>
-      <div class="top-right">
       <% if @user == current_user %>
         <h4><%= @current_user.name %></h4>
         <h4><%= @current_user.description %></h4>
         <%= link_to "Edit", edit_user_path(current_user), class: "exs-btn btn-submit" %>
-
       <% else %>
         <h4>Learn some more about <%= @user.name %>:</h4>
         <h4><%= @user.description %></h4>
     <% end %>
   </div>
-  </div>
 
 
   <% if @user == current_user %>
-
         <div class="profile-container">
           <h3>My Items</h3>
           <div class="container">
@@ -48,11 +44,9 @@
             </div>
             <% end %>
           </div>
-            <div class="bottom-right">
-          <%= link_to "Add items" , new_item_path(current_user) %>
-          </div>
-        </div>
 
+        </div>
+          <%= link_to "Add items" , new_item_path(current_user) %>
         </div>
           <div class="profile-container">
             <h3> My Offers </h3>
@@ -69,7 +63,6 @@
                     </div>
                       <% else %>
                     <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),<%= image_tag "smiley.jpg", width: 200, height: 200, radius: :max, crop: :fill %>;">
-                      <p> status </p>
                       <div class="bottom-right">
                       <%= link_to "deal", deal_path(requested_deal), id: "card-text-2"%>
                     </div>

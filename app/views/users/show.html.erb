@@ -82,9 +82,9 @@
 
         <div class="profile-container-deals">
             <div class="profile-container-deals-user1">
-              <p> sdf </p>
+              <h4> Your items </h4>
               <div class="row">
-              <% @user.items.each do |item| %>
+              <% current_user.items.each do |item| %>
                 <div class="col-xs-12 col-sm-4">
                   <p> fml </p>
                   <div>
@@ -97,7 +97,7 @@
             </div>
           </div>
           <div class="profile-container-deals-user2">
-            <p> sdf </p>
+            <p> <%= @user.name %>'s items </p>
             <div class="row">
             <% @user.items.each do |item| %>
               <div class="col-xs-12 col-sm-4">

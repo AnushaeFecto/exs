@@ -61,30 +61,41 @@
 }
 
 .editem-image{
-  margin-top: 80px;
-  margin-left: 15%;
-  border-radius: 10px;
-  flex: 0 0 40%;
-  background-size: cover;
-  border: 3px $beige solid;
+  position:absolute;
+  margin-left: 42%;
+  border-radius:10px;
 }
 
+.delete-item{
+ display:flex;
+ flex-direction: column;
+ justify-content: center;
+}
+.item-delete{
+  position: relative;
+  z-index: 10;
+  margin-left:61%;
+  padding: 20px;
+
+}
 .editem-form{
-  width: 500px;
-  background-color: rgba(214, 196, 129, 0.4);
-  padding: 10px 35px 20px 35px;
+ width: 500px;
+  height: 718px;
+  position:relative;
+  z-index:10;
+  margin-left: 42%;
+  padding: 20px;
+  background-color: rgba(255, 255, 240, 0.5);
+  color: $magenta;
   border-radius: 10px;
-  border: 3px $beige dashed;
-   margin-top: -40%;
-   margin-left: 45%;
 }
 
 
 .editems-box {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: left;
+  width: 1000px;
+  height: 800px;
+  margin-top: 50px;
+  position:relative;
 
 }
 

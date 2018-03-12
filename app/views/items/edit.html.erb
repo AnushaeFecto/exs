@@ -1,13 +1,17 @@
 <div class="editems-box">
-  <div class="editem-image" style="width: 50%; height: 630px; background-image: url(<%= image_path @item.photo, height: 500 %>); background-size: cover">
-     <div class="edit-button btn-space">
-      <%= link_to 'Delete', { controller: :items, action: :destroy }, method: :delete, data: { confirm: 'Are you sure?' }, class: "exs-btn btn-destroy" %>
-    </div>
+  <div class="editem-image" style="width: 50%; height: 718px; background-image: url(<%= image_path @item.photo, height: 500 %>); background-size: cover">
   </div>
+
+
   <div class="editem-form">
     <center><h3> Edit Item</h3></center>
     <%= render 'form', item: @item %>
   </div>
-</div>
 
+<div class="delete-item">
+  <div class="item-delete">
+      <%= link_to 'Delete', { controller: :items, action: :destroy }, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
+  </div>
+</div>
+</div>
 

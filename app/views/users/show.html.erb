@@ -37,20 +37,9 @@
         <h2>My Items</h2>
         <% else %>
 
-
-
-
-
         <h2><%= @user.name %>'s Items</h2>
         <% end %>
-
-
-
     </div>
-
-
-
-
     <div class="profile-container">
       <div class="row">
           <% @user.items.each do |item| %>

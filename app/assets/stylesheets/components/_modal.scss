@@ -11,6 +11,13 @@
   border-radius: 10px;
 }
 
+.nav-tabs > li:after {
+  content: '';
+}
+
+#signit:after {
+  content: '';
+}
 
 a:-webkit-any-link{
   text-decoration: none;

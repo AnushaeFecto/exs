@@ -58,31 +58,6 @@ class DealsController < ApplicationController
     redirect_to deal_path(@deal)
   end
 
-
-
-  # def include_item(item)
-  #   @item = Item.find(params[:id])
-  #   @deal = Deal.find(params[:id])
-  #   DealItem.create(item: @item, deal: @deal)
-  #   if @deal.save
-  #     redirect_to deal_path(@deal)
-  #   end
-  # end
-
-  # def exclude_item(item)
-  #   @item = Item.find(params[:id])
-  #   @deal = Deal.find(params[:id])
-  #   DealItem.destroy(item: @item, deal: @deal)
-  #   if @deal.save
-  #     redirect_to deal_path(@deal)
-  #   end
-  # end
-
-  # def reject
-  #   @deal = Deal.find(params[:id])
-  #   @deal.reject
-  # end
-
   private
 
   def deal_params

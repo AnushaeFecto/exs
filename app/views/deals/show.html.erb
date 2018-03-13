@@ -4,20 +4,31 @@
   <div class="deals-details">
     <div class="writen-details section" style="text-align: center">
       <ul class="list-unstyled">
-        <li>Status: <%= @deal.status %></li>
+        <!-- info about the deal -->
+        <li>Status: <%= @deal.status.capitalize %></li>
         <li>Deal ID: <%= @deal.id %></li>
         <li>Proposed payment: <%= humanized_money_with_symbol(@deal.price) %></li>
         <li>To be paid by: <%= @deal.payer %></li>
         <% if @deal.status == "In negotiation" %>
           <%= render 'form', item: @item %>
         <% end %>
-      <ul>
+      </ul>
+      <!-- buttons to agree/change/destroy/pay -->
       <% if @deal.status == "In negotiation" %>
         <%= button_to "Accept",  deal_accept_deal_path(@deal) %>
-      <% elsif @deal.last_changed_by != current_user.id %>
+        <%= button_to "Change",  deal_reject_deal_path(@deal) %>
+        <%= link_to "Reject", { controller: :deals, action: :destroy }, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% elsif @deal.status == "paid" %>
+        <p>Insert messages here telling each party to send their stuff and what to receive</p>
+      <% elsif @deal.status == "Finalised" && @deal.payer == current_user.email %>
+        <%= button_to "Pay", deal_payments_path(@deal) %>
+      <% elsif @deal.status == "Finalised" && @deal.payer != current_user.email %>
+        <p>Awaiting payment from <%= @deal.payer %></p>
+      <% elsif (@deal.last_changed_by != current_user.id) && (@deal.status == "In negotiation" || "Offer made") %>
         <%= button_to "Accept",  deal_accept_deal_path(@deal) %>
-      <% end %>
-      <% if @deal.status != "Finalised" %>
+        <%= button_to "Change",  deal_reject_deal_path(@deal) %>
+        <%= link_to "Reject", { controller: :deals, action: :destroy }, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% elsif (@deal.last_changed_by == current_user.id) && (@deal.status == "In negotiation" || "Offer made") %>
         <%= button_to "Change",  deal_reject_deal_path(@deal) %>
         <%= link_to "Reject", { controller: :deals, action: :destroy }, method: :delete, data: { confirm: 'Are you sure?' } %>
       <% end %>

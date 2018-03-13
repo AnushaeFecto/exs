@@ -7,7 +7,7 @@
   <% end %>
   <div class="card-profile">
       <% if @user.photo.present? %>
-          <%= cl_image_tag @user.photo, width: 200, height: 200, radius: :max, crop: :fill %>
+          <%= cl_image_tag @user.photo, width: 200, height: 200, radius: :max, crop: :fill  %>
       <% else %>
           <%= image_tag "smiley.jpg", width: 200, height: 200, radius: :max, crop: :fill %>
       <% end %>

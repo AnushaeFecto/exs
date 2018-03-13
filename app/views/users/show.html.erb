@@ -58,7 +58,7 @@
                   <% if requested_deal.answerer.photo.present? %>
                     <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path requested_deal.answerer.photo, height: 300, width: 400, crop: :fill %>);">
                       <div class="bottom-right">
-                      <%= link_to "deal", deal_path(requested_deal), id: "card-text-2"%>
+                      <%= link_to "view deal", deal_path(requested_deal), id: "card-text-2"%>
                       </div>
                     </div>
                       <% else %>

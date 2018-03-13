@@ -1,0 +1,21 @@
+<div class=“user-header”>
+ </div>
+
+ <div class="container">
+  <div class="deal-row">
+    <div class="deal-avatar-box">
+      <% if current_user.photo.present? %>
+        <%= cl_image_tag current_user.photo, class: "deal-avatar"%>
+        <% else %>
+            <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "deal-avatar"%>
+        <% end %>
+    </div>
+    <div class="deal-box">
+       <h4>Number of deals made <%= current_user.requested_deals.count %></h4>
+       <h4>Number of deals recieved <%= current_user.answered_deals.count %></h4>
+
+
+
+    </div>
+  </div>
+ </div>

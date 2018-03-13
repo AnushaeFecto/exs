@@ -2,6 +2,9 @@ class UsersController < ApplicationController
   before_action :find_user, only: [:show, :edit, :update, :destroy]
 
   def show
+    @deal = Deal.new
+    @deal.requester_id = current_user.id
+    #@deal.answerer_id = @item.user.id
   end
 
   def edit

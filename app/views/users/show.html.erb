@@ -23,88 +23,89 @@
 
 
   <% if @user == current_user %>
-        <div class="profile-container">
-          <h3>My Items</h3>
-          <div class="container">
-          <div class="row">
-          <% @user.items.each do |item| %>
-            <div class="col-xs-12 col-sm-4">
-              <div>
-                <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-                      url(<%= cl_image_path item.photo, height: 300, width: 400, crop: :fill if item.photo.present? %>);">
-                </div>
-                  <div class="card-text">
-                    <%= link_to "View", item_path(item), id: "card-text-1"%>
-                    <% if @user == current_user %>
-                    <%= link_to "Edit", edit_item_path(item), id: "card-text-2"%>
-                    <%= link_to "Delete", item_path(item), id: "card-text-3", method: :delete, data: { confirm: "Are you sure?" } %>
-                    <% end %>
-                  </div>
+
+    <div class="profile-container">
+      <h3>My Items</h3>
+      <div class="container">
+      <div class="row">
+      <% @user.items.each do |item| %>
+        <div class="col-xs-12 col-sm-4">
+          <div>
+            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+                  url(<%= cl_image_path item.photo, height: 300, width: 400, crop: :fill if item.photo.present? %>);">
+            </div>
+              <div class="card-text">
+                <%= link_to "View", item_path(item), id: "card-text-1"%>
+                <% if @user == current_user %>
+                <%= link_to "Edit", edit_item_path(item), id: "card-text-2"%>
+                <%= link_to "Delete", item_path(item), id: "card-text-3", method: :delete, data: { confirm: "Are you sure?" } %>
+                <% end %>
               </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+
+    </div>
+      <%= link_to "Add items" , new_item_path(current_user) %>
+    </div>
+      <div class="profile-container">
+        <h3> My Offers </h3>
+        <div class="container">
+          <div clas="row">
+          <% @user.requested_deals.each do |requested_deal| %>
+            <div class="col-xs-12 col-sm-4">
+
+              <% if requested_deal.answerer.photo.present? %>
+                <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path requested_deal.answerer.photo, height: 300, width: 400, crop: :fill %>);">
+                  <div class="bottom-right">
+                  <%= link_to "view deal", deal_path(requested_deal), id: "card-text-2"%>
+                  </div>
+                </div>
+                  <% else %>
+                <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),<%= image_tag "smiley.jpg", width: 200, height: 200, radius: :max, crop: :fill %>;">
+                  <div class="bottom-right">
+                  <%= link_to "deal", deal_path(requested_deal), id: "card-text-2"%>
+                </div>
+              <% end %>
             </div>
             <% end %>
           </div>
-
         </div>
-          <%= link_to "Add items" , new_item_path(current_user) %>
-        </div>
-          <div class="profile-container">
-            <h3> My Offers </h3>
-            <div class="container">
-              <div clas="row">
-              <% @user.requested_deals.each do |requested_deal| %>
-                <div class="col-xs-12 col-sm-4">
+      </div>
+    </div>
 
-                  <% if requested_deal.answerer.photo.present? %>
-                    <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path requested_deal.answerer.photo, height: 300, width: 400, crop: :fill %>);">
-                      <div class="bottom-right">
-                      <%= link_to "view deal", deal_path(requested_deal), id: "card-text-2"%>
-                      </div>
-                    </div>
-                      <% else %>
-                    <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),<%= image_tag "smiley.jpg", width: 200, height: 200, radius: :max, crop: :fill %>;">
-                      <div class="bottom-right">
-                      <%= link_to "deal", deal_path(requested_deal), id: "card-text-2"%>
-                    </div>
-                  <% end %>
+  <% else %> <!-- if not the current user's page -->
+
+    <div class="profile-container-deals">
+        <div class="profile-container-deals-user1">
+          <h4> Your items </h4>
+          <div class="row">
+          <% current_user.items.each do |item| %>
+            <div class="col-xs-12 col-sm-4">
+                <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+                      url(<%= cl_image_path item.photo, height: 300, width: 400, crop: :fill if item.photo.present? %>);">
                 </div>
-                <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <div class="profile-container-deals-user2">
+        <h4> <%= @user.name %>'s items </h4>
+        <div class="row">
+        <% @user.items.each do |item| %>
+          <div class="col-xs-12 col-sm-4">
+            <div>
+              <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+                    url(<%= cl_image_path item.photo, height: 300, width: 400, crop: :fill if item.photo.present? %>);">
               </div>
             </div>
           </div>
+        <% end %>
         </div>
-
-            <% else %> <!-- if not the current user's page -->
-
-            <div class="profile-container-deals">
-                <div class="profile-container-deals-user1">
-                  <h4> Your items </h4>
-                  <div class="row">
-                  <% current_user.items.each do |item| %>
-                    <div class="col-xs-12 col-sm-4">
-                        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-                              url(<%= cl_image_path item.photo, height: 300, width: 400, crop: :fill if item.photo.present? %>);">
-                        </div>
-                      </div>
-                    </div>
-                  <% end %>
-                </div>
-              <div class="profile-container-deals-user2">
-                <h4> <%= @user.name %>'s items </h4>
-                <div class="row">
-                <% @user.items.each do |item| %>
-                  <div class="col-xs-12 col-sm-4">
-                    <div>
-                      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-                            url(<%= cl_image_path item.photo, height: 300, width: 400, crop: :fill if item.photo.present? %>);">
-                      </div>
-                    </div>
-                  </div>
-                <% end %>
-                </div>
-              </div>
-          </div>
-    <% end %>
+      </div>
+    </div>
+  <% end %>
 </center>
 
 

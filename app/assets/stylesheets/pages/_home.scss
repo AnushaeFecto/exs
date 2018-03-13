@@ -4,3 +4,16 @@
   color:$red;
   text-align: center;
 }
+
+.ownerphoto-card{
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+.owner-avatar{
+  height:50px;
+  width: 50px;
+  border-radius: 50%;
+  border: 2px white solid;
+}

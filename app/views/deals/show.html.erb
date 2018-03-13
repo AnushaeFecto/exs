@@ -12,13 +12,12 @@
     <h1 style="text-align: center">Deal</h1>
 
     <!-- Items in the deal and payment button -->
-    <div class="card-profile">
-
+    <div class="deal-card-an">
       <div class="container">
         <div class="col-xs-12 col-sm-6">
-          <div class="left-in-deal">
+        <div class="left-in-deal">
             <p>One group of item cards</p>
-          </div>
+        </div>
         </div>
         <div class="col-xs-12 col-sm-6">
           <div class="right-in-deal">
@@ -26,6 +25,8 @@
           </div>
         </div>
       </div>
+    </div>
+
 
       <p style="text-align: center"><%= @deal.payer %> is also paying £<%= @deal.price %> as part of the deal</p>
       <% if (current_user.email == @deal.payer) && (@deal.status == "Finalised") %>
@@ -93,9 +94,10 @@
     <!-- end of address boxes code -->
 
     <% if @deal.status == "In negotiation" %>
-      <%= link_to "Cancel this proposal", { controller: :deals, action: :destroy }, method: :delete, data: { confirm: 'Are you sure?' }%>
+    <div class="exs-btn btn-cancel">
+      <%= link_to "Cancel", { controller: :deals, action: :destroy }, method: :delete, data: { confirm: 'Are you sure?' }%>
     <% end %>
-
+    </div>
   </center>
 </div>
 

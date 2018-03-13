@@ -36,7 +36,7 @@
 
     <!-- address boxes only visible if deal Finalised/Paid -->
     <div class="container">
-      <% if (@deal.requester == current_user) && (@deal.status != "In negotiation") %>   <!-- requester's view -->
+      <% if (@deal.requester == current_user) && (@deal.status == "Finalised") %>   <!-- requester's view -->
 
         <div class="col-xs-12 col-sm-6">
           <div class="section">
@@ -62,7 +62,7 @@
           </div>
         </div>
 
-      <% elsif (@deal.answerer == current_user) && (@deal.status != "In negotiation") %>    <!-- answerer's view -->
+      <% elsif (@deal.answerer == current_user) && (@deal.status == "Finalised") %>    <!-- answerer's view -->
 
         <div class="col-xs-12 col-sm-6">
           <div class="section">

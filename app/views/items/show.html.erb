@@ -24,6 +24,7 @@
       <div class="panel">
         <p><strong>Category:</strong> <%= @item.category %></p>
         <p><strong>Size:</strong> <%= @item.size %></p>
+        <p><strong>Color:</strong> <%= @item.size %></p>
         <p><strong>Description:</strong> <%= @item.description %></p>
       </div>
       <div class="showitem-buttons">
@@ -37,6 +38,40 @@
           <%= link_to 'Delete', { controller: :items, action: :destroy }, method: :delete, data: { confirm: 'Are you sure?' }, class: "showitem-style exs-btn btn-destroy itemshow-btn" %>
           <% end %>
       </div>
+
+      <h5 id="similar-item"> Other Items You'll Love:</h5>
+
+      <div class="row">
+        <% @suggestions.each do |suggestion| %>
+        <div class="col-xs-12 col-md-4">
+          <%= link_to item_path(suggestion) do %>
+          <div class="suggestion-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),url('<%= cl_image_path suggestion.photo, class: "suggestion-image" %>');">
+            <div class="suggestion-text">
+              <p> Show Item </p>
+            </div>
+          </div>
+        </div>
+          <% end %>
+        <% end %>
+      </div>
+
+
+
+
+
+
+
+
+      </div>
+
+
+
+
+
+
+
+
+
     </div>
   </div>
  <!--  </div> -->

@@ -142,3 +142,23 @@ border-radius: 10px;
 .fa-user:hover{
   opacity: 0.7;
 }
+
+.suggestion-card{
+  width:150px;
+  height: 100px;
+  background-size: cover;
+  position:relative;
+  border-radius: 10px;
+}
+
+.suggestion-text{
+  position: absolute;
+  bottom:-5px;
+  margin-left: 15px;
+  color: $white;
+}
+
+#similar-item{
+  text-align: left;
+  color: $magenta;
+}

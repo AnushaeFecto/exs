@@ -33,6 +33,7 @@ class ItemsController < ApplicationController
   def show
     @deal = Deal.new
     @item = Item.find(params[:id])
+    @suggestions = Item.limit(3).where(category: "#{@item.category}").where(size: "#{@item.size}").where.not(id: "#{@item.id}")
   end
 
   def new

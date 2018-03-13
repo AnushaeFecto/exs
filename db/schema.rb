@@ -35,7 +35,6 @@ ActiveRecord::Schema.define(version: 20180313135010) do
     t.integer "answerer_id"
     t.string "payer"
     t.integer "last_changed_by"
-    t.string "postal_address"
     t.string "requester_address"
     t.string "answerer_address"
   end

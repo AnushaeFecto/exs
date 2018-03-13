@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
   # include PgSearch
-
+  acts_as_votable
   # multisearchable against: [ :category, :description, :size, :color]
   include PgSearch
     pg_search_scope :search,

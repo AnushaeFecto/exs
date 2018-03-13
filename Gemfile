@@ -24,6 +24,7 @@ gem 'webpacker'
 gem 'money-rails'
 gem 'stripe'
 gem 'pundit'
+gem 'acts_as_votable'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :find_item, only: [:show, :edit, :update, :destroy]
+  respond_to :js, :json, :html
 
  def index
   @items = policy_scope(Item).order(created_at: :desc)
@@ -66,6 +67,18 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @item.destroy
     redirect_to user_path(current_user)
+  end
+
+  def upvote
+    @item = Item.find(params[:id])
+    @item.upvote_by current_user
+    redirect_to item_path(@item)
+  end
+
+  def downvote
+    @item = Item.find(params[:id])
+    @item.downvote_by current_user
+    redirect_to item_path(@item)
   end
 
   private

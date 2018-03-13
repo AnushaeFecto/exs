@@ -7,7 +7,13 @@
       </div>
       <div class="show-icons">
         <div class="like-counter">
-         <i class="fa fa-heart"></i><span class="click-text"><a id="clicks"></span>
+          <%= link_to like_item_path(@item), class: "like-btn", method: :put do %>
+         <span><%= @item.get_upvotes.size %><i class="fa fa-heart"></i></span>
+         <% end %>
+         <%= link_to dislike_item_path(@item), method: :put do %>
+         <span><%= @item.get_downvotes.size %><i class="fa fa-heart"></i></span>
+         <% end %>
+         <span class="likes-count"><%= @item.get_upvotes.size %></span>
           <i class="fa fa-share"></i>
           <i class="fa fa-envelope"></i>
         </div>
@@ -46,9 +52,6 @@
         <div class="col-xs-12 col-md-4">
           <%= link_to item_path(suggestion) do %>
           <div class="suggestion-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),url('<%= cl_image_path suggestion.photo, class: "suggestion-image" %>');">
-            <div class="suggestion-text">
-              <p> Show Item </p>
-            </div>
           </div>
         </div>
           <% end %>

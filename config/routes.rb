@@ -5,7 +5,12 @@ Rails.application.routes.draw do
 
   resources :users
 
-  resources :items
+  resources :items do
+    member do
+      put "like", to: "items#upvote"
+      put "dislike", to: "items#downvote"
+    end
+  end
 
   resources :deals do
     post "accept_deal", to: "deals#accept_deal"

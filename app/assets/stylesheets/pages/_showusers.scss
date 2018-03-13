@@ -15,20 +15,19 @@
 .profile-container {
   background-color: white;
   box-shadow: 0.3px 0.3px 0.3px;
+  width: 1200px;
   margin-top: 20px;
   border-radius: 10px;
   padding-bottom: 20px;
   padding-top: 10px;
-  margin-right: 50px;
-  margin-left: 50px;
+
 }
 
 .profile-container-deals {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 1000px;
-  height: 500px;
+  width: 1200px;
   background-color: white;
   box-shadow: 0.3px 0.3px 0.3px;
   margin-top: 20px;

@@ -1,21 +1,46 @@
-<div class=“user-header”>
- </div>
 
- <div class="container">
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,50,50,0.1) 0%, rgba(0,36,61,0.3) 30%), url('https://images.unsplash.com/photo-1502727135886-df285cc8379f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6182683b9eb37511afe1ad1c3576e75a&auto=format&fit=crop&w=1050&q=80');">
+</div>
+<div class="container">
   <div class="deal-row">
-    <div class="deal-avatar-box">
-      <% if current_user.photo.present? %>
-        <%= cl_image_tag current_user.photo, class: "deal-avatar"%>
-        <% else %>
-            <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "deal-avatar"%>
+    <div class="profile-left">
+      <div class="deal-avatar-box">
+        <% if current_user.photo.present? %>
+          <%= cl_image_tag current_user.photo, class: "deal-avatar"%>
+          <% else %>
+              <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "deal-avatar"%>
+          <% end %>
+      </div>
+      <div class="deal-item-container">
+        <% current_user.items.each do |item| %>
+          <div class="deal-item-box box-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+                  url(<%= cl_image_path item.photo, crop: :fill if item.photo.present? %>);">
+        </div>
         <% end %>
+
+
+      </div>
     </div>
-    <div class="deal-box">
-       <h4>Number of deals made <%= current_user.requested_deals.count %></h4>
-       <h4>Number of deals recieved <%= current_user.answered_deals.count %></h4>
+    <div class="profile-right">
+      <div class="deal-box">
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#pending">Pending</a></li>
+            <li><a data-toggle="tab" href="#completed">Completed</a></li>
+        </ul>
+         <div class="tab-content">
+          <div id="pending" class="tab-pane fade in active">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          </div>
+          <div id="completed" class="tab-pane fade">
+            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          </div>
+        </div>
+      </div>
 
 
 
+      </div>
     </div>
   </div>
  </div>
+

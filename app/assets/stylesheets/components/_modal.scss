@@ -17,9 +17,7 @@
   margin-left: 100px;
 }
 .close-button:hover{
-  float: right;
-  background-color: transparent;
-  border: none;
+  opacity: 0.8;
 }
 
 .modal-styling{
@@ -44,10 +42,6 @@
 a:-webkit-any-link{
   text-decoration: none;
   color: #616668;
-}
-
-#logInModal, #signUpModal{
-
 }
 
 .active-tab {

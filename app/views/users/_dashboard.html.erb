@@ -54,7 +54,7 @@
                     </div>
                     <div class="deal-payer">
                       <h4>The payer</h4>
-                      <h4><%= deal.payer %></h4>
+                      <h4><%= User.find(deal.payer.to_i).name %></h4>
                     </div>
                     <div class="deal-items-number">
                       <h4>Num. of items</h4>

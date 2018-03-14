@@ -2,7 +2,7 @@ class DealsController < ApplicationController
   before_action :find_deal, only: [:show, :edit, :update, :destroy]
 
   def show
-
+    @payer = User.find(@deal.payer.to_i)
   end
 
   def new

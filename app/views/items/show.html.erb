@@ -20,12 +20,7 @@
 
     <div class="showitem-right col-xs-12 col-md-6">
       <h3 class="showitem-title"><%= @item.name %></h3>
-      <% if @item.user != current_user %>
-        <%= link_to user_path(@item.user) do%>
-      <!--  <i class="fa fa-user"> View Owner's Profile</i> -->
-          <btn class="exs-btn btn-make-deal"> Make Deal </btn>
-        <% end %>
-      <% end %>
+
       <!-- <button class="accordion">Show More Details</button>
       <div class="panel"> -->
       <p><strong>Category:</strong> <%= @item.category %></p>
@@ -37,6 +32,10 @@
         <% if @item.user == current_user %>
           <%= link_to "Edit Item", edit_item_path(@item), class: "showitem-style exs-btn btn-edit itemshow-btn" %>
           <%= link_to 'Delete', { controller: :items, action: :destroy }, method: :delete, data: { confirm: 'Are you sure?' }, class: "showitem-style exs-btn btn-destroy itemshow-btn" %>
+
+        <% else %>
+          <%= link_to "Make a deal", user_path(@item.user), class: "exs-btn btn-make-deal" %>
+
         <% end %>
       </div>
 

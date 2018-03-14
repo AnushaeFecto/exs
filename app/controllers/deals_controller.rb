@@ -27,6 +27,8 @@ class DealsController < ApplicationController
   end
 
   def update
+    @deal.answerer_address = params[:deal][:answerer_address] unless params[:deal][:answerer_address].nil?
+    @deal.requester_address = params[:deal][:requester_address] unless params[:deal][:requester_address].nil?
     @deal.update(deal_params)
     redirect_to deal_path(@deal)
   end
@@ -39,12 +41,8 @@ class DealsController < ApplicationController
   def accept_deal
     @deal = Deal.find(params[:deal_id])
     authorize @deal
-    if @deal.status == "In negotiation"
-      @deal.status = "Offer made"
-    else
-      @deal.status = "Finalised"
-    end
-    @deal.last_changed_by = current_user.id
+    @deal.status = "Finalised"
+    #@deal.last_changed_by = current_user.id
     @deal.save
     redirect_to deal_path(@deal)
   end
@@ -60,19 +58,19 @@ class DealsController < ApplicationController
   private
 
   def create_deal_items(ids_of_answerer, ids_of_requester, deal)
-    clean_ids = ids_of_answerer.reject { |c| c.empty? }
-    clean_my_ids = ids_of_requester.reject { |c| c.empty? }
+    clean_ids = ids_of_answerer&.reject { |c| c.empty? }
+    clean_my_ids = ids_of_requester&.reject { |c| c.empty? }
 
-    clean_ids.each do |id|
+    clean_ids&.each do |id|
       DealItem.create(item_id: id, deal: deal)
     end
-    clean_my_ids.each do |id|
+    clean_my_ids&.each do |id|
       DealItem.create(item_id: id, deal: deal)
     end
   end
 
   def deal_params
-    params.require(:deal).permit(:answerer_id, :price, :payer)
+    params.require(:deal).permit(:answerer_id, :price, :payer, :answerer_address, :requester_address)
   end
 
   def find_deal

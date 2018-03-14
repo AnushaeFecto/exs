@@ -1,7 +1,7 @@
 <div class="navbar-wagon">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
-    <%= image_tag "exs.png", height: 200%>
+    <%= image_tag "newdlogo.jpg", height: 250 %>
   <% end %>
 
   <!-- Right Navigation -->
@@ -11,7 +11,6 @@
 
       <!-- Links when logged in -->
       <%= link_to "Profile", user_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
-
 
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
@@ -44,6 +43,7 @@
         </div>
       </div>
     <% else %>
+
       <!-- Login link (when logged out) -->
       <div class="options">
         <a href="#" class="navbar-wagon-item navbar-wagon-link" data-toggle="modal" data-target="#signUpModal">Sign Up</a>

@@ -1,6 +1,112 @@
 <div>
+  <center>
 
-  <h1 style="text-align: center">Deal</h1>
+    <!-- Deal summary -->
+    <% if @deal.status == "In negotiation" && @deal.requester != current_user %>
+      <%= button_to "Accept", deal_accept_deal_path(@deal), class: "exs-btn btn-submit" %>
+    <% elsif @deal.status == "In negotiation" %>
+      <p>Pending confirmation</p>
+    <% else %>
+      <p>You've both agreed to this deal! Don't forget to provide your postal details below</p>
+    <% end %>
+    <h1 style="text-align: center">Deal</h1>
+
+    <!-- Items in the deal and payment button -->
+    <div class="card-profile">
+
+      <div class="container">
+        <div class="col-xs-12 col-sm-6">
+          <div class="left-in-deal">
+            <p>One group of item cards</p>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+          <div class="right-in-deal">
+            <p>Another group of item cards</p>
+          </div>
+        </div>
+      </div>
+
+      <p style="text-align: center"><%= @deal.payer %> is also paying £<%= @deal.price %> as part of the deal</p>
+      <% if (current_user.email == @deal.payer) && (@deal.status == "Finalised") %>
+        <%= button_to "Pay", deal_payments_path(@deal), class: "exs-btn btn-submit" %>
+      <% end %>
+
+    </div>
+
+    <!-- address boxes only visible if deal Finalised/Paid -->
+    <div class="container">
+      <% if (@deal.requester == current_user) && (@deal.status == "Finalised") %>   <!-- requester's view -->
+
+        <div class="col-xs-12 col-sm-6">
+          <div class="section">
+            <p>The address I want things sent to:</p>
+            <p><%= @deal.requester_address %></p>
+            <p>Change my postal address</p>
+            <%= simple_form_for(@deal, :url => deal_path(@deal)) do |f| %>
+              <%= f.error_notification %>
+              <div class="form-inputs">
+                <%= f.input :requester_address %>
+              </div>
+              <div class="form-actions">
+                <%= f.button :submit, class: "exs-btn btn-submit" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-6">
+          <div class="section">
+            <p><%= @deal.answerer.email %>'s address:</p>
+            <p><%= @deal.answerer_address %></p>
+          </div>
+        </div>
+
+      <% elsif (@deal.answerer == current_user) && (@deal.status == "Finalised") %>    <!-- answerer's view -->
+
+        <div class="col-xs-12 col-sm-6">
+          <div class="section">
+            <p><%= @deal.requester.email %>'s address:</p>
+            <p><%= @deal.requester_address %></p>
+          </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-6">
+          <div class="section">
+            <p>The address I want things sent to:</p>
+            <p><%= @deal.answerer_address %></p>
+            <p>Change my postal address</p>
+            <%= simple_form_for(@deal, :url => deal_path(@deal)) do |f| %>
+              <%= f.error_notification %>
+              <div class="form-inputs">
+                <%= f.input :answerer_address %>
+              </div>
+              <div class="form-actions">
+                <%= f.button :submit, class: "exs-btn btn-submit" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
+      <% end %>
+    </div>
+    <!-- end of address boxes code -->
+
+    <% if @deal.status == "In negotiation" %>
+      <%= link_to "Cancel this proposal", { controller: :deals, action: :destroy }, method: :delete, data: { confirm: 'Are you sure?' }%>
+    <% end %>
+
+  </center>
+</div>
+
+
+
+
+
+
+<p>EVERYTHING BELOW WILL BE DELETED LATER</p>
+
+
   <div class="deals-details">
     <div class="writen-details section" style="text-align: center">
       <ul class="list-unstyled">

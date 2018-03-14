@@ -2,7 +2,6 @@
 <% if @user != current_user %>
   <%= render "make_a_deal", deal: @deal, user: @user %>
 
-
 <!-- display when the user == current_user -->
 <% else %>
   <%= render "dashboard" %>

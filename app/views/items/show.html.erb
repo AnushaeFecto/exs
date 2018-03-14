@@ -32,10 +32,10 @@
         <p><strong>Description:</strong> <%= @item.description %></p>
       </div>
       <div class="showitem-buttons">
-          <% if @item.user == current_user %>
-            <%= link_to "Edit Item", edit_item_path(@item), class: "showitem-style exs-btn btn-edit itemshow-btn" %>
-            <%= link_to 'Delete', { controller: :items, action: :destroy }, method: :delete, data: { confirm: 'Are you sure?' }, class: "showitem-style exs-btn btn-destroy itemshow-btn" %>
-          <% end %>
+        <% if @item.user == current_user %>
+          <%= link_to "Edit Item", edit_item_path(@item), class: "showitem-style exs-btn btn-edit itemshow-btn" %>
+          <%= link_to 'Delete', { controller: :items, action: :destroy }, method: :delete, data: { confirm: 'Are you sure?' }, class: "showitem-style exs-btn btn-destroy itemshow-btn" %>
+        <% end %>
       </div>
 
       <h5 id="similar-item"> Other Items You'll Love:</h5>

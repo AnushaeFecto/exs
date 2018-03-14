@@ -1,7 +1,7 @@
 <div class="container">
   <!-- <div class="background" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1470309864661-68328b2cd0a5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=d7f4285ea420ec7ff9755dcf7500a8b1&auto=format&fit=crop&w=1650&q=80')"> -->
 
-  <div id="item-content " >
+  <div id="item-content">
     <div class="showitem-left col-xs-12 col-md-6">
       <div class="showitem-photo" style="background-image: url('<%= cl_image_path @item.photo %>')">
       </div>
@@ -18,7 +18,7 @@
       <% if @item.user != current_user %>
        <%= link_to user_path(@item.user) do%>
       <!--  <i class="fa fa-user"> View Owner's Profile</i> -->
-      <btn class="exs-btn btn-submit"> Make Deal </btn>
+      <btn class="exs-btn btn-make-deal"> Make Deal </btn>
        <% end %>
        <% end %>
       <!-- <button class="accordion">Show More Details</button>
@@ -39,20 +39,22 @@
 
       <div class="row">
         <% @suggestions.each do |suggestion| %>
-        <div class="col-xs-12 col-md-4">
-          <%= link_to item_path(suggestion) do %>
-          <div class="suggestion-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),url('<%= cl_image_path suggestion.photo, class: "suggestion-image" %>');">
-            <div class="suggestion-text">
-              <p> Show Item </p>
+          <div class="col-xs-12 col-md-4">
+            <%= link_to item_path(suggestion) do %>
+            <div class="suggestion-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),url('<%= cl_image_path suggestion.photo, class: "suggestion-image" %>');">
+              <div class="suggestion-text">
+                <p> Show Item </p>
+              </div>
             </div>
           </div>
-        </div>
           <% end %>
         <% end %>
       </div>
       </div>
     </div>
   </div>
+
+
 
 
 

@@ -1,55 +1,51 @@
+
+<div class="makedeal-photo">
+  <%= cl_image_tag current_user.photo, class: "dashboard-avatar" %>
+  <%= cl_image_tag user.photo, class: "dashboard-avatar" %>
+</div>
+
 <%= simple_form_for(deal) do |f| %>
-    <%= f.input :answerer_id, as: :hidden, input_html: { value: user.id }%>
+  <%= f.input :answerer_id, as: :hidden, input_html: { value: user.id }%>
 
-    <%= f.simple_fields_for :deal_items do |p| %>
-      <div class="content-row flex">
-
-        <div class="content-column">
-          <h1 class="text-center">YOU</h1>
-          <% if current_user.items.blank? == true %>
-            <%= link_to new_item_path do %>
-              <div class="deal-item-box box-card-profile new-item-btn new-size" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2));">
-                <span>+</span>
-              </div>
-          <% end %>
-          <% else %>
-            <% current_user.items.each do |item| %>
-
-              <input type="hidden" name="deal[deal_items][my_item_id][]" value="">
-
-              <label class="box-content" for="deal_deal_items_my_item_id_<%= item.id %>">
-                <div class="box-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-                      url(<%= cl_image_path item.photo, crop: :fill if item.photo.present? %>);">
-                  <i class= "fa fa-check"></i>
-                </div>
-              </label>
-              <input class="hidden" type="checkbox" value="<%= item.id %>" name="deal[deal_items][my_item_id][]" id="deal_deal_items_my_item_id_<%= item.id %>">
-              <% end %>
-          <% end %>
-        </div>
-        <div class="content-column" >
-          <h1 class="text-center">THEM</h1>
-          <% user.items.each do |item| %>
-
-            <input type="hidden" name="deal[deal_items][item_id][]" value="">
-
-            <label class="box-content" for="deal_deal_items_item_id_<%= item.id %>">
-              <div class="box-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+  <%= f.simple_fields_for :deal_items do |p| %>
+    <div class="content-row flex">
+      <div class="content-column">
+        <h1 class="dash-text text-center">YOU</h1>
+        <% current_user.items.each do |item| %>
+          <input type="hidden" name="deal[deal_items][my_item_id][]" value="">
+          <label class="box-content" for="deal_deal_items_my_item_id_<%= item.id %>">
+          <div class="box-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
                     url(<%= cl_image_path item.photo, crop: :fill if item.photo.present? %>);">
-                <i class= "fa fa-check"></i>
-              </div>
-            </label>
-            <input class="hidden" type="checkbox" value="<%= item.id %>" name="deal[deal_items][item_id][]" id="deal_deal_items_item_id_<%= item.id %>">
+            <i class= "fa fa-check"></i>
+          </div>
+          </label>
+            <input class="hidden" type="checkbox" value="<%= item.id %>" name="deal[deal_items][my_item_id][]" id="deal_deal_items_my_item_id_<%= item.id %>">
+
           <% end %>
-        </div>
       </div>
-    <% end %>
+      <div class="content-column" >
+
+        <h1 class="dash-text text-center"><%= user.name %></h1>
+        <% user.items.each do |item| %>
+          <input type="hidden" name="deal[deal_items][item_id][]" value="">
+          <label class="box-content" for="deal_deal_items_item_id_<%= item.id %>">
+            <div class="box-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+                    url(<%= cl_image_path item.photo, crop: :fill if item.photo.present? %>);">
+              <i class= "fa fa-check"></i>
+            </div>
+          </label>
+          <input class="hidden" type="checkbox" value="<%= item.id %>" name="deal[deal_items][item_id][]" id="deal_deal_items_item_id_<%= item.id %>">
+        <% end %>
+      </div>
+    </div>
+  <% end %>
 
     <div class="content-row">
       <h1 class="text-center">WHAT ABOUT MONEY?</h1>
     </div>
 
     <%= f.simple_fields_for :payer do |p| %>
+
     <div class="content-row flex">
       <div class="content-column text-center">
         <input class="" type="radio" value="<%= current_user.id %>" name="deal[payer]" id="deal_payer_give">
@@ -61,14 +57,12 @@
       <div class="content-column text-center">
         <input class="" type="radio" value="<%= @user.id %>" name="deal[payer]" id="deal_payer_recieve">
         <label for="deal_payer_recieve">
-          RECIEVE
+          RECEIVE
         </label>
-      </div>
 
-    </div>
+      </div>
     <% end %>
     <div class="content-row text-center">
-
       <div class="form-group string optional deal_price">
         <input class="form-control string optional" type="text" value="0" name="deal[price]" id="deal_price" placeholder="£">
       </div>
@@ -76,4 +70,4 @@
     <div class="content-row text-center">
       <%= f.submit "SEAL THE DEAL", class: "btn btn-deal" %>
     </div>
-  <% end %>
+<% end %>

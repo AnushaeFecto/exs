@@ -76,7 +76,7 @@
                         <% if deal.price.fractional == 0 %>
                           <p>No one!</p>
                         <% else %>
-                          <p><%= deal.payer %>!</p>
+                          <p><%= User.find(deal.payer.to_i).name %>!</p>
                         <% end %>
                       </div>
                       <div class="deal-items-num">
@@ -99,7 +99,7 @@
                         <% if deal.price.fractional == 0 %>
                           <p>No one!</p>
                         <% else %>
-                          <p><%= deal.payer %>!</p>
+                          <p><%= User.find(deal.payer.to_i).name %>!</p>
                         <% end %>
                       </div>
                       <div class="deal-items-num">

@@ -96,36 +96,36 @@
 
  <!-- Modal -->
 <!-- Sign up Modal -->
-  <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-content">
-      <ul class="nav nav-tabs" id="myTab" role="tablist">
-        <li class="active"><a href="#signup" data-toggle="tab">Sign Up</a></li>
-        <li class=""><a href="#login" data-toggle="tab">Log In</a></li>
-      </ul>
-
-      <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade active in" id="signup" role="tabpanel" aria-labelledby="home-tab">
-          <%= render "devise/registrations/new" %>
+<div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <button type="button" class="close-button" data-dismiss="modal">[x]</button>
+  <div class="br">
+    <div class="modal-cont">
+      <div class="modal-content">
+        <ul class="nav nav-tabs modal-styling" id="myTab" role="tablist">
+          <li class="active-tab active"><a href="#signup" data-toggle="tab">Sign Up</a></li>
+          <li class="non-active-tab"><a href="#login" data-toggle="tab">Log In</a></li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+          <div class="tab-pane fade active in" id="signup" role="tabpanel" aria-labelledby="home-tab">
+            <%= render "devise/registrations/new" %>
+          </div>
+          <div class="tab-pane fade in" id="login" role="tabpanel" aria-labelledby="profile-tab">
+            <%= render "devise/sessions/new" %>
+          </div>
         </div>
-        <div class="tab-pane fade in" id="login" role="tabpanel" aria-labelledby="profile-tab">
-          <%= render "devise/sessions/new" %>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <center>
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </center>
       </div>
     </div>
   </div>
+</div>
 <!-- Login Modal -->
 <div class="modal fade" id="logInModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-content">
-    <ul class="nav nav-tabs" id="yourTab" role="tablist">
-        <li class=""><a href="#signit" data-toggle="tab">Sign Up</a></li>
-        <li class="active"><a href="#logit" data-toggle="tab">Log In</a></li>
+  <button type="button" class="close-button" data-dismiss="modal">[x]</button>
+  <div class="modal-cont">
+    <div class="modal-content">
+      <ul class="nav nav-tabs modal-styling " id="yourTab" role="tablist">
+        <li class="non-active-tab"><a href="#signit" data-toggle="tab">Sign Up</a></li>
+        <li class="active-tab active"><a href="#logit" data-toggle="tab">Log In</a></li>
       </ul>
-
       <div class="tab-content" id="yourTabContent">
         <div class="tab-pane fade in" id="signit" role="tabpanel" aria-labelledby="home-tab">
           <%= render "devise/registrations/new" %>
@@ -133,10 +133,6 @@
         <div class="tab-pane fade active in" id="logit" role="tabpanel" aria-labelledby="profile-tab">
           <%= render "devise/sessions/new" %>
         </div>
-        <div class="modal-footer">
-        <center>
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </center>
       </div>
     </div>
   </div>

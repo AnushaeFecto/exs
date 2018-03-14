@@ -5,7 +5,7 @@
     <div class="showitem-left col-xs-12 col-md-6">
       <div class="showitem-photo" style="background-image: url('<%= cl_image_path @item.photo %>')">
       </div>
-      <div class="show-icons">
+      <!-- <div class="show-icons"> -->
        <!--  <div class="like-counter">
          <i class="fa fa-heart"></i><span class="click-text"><a id="clicks"></span>
           <i class="fa fa-share"></i>
@@ -35,7 +35,7 @@
           <% end %>
       </div>
 
-      <h5 id="similar-item"> Other Items You'll Love:</h5>
+      <!-- <h5 id="similar-item"> Other Items You'll Love:</h5> -->
 
       <div class="row">
         <% @suggestions.each do |suggestion| %>
@@ -50,27 +50,10 @@
           <% end %>
         <% end %>
       </div>
-
-
-
-
-
-
-
-
       </div>
-
-
-
-
-
-
-
-
-
     </div>
   </div>
- <!--  </div> -->
-</div>
+
+
 
 <%= javascript_pack_tag 'show' %>

@@ -1,44 +1,75 @@
 
 <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,50,50,0.1) 0%, rgba(0,36,61,0.3) 30%), url('https://images.unsplash.com/photo-1502727135886-df285cc8379f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6182683b9eb37511afe1ad1c3576e75a&auto=format&fit=crop&w=1050&q=80');">
 </div>
-<div class="container">
-  <div class="deal-row">
-    <div class="profile-left">
-      <div class="deal-avatar-box">
-        <% if current_user.photo.present? %>
-          <%= cl_image_tag current_user.photo, class: "deal-avatar"%>
+<div class="container first-div">
+  <div class="row">
+    <div class="col-xs-4">
+      <div class="profile-left">
+        <div class="deal-avatar-box">
+          <% if current_user.photo.present? %>
+            <% url = cl_image_path current_user.photo%>
           <% else %>
-              <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "deal-avatar"%>
+            <% url = "http://kitt.lewagon.com/placeholder/users/ssaunier" %>
           <% end %>
-      </div>
-      <div class="deal-item-container">
-        <% current_user.items.each do |item| %>
-          <div class="deal-item-box box-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-                  url(<%= cl_image_path item.photo, crop: :fill if item.photo.present? %>);">
+          <div class="deal-avatar" style="background-image: url(<%= url %>)"></div>
         </div>
-        <% end %>
+        <div class="deal-user-information">
+          <h4><%= current_user.name %></h4>
+          <p><%= current_user.description %></p>
 
+          <%= link_to "Edit profile", "#" %>
 
+        </div>
       </div>
     </div>
-    <div class="profile-right">
-      <div class="deal-box">
-        <ul class="nav nav-tabs">
-            <li class="active"><a data-toggle="tab" href="#pending">Pending</a></li>
-            <li><a data-toggle="tab" href="#completed">Completed</a></li>
-        </ul>
-         <div class="tab-content">
-          <div id="pending" class="tab-pane fade in active">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          </div>
-          <div id="completed" class="tab-pane fade">
-            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    <div class="col-xs-8">
+      <div class="profile-right">
+        <div class="deal-box">
+          <ul class="nav nav-tabs">
+              <li class="active"><a data-toggle="tab" href="#my_items">My Items</a></li>
+              <li><a data-toggle="tab" href="#my_deals">My Deals</a></li>
+          </ul>
+           <div class="tab-content">
+            <div id="my_items" class="tab-pane fade in active">
+              <div class="deal-item-container">
+                <% current_user.items.each do |item| %>
+                  <div class="deal-item-box box-card-profile" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+                          url(<%= cl_image_path item.photo, crop: :fill if item.photo.present? %>);">
+                </div>
+                <% end %>
+                <%= link_to new_item_path do %>
+                  <div class="deal-item-box box-card-profile new-item-btn" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2));">
+                    <span>+</span>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+            <div id="my_deals" class="tab-pane fade">
+              <div class="deal-summary-container">
+                <% current_user.requested_deals.each do |deal| %>
+                  <div class="deal-details">
+                    <div class="deal-status">
+                      <h4>Status</h4>
+                      <h4><%= deal.status %> <%= deal.id %></h4>
+                    </div>
+                    <div class="deal-payer">
+                      <h4>The payer</h4>
+                      <h4><%= deal.payer %></h4>
+                    </div>
+                    <div class="deal-items-number">
+                      <h4>Num. of items</h4>
+                      <h4><%= deal.deal_items.count %></h4>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
 
 
 
+        </div>
       </div>
     </div>
   </div>

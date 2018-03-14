@@ -70,7 +70,7 @@
 
   }
   &:hover {
-    opacity: 0.7;
+    opacity: 0.5;
     cursor: pointer;
   }
   &.box-active{
@@ -80,6 +80,7 @@
   }
 
 }
+
 .box-card {
   height: 100px;
   text-shadow: 0 1px 3px rgba(0,0,0,0.6);
@@ -95,6 +96,22 @@
   border-radius: 10px;
   width: 100px;
 }
+
+.box-card-profile {
+  height: 180px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  padding: 10px;
+  background-size: cover !important;
+  background-position: center;
+  color: white;
+  position: relative;
+  opacity: 0.9;
+  margin-top: 20px;
+  margin-right: 20px;
+  margin-left: 20px;
+  border-radius: 10px;
+  width: 180px;
+}
 .content-middle{
   width: 20%;
 }
@@ -103,6 +120,10 @@
 .deal-avatar{
   height: 200px;
   width: 200px;
+  border-radius: 50%;
+  // margin-left: 130px;
+  margin: auto;
+  background-size: cover;
 }
 .profile-banner{
   background-image: url("homepage2.jpg");
@@ -112,6 +133,7 @@
 .banner{
   width: 100%;
   height: 200px;
+  background-size: cover;
 }
 
 .deal-row{
@@ -119,11 +141,21 @@
 }
 
 .profile-left{
+  position: relative;
+  bottom: 150px;
   flex: 0 0 40%;
+  padding: 20px;
+  // border-radius: 30px;
+  // border-style: solid;
+  box-shadow: 0px 10px 15px rgba(0,0,0,0.3);
+  background-color: #EF7F69;
+  margin-bottom: 40px;
 }
 
 .profile-right{
-  flex: 0 0 60%;
+  // flex: 0 0 60%;
+  margin-left: 40px;
+  margin-bottom: 40px;
 }
 
 
@@ -137,18 +169,63 @@
 border: 10px solid white;
 }
 
+.first-div{
+  margin: 50px;
+}
+
+.deal-user-information{
+  text-align: center;
+
+  p {
+    opacity: .7;
+  }
+}
 
 
+.deal-avatar{
+  // margin-top: 40px;
+}
 
+.deal-summary-container{
+  display:flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  display: inline-block;
+  background-color: #F4F4F4;
+}
 
+.deal-details{
+  border-radius: 30px;
+  border-style: solid;
+  display: flex;
+  justify-content: space-between;
+  width: 700px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
 
+.deal-status{
+  text-align: center;
+  margin-left: 10px;
+}
 
+.deal-payer{
+  text-align: center;
+}
 
+.deal-items-number{
+  text-align: center;
+  margin-right: 10px;
+}
 
-
-
-
-
+.new-item-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  span {
+    font-size: 50px;
+  }
+}
 
 
 

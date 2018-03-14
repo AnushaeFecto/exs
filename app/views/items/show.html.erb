@@ -29,10 +29,7 @@
       </div>
       <div class="showitem-buttons">
           <% if @item.user != current_user %>
-            <%= simple_form_for (@deal) do |f| %>
-              <%= f.input :item_id, as: :hidden, input_html: {value: @item.id}   %>
-              <%= f.button :submit, "Make a deal", class: "exs-btn btn-submit itemshow-btn " %>
-            <% end %>
+            <%= link_to "Make a deal", user_path(@item.user), class: "exs-btn btn-submit itemshow-btn " %>
           <% else %>
           <%= link_to "Edit Item", edit_item_path(@item), class: "showitem-style exs-btn btn-edit itemshow-btn" %>
           <%= link_to 'Delete', { controller: :items, action: :destroy }, method: :delete, data: { confirm: 'Are you sure?' }, class: "showitem-style exs-btn btn-destroy itemshow-btn" %>

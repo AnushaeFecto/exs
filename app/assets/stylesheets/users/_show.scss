@@ -204,18 +204,26 @@ border: 10px solid white;
 }
 
 .deal-details{
-  border-radius: 30px;
-  border-style: solid;
-  display: flex;
-  justify-content: space-between;
   width: 700px;
   margin-top: 5px;
   margin-bottom: 5px;
+  background-color: #35495D;
+}
+
+.deal-details-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.deal-number{
+  text-align: center;
+  margin-left: 10px;
+  flex: 0 20%;
 }
 
 .deal-status{
   text-align: center;
-  margin-left: 10px;
+  flex: 0 20%;
 }
 
 .deal-payer{
@@ -225,6 +233,13 @@ border: 10px solid white;
 .deal-items-number{
   text-align: center;
   margin-right: 10px;
+  flex: 0 20%;
+}
+
+.deal-items-num{
+  text-align: center;
+  margin-right: 10px;
+  flex: 0 20%;
 }
 
 .new-item-btn {
@@ -236,7 +251,16 @@ border: 10px solid white;
   }
 }
 
+
 .dash-text{
   color:white;
 }
+
+.deal-details{
+  color: white;
+h4{
+  color:#DDDC5F;
+}
+}
+
 

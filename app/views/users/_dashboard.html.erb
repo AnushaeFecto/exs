@@ -16,7 +16,9 @@
         <div class="deal-user-information">
           <h4><%= current_user.name %></h4>
           <p><%= current_user.description %></p>
-          <%= link_to "Edit profile", "#" %>
+
+          <%= link_to "Edit profile", edit_user_path(@user) %>
+
         </div>
       </div>
     </div>
@@ -31,9 +33,11 @@
             <div id="my_items" class="tab-pane fade in active">
               <div class="deal-item-container">
                 <% current_user.items.each do |item| %>
-                  <div class="deal-item-box box-card-profile" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+                  <%= link_to item_path(item), :class => "rent-link" do %>
+                    <div class="deal-item-box box-card-profile" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
                           url(<%= cl_image_path item.photo, crop: :fill if item.photo.present? %>);">
-                </div>
+                    </div>
+                    <% end %>
                 <% end %>
                 <%= link_to new_item_path do %>
                   <div class="deal-item-box box-card-profile new-item-btn" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2));">
@@ -44,28 +48,73 @@
             </div>
             <div id="my_deals" class="tab-pane fade">
               <div class="deal-summary-container">
-                <% current_user.requested_deals.each do |deal| %>
-                  <div class="deal-details">
+                <div class="deal-details">
+                  <div class="deal-details-content">
+                    <div class="deal-number">
+                      <h4>Deal no</h4>
+                    </div>
                     <div class="deal-status">
                       <h4>Status</h4>
-                      <h4><%= deal.status %> <%= deal.id %></h4>
-                    </div>
-                    <div class="deal-payer">
-                      <h4>The payer</h4>
-                      <h4><%= deal.payer %></h4>
                     </div>
                     <div class="deal-items-number">
-                      <h4>Num. of items</h4>
-                      <h4><%= deal.deal_items.count %></h4>
+                      <h4>Who pays?</h4>
                     </div>
+                    <div class="deal-items-num">
+                      <h4>No of items</h4>
+                    </div>
+                    <div class="deal-btn"></div>
                   </div>
-                <% end %>
+                  <% current_user.requested_deals.each do |deal| %>
+                    <div class="deal-details-content">
+                      <div class="deal-number">
+                        <p><%= deal.id %></p>
+                      </div>
+                      <div class="deal-status">
+                        <p><%= deal.status %></p>
+                      </div>
+                      <div class="deal-items-number">
+                        <% if deal.price.fractional == 0 %>
+                          <p>No one!</p>
+                        <% else %>
+                          <p><%= User.find(deal.payer.to_i).name %>!</p>
+                        <% end %>
+                      </div>
+                      <div class="deal-items-num">
+                        <p><%= deal.deal_items.count %></p>
+                      </div>
+                      <div class="deal-btn">
+                        <%= link_to "View the deal", deal_path(deal) %>
+                      </div>
+                    </div>
+                  <% end %>
+                  <% current_user.answered_deals.each do |deal| %>
+                    <div class="deal-details-content">
+                      <div class="deal-number">
+                        <p><%= deal.id %></p>
+                      </div>
+                      <div class="deal-status">
+                        <p><%= deal.status %></p>
+                      </div>
+                      <div class="deal-items-number">
+                        <% if deal.price.fractional == 0 %>
+                          <p>No one!</p>
+                        <% else %>
+                          <p><%= User.find(deal.payer.to_i).name %>!</p>
+                        <% end %>
+                      </div>
+                      <div class="deal-items-num">
+                        <p><%= deal.deal_items.count %></p>
+                      </div>
+                      <div class="deal-btn">
+                        <%= link_to "View the deal", deal_path(deal) %>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
               </div>
             </div>
           </div>
         </div>
-
-
 
         </div>
       </div>

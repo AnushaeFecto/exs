@@ -58,13 +58,13 @@ class DealsController < ApplicationController
   private
 
   def create_deal_items(ids_of_answerer, ids_of_requester, deal)
-    clean_ids = ids_of_answerer.reject { |c| c.empty? }
-    clean_my_ids = ids_of_requester.reject { |c| c.empty? }
+    clean_ids = ids_of_answerer&.reject { |c| c.empty? }
+    clean_my_ids = ids_of_requester&.reject { |c| c.empty? }
 
-    clean_ids.each do |id|
+    clean_ids&.each do |id|
       DealItem.create(item_id: id, deal: deal)
     end
-    clean_my_ids.each do |id|
+    clean_my_ids&.each do |id|
       DealItem.create(item_id: id, deal: deal)
     end
   end

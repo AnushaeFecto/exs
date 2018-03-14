@@ -1,0 +1,5 @@
+meta_product_name: "Ex$"
+meta_title: "Ex$ - The newest clothes and fashion app to sell and swap your way to a better wardrobe"
+meta_description: "This platform app allows users to buy, sell and swap their clothes, updating their wardrobe for free or even making money from it"
+meta_image: "facebook.jpg"                       # should exist in `app/assets/images/`
+#twitter_account: "@product_twitter_account"   # required for Twitter Cards

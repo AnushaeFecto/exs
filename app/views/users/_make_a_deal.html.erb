@@ -6,17 +6,25 @@
 
         <div class="content-column">
           <h1 class="text-center">YOU</h1>
-          <% current_user.items.each do |item| %>
-
-            <input type="hidden" name="deal[deal_items][my_item_id][]" value="">
-
-            <label class="box-content" for="deal_deal_items_my_item_id_<%= item.id %>">
-              <div class="box-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-                    url(<%= cl_image_path item.photo, crop: :fill if item.photo.present? %>);">
-                <i class= "fa fa-check"></i>
+          <% if current_user.items.blank? == true %>
+            <%= link_to new_item_path do %>
+              <div class="deal-item-box box-card-profile new-item-btn new-size" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2));">
+                <span>+</span>
               </div>
-            </label>
-            <input class="hidden" type="checkbox" value="<%= item.id %>" name="deal[deal_items][my_item_id][]" id="deal_deal_items_my_item_id_<%= item.id %>">
+          <% end %>
+          <% else %>
+            <% current_user.items.each do |item| %>
+
+              <input type="hidden" name="deal[deal_items][my_item_id][]" value="">
+
+              <label class="box-content" for="deal_deal_items_my_item_id_<%= item.id %>">
+                <div class="box-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+                      url(<%= cl_image_path item.photo, crop: :fill if item.photo.present? %>);">
+                  <i class= "fa fa-check"></i>
+                </div>
+              </label>
+              <input class="hidden" type="checkbox" value="<%= item.id %>" name="deal[deal_items][my_item_id][]" id="deal_deal_items_my_item_id_<%= item.id %>">
+              <% end %>
           <% end %>
         </div>
         <div class="content-column" >

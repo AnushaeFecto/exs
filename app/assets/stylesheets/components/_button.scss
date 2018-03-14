@@ -38,6 +38,7 @@
 .btn-destroy{
   background-color: $destroy-btn;
   color: $white;
+  min-width: 100px;
 }
 
 .btn-destroy:hover{
@@ -53,6 +54,8 @@
 
 .btn-edit{
   background-color:$edit-btn;
+  min-width: 100px;
+
 }
 
 .btn-edit:hover{
@@ -71,3 +74,28 @@
 }
 
 
+.btn-make-deal {
+  background-color: $submit-btn;
+  width: 150px;
+}
+.btn-make-deal:hover {
+  background-color: $submit-btn-hover;
+  color: rgba(255,255,255,0.8);
+}
+
+.sch-btn{
+background-color: transparent;
+width: 38px;
+height: 38px;
+border-radius: 50%;
+position: absolute;
+top: -2px;
+right: 0;
+transition: background-color .3s;
+z-index: 22000;
+color: #2d2d2d;
+padding: 10px;
+box-sizing: border-box;
+border: 1px solid transparent;
+opacity: 0.8;
+}

@@ -35,6 +35,8 @@
         <% if @item.user == current_user %>
           <%= link_to "Edit Item", edit_item_path(@item), class: "showitem-style exs-btn btn-edit itemshow-btn" %>
           <%= link_to 'Delete', { controller: :items, action: :destroy }, method: :delete, data: { confirm: 'Are you sure?' }, class: "showitem-style exs-btn btn-destroy itemshow-btn" %>
+        <% else %>
+          <%= link_to "Make a deal", user_path(@item.user), class: "exs-btn btn-submit itemshow-btn" %>
         <% end %>
       </div>
 

@@ -9,6 +9,20 @@
   border-radius: 10px 10px;
 }
 
+.deal-card-an {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 1200px;
+  margin: auto;
+  background-color: white;
+  box-shadow: 0.1px 0.1px 0.1px;
+  border-radius: 10px;
+  margin: auto;
+  padding-bottom: 10px;
+
+}
+
 .left-in-deal {
   width: 49%;
   margin-right: 1%;

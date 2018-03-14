@@ -1,5 +1,11 @@
-.form-inputs{
-  border-radius:10px;
+.modal-form{
+  margin-left:auto;
+  margin-right:auto;
+  max-width: 597px;
+  background: $white;
+  padding: 20px 20px 20px 20px;
+  font: 12px Arial, Helvetica, sans-serif;
+  color: #666;
 }
 
 .create-position{
@@ -161,3 +167,4 @@
   margin: auto;
   width: 300px;
 }
+

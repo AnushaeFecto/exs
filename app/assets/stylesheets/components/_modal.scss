@@ -5,13 +5,35 @@
   max-width: 50vw;
 
 }
+.modal-cont {
 
-.modal-content{
-  padding: 20px;
-  border-radius: 10px;
+  margin-top: 40px;
+}
+.close-button {
+  float: right;
+  background-color: transparent;
+  border: none;
+  color: white;
+  margin-left: 100px;
+}
+.close-button:hover{
+  float: right;
+  background-color: transparent;
+  border: none;
+}
+
+.modal-styling{
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.br {
+  border-radius: 20px;
 }
 
 .nav-tabs > li:after {
+  flex:50%;
   content: '';
 }
 
@@ -22,4 +44,18 @@
 a:-webkit-any-link{
   text-decoration: none;
   color: #616668;
+}
+
+#logInModal, #signUpModal{
+
+}
+
+.active-tab {
+  width:50%;
+  background-color: $magenta;
+}
+
+.non-active-tab {
+  background-color: $magenta;
+  width:50%;
 }

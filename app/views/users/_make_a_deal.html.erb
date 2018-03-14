@@ -41,22 +41,24 @@
       <h1 class="text-center">WHAT ABOUT MONEY?</h1>
     </div>
 
+    <%= f.simple_fields_for :payer do |p| %>
     <div class="content-row flex">
       <div class="content-column text-center">
-        <input class="" type="radio" value="<%= current_user.id %>" name="deal[payer]" id="deal_payer_give">
+        <input class="" type="radio" value="<%= current_user.name %>" name="deal[payer]" id="deal_payer_give">
         <label for="deal_payer_give">
           GIVE
         </label>
       </div>
 
       <div class="content-column text-center">
-        <input class="" type="radio" value="<%= @user.id %>" name="deal[payer]" id="deal_payer_recieve">
+        <input class="" type="radio" value="<%= @user.name %>" name="deal[payer]" id="deal_payer_recieve">
         <label for="deal_payer_recieve">
           RECIEVE
         </label>
       </div>
 
     </div>
+    <% end %>
     <div class="content-row text-center">
 
       <div class="form-group string optional deal_price">

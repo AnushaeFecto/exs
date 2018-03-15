@@ -3,7 +3,7 @@
 
   padding: 20px;
   width: 100%;
-  background-image: linear-gradient(#78C1CA, #78C1CA), linear-gradient(#EF7F69, #EF7F69);
+  background-image: linear-gradient($light-green, $light-green), linear-gradient($light-pink, $light-pink);
   background-size: cover, cover;
   background-repeat: no-repeat, no-repeat;
   background-position: 50vw center, 0 center;
@@ -172,7 +172,7 @@
   // border-radius: 30px;
   // border-style: solid;
   box-shadow: 0px 10px 15px rgba(0,0,0,0.3);
-  background-color: #EF7F69;
+  background-color: $light-pink;
   margin-bottom: 40px;
   border-radius: 10px;
 }
@@ -304,5 +304,5 @@ h4{
 }
 
 .deal-tab{
-  background-color: #78C1CA;
+  background-color: $light-green;
 }

@@ -6,7 +6,7 @@
     <%= cl_image_tag "defaultavatar.png", class: "dashboard-avatar"  %>
   <% end %>
   <% if user.photo.present? %>
-    <%= cl_image_tag current_user.photo, class: "dashboard-avatar" %>
+    <%= cl_image_tag user.photo, class: "dashboard-avatar" %>
   <% else %>
     <%= cl_image_tag "defaultavatar.png", class: "dashboard-avatar"  %>
   <% end %>

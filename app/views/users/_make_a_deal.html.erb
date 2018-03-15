@@ -1,7 +1,12 @@
 
 <div class="makedeal-photo">
-  <%= cl_image_tag current_user.photo, class: "dashboard-avatar" %>
-  <%= cl_image_tag user.photo, class: "dashboard-avatar" %>
+
+  <% if current_user.photo.present? %>
+    <%= cl_image_tag current_user.photo, class: "dashboard-avatar" %>
+  <% else %>
+    <%= cl_image_tag "defaultavatar.png", class: "dashboard-avatar"  %>
+  <% end %>
+    <%= cl_image_tag user.photo, class: "dashboard-avatar" %>
 </div>
 
 <%= simple_form_for(deal) do |f| %>

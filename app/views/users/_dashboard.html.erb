@@ -31,7 +31,7 @@
               <li class="non-active-tab-color"><a data-toggle="tab" href="#my_deals">My Deals</a></li>
           </ul>
            <div class="tab-content">
-            <div id="my_items" class="tab-pane fade in active">
+            <div id="my_items" class="deal-tab tab-pane fade in active">
               <div class="deal-item-container">
                 <% current_user.items.each do |item| %>
                   <%= link_to item_path(item), :class => "rent-link" do %>
@@ -47,7 +47,7 @@
                 <% end %>
               </div>
             </div>
-            <div id="my_deals" class="tab-pane fade">
+            <div id="my_deals" class="deal-tab tab-pane fade">
               <div>
                 <div class="deal-details">
                   <% if (@user.requested_deals.count == 0) && (@user.answered_deals.count == 0) %>

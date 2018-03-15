@@ -13,16 +13,19 @@ border-radius: 10px;
   background-size: cover !important;
   background-position: center;
   background-repeat: no-repeat;
-  margin-top: 8%;
+  margin-top: 7%;
   margin-left: 20px;
   border-radius: 5px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom:30px;
 }
 
 .showitem-left{
   flex: 50%;
   padding-left: 75px;
   justify-content: left;
+  background-color: $light-green;
+  border-radius: 10px 0 0 10px;
 }
 
 .like-counter {
@@ -102,19 +105,25 @@ border-radius: 10px;
 
 .showitem-right{
   flex:50%;
-  margin-top:15px;
+  // margin-top:15px;
+  background-color: $light-green;
+  border-radius: 0 10px 10px 0;
 }
 
 .showitem-title{
-  text-align: left;
-  color: $magenta;
+  text-align: center;
+  color: $light-pink;
+}
+
+.showitem-content{
+  color: white;
+  padding-top: 5px;
 }
 
 .showitem-buttons{
   display: flex;
-  justify-content: space-around;
-  width: 75%;
-  height: 75px;
+  justify-content: center;
+
 }
 
 .itemshow-btn{
@@ -144,6 +153,8 @@ border-radius: 10px;
   background-size: cover;
   position:relative;
   border-radius: 10px;
+  margin-bottom: 15px;
+  border: 1px solid white;
 }
 
 .suggestion-text{
@@ -155,9 +166,29 @@ border-radius: 10px;
 
 #similar-item{
   text-align: left;
-  color: $magenta;
+  color: $light-pink;
+  font-weight: bold;
 }
 
+.fa-trash{
+  font-size: 30px;
+  color: $light-pink !important;
+  margin-left: 20px;
+}
+
+.fa-edit{
+  font-size: 30px;
+  color: $light-pink !important;
+  margin-left: 20px;
+}
+
+.fa-edit:hover{
+  opacity: 0.7;
+}
+
+.fa-trash:hover{
+  opacity: 0.7;
+}
 
 @media(max-width: 788px) {
   #item-content {

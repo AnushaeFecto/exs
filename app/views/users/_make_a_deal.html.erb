@@ -65,7 +65,7 @@
       <div class="content-column text-center">
         <input class="" type="radio" value="<%= @user.id %>" name="deal[payer]" id="deal_payer_recieve">
         <label for="deal_payer_recieve">
-          RECEIVE
+          GIVE
         </label>
       </div>
       </div>
@@ -78,4 +78,43 @@
     <div class="content-row text-center">
       <%= f.submit "SEAL THE DEAL", class: "btn btn-deal" %>
     </div>
+    <!-- queryselectorall the cards -->
+    <!-- AddEventListener to click. -->
+    <!-- the you check the class list of each card to see if they clicked a card  -->
+    <!-- then you your conditions -->
+      <!-- if one_is_selected on the right && one is selected on the right -->
+        <!-- add class not-blurred -->
+
+      <!-- HOW DO WE KNOW IF THEY HAVE TYPED IN MONTY? -->
+        <!-- add event listener on the form for keypress -->
+      <!-- if one_is_selcetd on the right && you put in some money, -->
+        <!-- add class not-blurred -->
+      <!-- else -->
+        <!-- dont change the blur -->
+      <!-- end -->
+    <%= render "make_a_deal", deal: @deal, user: @user %>
+
 <% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

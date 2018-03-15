@@ -76,7 +76,12 @@
                     <% current_user.requested_deals.each do |deal| %>
                       <div class="deal-details-content">
                         <div class="involved-person">
-                          <%= deal.answerer.photo %>
+                          <% if deal.answerer.photo.present? %>
+                            <%= cl_image_tag deal.answerer.photo, class: "mini-dashboard-avatar" %>
+                          <% else %>
+                            <%= cl_image_tag "defaultavatar.png", class: "mini-dashboard-avatar"  %>
+                          <% end %>
+                          <%#= deal.answerer.photo %>
                         </div>
                         <div class="deal-status">
                           <p><%= deal.status %></p>
@@ -101,7 +106,12 @@
                     <% current_user.answered_deals.each do |deal| %>
                       <div class="deal-details-content">
                         <div class="involved-person">
-                          <%= deal.requester.photo %>
+                          <% if deal.requester.photo.present? %>
+                            <%= cl_image_tag deal.requester.photo, class: "mini-dashboard-avatar" %>
+                          <% else %>
+                            <%= cl_image_tag "defaultavatar.png", class: "mini-dashboard-avatar"  %>
+                          <% end %>
+                          <%#= deal.requester.photo %>
                         </div>
                         <div class="deal-status">
                           <p><%= deal.status %></p>

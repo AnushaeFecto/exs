@@ -9,7 +9,7 @@
           <% if current_user.photo.present? %>
             <% url = cl_image_path current_user.photo%>
           <% else %>
-            <% url = "http://kitt.lewagon.com/placeholder/users/ssaunier" %>
+            <% url = cl_image_path "defaultfavatar.png" %>
           <% end %>
           <div class="deal-avatar" style="background-image: url(<%= url %>)"></div>
         </div>

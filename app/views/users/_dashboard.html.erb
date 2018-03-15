@@ -50,7 +50,7 @@
             <div id="my_deals" class="tab-pane fade">
               <div>
                 <div class="deal-details">
-                  <% if @user.requested_deals.count && @user.requested_deals.count == 0 %>
+                  <% if (@user.requested_deals.count == 0) && (@user.answered_deals.count == 0) %>
                     <div class="deal-btn">
                       <p style="margin-left:  10px; padding:  20px;">You do not have any deal</p>
                           <%= link_to items_path do %>

@@ -1,4 +1,31 @@
+.deal-payment-content-row {
 
+  padding: 20px;
+  width: 100%;
+  background-image: linear-gradient(#78C1CA, #78C1CA), linear-gradient(#EF7F69, #EF7F69);
+  background-size: cover, cover;
+  background-repeat: no-repeat, no-repeat;
+  background-position: 50vw center, 0 center;
+  #deal_price {
+    width: 150px;
+    margin: auto;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    border-bottom: 2px solid white;
+    border-radius: 0;
+    color: white;
+    font-size: 60px;
+    text-align: center;
+    height: 65px;
+  }
+}
+
+.deal-payment-content-row.flex {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 15px;
+}
 
 .section {
   background-color: white;
@@ -7,74 +34,24 @@
   margin-left: 30px;
   margin-right: 30px;
   border-radius: 10px 10px;
+  box-shadow: 2px 2px 3px $gray;
+  padding: 20px;
 }
 
-.left-in-deal {
-  width: 49%;
-  margin-right: 1%;
-  background-color: white;
-  border-radius: 10px 10px;
-}
-
-.right-in-deal {
-  margin-left: 1%;
-  width: 49%;
-  background-color: white;
-  border-radius: 10px 10px;
-}
-
-.writen-details{
-  margin-top: 40px;
-}
-
-.items-in-deal{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  margin-bottom: 50px;
-}
-
-.margin-bottom{
-  margin-bottom: 30px;
-}
-
-
-.items-display{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-
-.requester-items {
-  margin-left: 3%;
-}
-
-.answerer-items {
-  margin-left: 3%;
-}
-
-.items-in-deal{
-  background-color: #F4F4F4;
-}
-
-.items-outside{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  margin-bottom: 50px;
-  background-color: #F4F4F4;
-}
-
-.center-deal{
+.deal-exs-btn{
+  display: block;
+  padding: 10px 15px;
+  margin: auto;
+  font-size: 18px;
+  cursor: pointer;
   text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: $white !important;
+  border: none;
+  box-shadow: 0 3px #999;
 }
 
-.box{
-  max-width: 450px;
-  display: flex;
-}
-
-.item-2 {
-  margin: 10px;
+.deal-middle-page {
+  justify-content: center !important;
 }

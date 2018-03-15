@@ -97,10 +97,10 @@
 <!-- Deal status and postage reminder -->
 <center>
   <div class="deal-payment-content-row flex deal-middle-page">
-    <div class="section">
-      <% if @deal.status == "In negotiation" && @deal.requester != current_user %>
-        <%= button_to "Accept", deal_accept_deal_path(@deal), class: "exs-btn btn-submit" %>
-      <% elsif @deal.status == "In negotiation" %>
+    <% if @deal.status == "In negotiation" && @deal.requester != current_user %>
+      <%= button_to "Accept", deal_accept_deal_path(@deal), class: "exs-btn btn-submit" %>
+    <% elsif @deal.status == "In negotiation" %>
+      <div class="section">
         <h4>Still waiting for <%= @deal.answerer.name %> to confirm...</h4>
       <% else %>
         <h4>You've both agreed to this deal!</h4>
@@ -148,6 +148,8 @@
 <center>
   <% if @deal.status == "In negotiation" %>
     <%= link_to "Cancel this proposal", { controller: :deals, action: :destroy }, method: :delete, data: { confirm: 'Are you sure?' }, class: "deal-exs-btn btn-submit-red" %>
+  <% else %>
+    <%= link_to "Close this deal (have you sent everything?)", { controller: :deals, action: :destroy }, method: :delete, data: { confirm: 'Have you paid or received any money owed, and sent and received all the items?' }, class: "deal-exs-btn btn-submit-red" %>
   <% end %>
   <%= link_to "Back to my profile page", user_path(current_user), class: "deal-exs-btn btn-submit" %>
 </center>

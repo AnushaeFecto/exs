@@ -1,9 +1,9 @@
 <%= simple_form_for(@deal, :url => deal_path(@deal)) do |f| %>
   <%= f.error_notification %>
   <div class="form-inputs">
-    <%= f.input :requester_address, label: "My address", placeholder: "where's convenient?" %>
+    <%= f.input :answerer_address, label: "My address", placeholder: "where's convenient?" %>
   </div>
   <div class="form-actions">
-    <%= f.button :submit, class: "exs-btn btn-submit", id: "form-submit-button" %>
+    <%= f.button :submit, class: "exs-btn btn-submit", id: "form2-submit-button" %>
   </div>
 <% end %>

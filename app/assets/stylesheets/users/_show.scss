@@ -127,6 +127,8 @@
   margin: auto;
   background-size: cover;
   background-position: center;
+  border: 5px white solid;
+  box-shadow: 2px 2px 3px rgba(0,0,0,0.2);
 }
 .dashboard-avatar{
   height: 200px;
@@ -164,6 +166,7 @@
   box-shadow: 0px 10px 15px rgba(0,0,0,0.3);
   background-color: #EF7F69;
   margin-bottom: 40px;
+  border-radius: 10px;
 }
 
 .profile-right{
@@ -175,12 +178,16 @@
 
 .deal-item-container{
   display:flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   flex-wrap: wrap;
+  &:after {
+    content: "";
+    flex: auto;
+  }
 }
 
 .deal-item-box{
-border: 10px solid white;
+border: 2px solid white;
 }
 
 .first-div{
@@ -189,9 +196,25 @@ border: 10px solid white;
 
 .deal-user-information{
   text-align: center;
-
+  h4 {
+    font-weight: bold;
+    color: white;
+    font-size: 36px;
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.2)
+  }
   p {
+    color: white;
     opacity: .7;
+  }
+  a {
+    color: light-gray;
+    opacity: .6;
+    &:hover {
+      opacity: .8;
+    }
+  }
+  hr {
+    opacity: .4;
   }
 }
 
@@ -204,26 +227,30 @@ border: 10px solid white;
 }
 
 .deal-details{
-  width: 700px;
-  margin-top: 5px;
+  // width: 700px;
+  padding-top: 5px;
   margin-bottom: 5px;
-  background-color: #35495D;
+  background-color: #78C1CA;
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.3);
 }
 
 .deal-details-content {
   display: flex;
   justify-content: space-between;
 }
-
-.deal-number{
+.involved-person{
   text-align: center;
   margin-left: 10px;
+  flex: 0 16.5%;
+}
+.deal-number{
+  text-align: center;
   flex: 0 20%;
 }
 
 .deal-status{
   text-align: center;
-  flex: 0 20%;
+  flex: 0 16.5%;
 }
 
 .deal-payer{
@@ -239,13 +266,14 @@ border: 10px solid white;
 .deal-items-num{
   text-align: center;
   margin-right: 10px;
-  flex: 0 20%;
+  flex: 0 16.5%;
 }
 
 .new-item-btn {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 15px;
   span {
     font-size: 50px;
   }
@@ -263,4 +291,10 @@ h4{
 }
 }
 
+.fa-eye{
+  font-size: 25px;
+}
 
+.tab-pane{
+  background-color: #78C1CA;
+}

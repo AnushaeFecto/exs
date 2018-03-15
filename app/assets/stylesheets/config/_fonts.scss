@@ -1,7 +1,10 @@
 // Import Google fonts
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Raleway:400,100,300,700,500");
+// @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Raleway:400,100,300,700,500");
+// @import url('https://fonts.googleapis.com/css?family=Open+Sans|Rammetto+One');
+// @import url('https://fonts.googleapis.com/css?family=Limelight|Open+Sans:600');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:600|Poppins:800');
 
 // Define fonts for body and headers
 $body-font: "Open Sans", "Helvetica", "sans-serif";
-$headers-font: "Raleway", "Helvetica", "sans-serif";
+$headers-font: "Poppins", "Helvetica", "sans-serif";
 

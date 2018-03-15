@@ -102,10 +102,12 @@
     <% elsif @deal.status == "In negotiation" %>
       <div class="section">
         <h4>Still waiting for <%= @deal.answerer.name %> to confirm...</h4>
-      <% else %>
+      </div>
+    <% else %>
+      <div class="section">
         <h4>You've both agreed to this deal!</h4>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   </div>
 </center>
 

@@ -1,7 +1,59 @@
 <div>
   <center>
 
-    <!-- Deal summary -->
+    <!-- Deal announcement -->
+    <h1 style="text-align: center">It's a deal!</h1>
+
+    <!-- Items in the deal and payment button -->
+    <% if current_user == @deal.requester %>
+      <div class="content-row flex">
+        <div class="content-column">
+          <h3 class="text-center">You're sending <%= @deal.answerer.name %>...</h3>
+          <% @deal.requester.items.each do |item| %>
+            <label class="box-content" for="deal_deal_items_my_item_id_<%= item.id %>">
+              <div class="box-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+                    url(<%= cl_image_path item.photo, crop: :fill if item.photo.present? %>);">
+              </div>
+            </label>
+          <% end %>
+        </div>
+        <div class="content-column" >
+          <h3 class="text-center"><%= @deal.answerer.name %>'s sending you...</h3>
+          <% @deal.answerer.items.each do |item| %>
+            <label class="box-content" for="deal_deal_items_item_id_<%= item.id %>">
+              <div class="box-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+                    url(<%= cl_image_path item.photo, crop: :fill if item.photo.present? %>);">
+              </div>
+            </label>
+          <% end %>
+        </div>
+      </div>
+    <% elsif current_user == @deal.answerer %>
+      <div class="content-row flex">
+        <div class="content-column">
+          <h3 class="text-center"><%= @deal.requester.name %>'s sending you...</h3>
+          <% @deal.requester.items.each do |item| %>
+            <label class="box-content" for="deal_deal_items_my_item_id_<%= item.id %>">
+              <div class="box-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+                    url(<%= cl_image_path item.photo, crop: :fill if item.photo.present? %>);">
+              </div>
+            </label>
+          <% end %>
+        </div>
+        <div class="content-column" >
+          <h3 class="text-center">You're sending <%= @deal.requester.name %>...</h3>
+          <% @deal.answerer.items.each do |item| %>
+            <label class="box-content" for="deal_deal_items_item_id_<%= item.id %>">
+              <div class="box-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+                    url(<%= cl_image_path item.photo, crop: :fill if item.photo.present? %>);">
+              </div>
+            </label>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+
+    <!-- Deal status and postage reminder -->
     <% if @deal.status == "In negotiation" && @deal.requester != current_user %>
       <%= button_to "Accept", deal_accept_deal_path(@deal), class: "exs-btn btn-submit" %>
     <% elsif @deal.status == "In negotiation" %>
@@ -9,30 +61,14 @@
     <% else %>
       <p>You've both agreed to this deal! Don't forget to provide your postal details below</p>
     <% end %>
-    <h1 style="text-align: center">Deal</h1>
 
-    <!-- Items in the deal and payment button -->
-    <div class="card-profile">
-
-      <div class="container">
-        <div class="col-xs-12 col-sm-6">
-          <div class="left-in-deal">
-            <p>One group of item cards</p>
-          </div>
-        </div>
-        <div class="col-xs-12 col-sm-6">
-          <div class="right-in-deal">
-            <p>Another group of item cards</p>
-          </div>
-        </div>
-      </div>
-
-      <p style="text-align: center"><%= @deal.payer %> is also paying £<%= @deal.price %> as part of the deal</p>
-      <% if (current_user.email == @deal.payer) && (@deal.status == "Finalised") %>
-        <%= button_to "Pay", deal_payments_path(@deal), class: "exs-btn btn-submit" %>
+      <% if @deal.price.fractional != 0 %>
+        <p style="text-align: center"><%= @payer.name %> is also paying £<%= @deal.price %> as part of the deal</p>
+        <% if (current_user == @payer) && (@deal.status == "Finalised") %>
+          <%= button_to "Pay", deal_payments_path(@deal), class: "exs-btn btn-submit" %>
+        <% end %>
       <% end %>
 
-    </div>
 
     <!-- address boxes only visible if deal Finalised/Paid -->
     <div class="container">
@@ -54,7 +90,6 @@
             <% end %>
           </div>
         </div>
-
         <div class="col-xs-12 col-sm-6">
           <div class="section">
             <p><%= @deal.answerer.email %>'s address:</p>
@@ -70,7 +105,6 @@
             <p><%= @deal.requester_address %></p>
           </div>
         </div>
-
         <div class="col-xs-12 col-sm-6">
           <div class="section">
             <p>The address I want things sent to:</p>
@@ -105,163 +139,11 @@
 
 
 <p>EVERYTHING BELOW WILL BE DELETED LATER</p>
-
-
-  <div class="deals-details">
-    <div class="writen-details section" style="text-align: center">
-      <ul class="list-unstyled">
-        <!-- info about the deal -->
         <li>Status: <%= @deal.status.capitalize %></li>
         <li>Deal ID: <%= @deal.id %></li>
-        <li>Proposed payment: <%= humanized_money_with_symbol(@deal.price) %></li>
-        <li>To be paid by: <%= @deal.payer %></li>
-        <% if @deal.status == "In negotiation" %>
-          <%= render 'form', item: @item %>
-        <% end %>
-      </ul>
-      <!-- buttons to agree/change/destroy/pay -->
-      <% if @deal.status == "In negotiation" %>
-        <%= button_to "Accept",  deal_accept_deal_path(@deal) %>
-        <%= button_to "Change",  deal_reject_deal_path(@deal) %>
-        <%= link_to "Reject", { controller: :deals, action: :destroy }, method: :delete, data: { confirm: 'Are you sure?' } %>
-      <% elsif @deal.status == "paid" %>
-        <p>Insert messages here telling each party to send their stuff and what to receive</p>
-      <% elsif @deal.status == "Finalised" && @deal.payer == current_user.email %>
-        <%= button_to "Pay", deal_payments_path(@deal) %>
-      <% elsif @deal.status == "Finalised" && @deal.payer != current_user.email %>
-        <p>Awaiting payment from <%= @deal.payer %></p>
-      <% elsif (@deal.last_changed_by != current_user.id) && (@deal.status == "In negotiation" || "Offer made") %>
-        <%= button_to "Accept",  deal_accept_deal_path(@deal) %>
-        <%= button_to "Change",  deal_reject_deal_path(@deal) %>
-        <%= link_to "Reject", { controller: :deals, action: :destroy }, method: :delete, data: { confirm: 'Are you sure?' } %>
-      <% elsif (@deal.last_changed_by == current_user.id) && (@deal.status == "In negotiation" || "Offer made") %>
-        <%= button_to "Change",  deal_reject_deal_path(@deal) %>
-        <%= link_to "Reject", { controller: :deals, action: :destroy }, method: :delete, data: { confirm: 'Are you sure?' } %>
-      <% end %>
-    </div>
-
-    <div class="items-in-deal section">
-
-      <div class="left-in-deal">
-        <div class="requester-items margin-bottom">
-          <h3 style="text-align: center">Your items in deal</h3>
-          <div class="items-display">
-            <% count = 0 %>
-            <div class="box">
-            <% @deal.items_from(current_user).each do |item| %>
-              <% if count <= 2 %>
-                <div class="item-2">
-                   <%= link_to item_path(item) do %>
-                    <%= cl_image_tag item.photo, width: 150, height: 150, radius: 10, crop: :scale %>
-                  <% end %>
-                   <p class="center-deal"><%= item.category %></p>
-                   <%# link_to "Add item into deal", deal_path(@deal), class: "btn-edit" %>
-                </div>
-                <% count+= 1 %>
-                <% if count == 3 %>
-                  </div>
-                  <div class="box">
-                  <% count = 0 %>
-                <% end %>
-              <% end %>
-            <% end %>
-          </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="right-in-deal">
-        <div class="answerer-items margin-bottom">
-        <h3 style="text-align: center">Their items in deal</h3>
-          <div class="items-display">
-            <% count = 0 %>
-            <div class="box">
-            <% @deal.items_from(@deal.answerer).each do |item| %>
-              <% if count <= 2 %>
-                <div class="item">
-                   <%= link_to item_path(item) do %>
-                    <%= cl_image_tag item.photo, width: 150, height: 150, radius: 10, crop: :scale %>
-                  <% end %>
-                   <p class="center-deal"><%= item.category %></p>
-                   <%# link_to "Add item into deal", deal_path(@deal), class: "btn-edit" %>
-                </div>
-                <% count+= 1 %>
-                <% if count == 3 %>
-                  </div>
-                  <div class="box">
-                  <% count = 0 %>
-                <% end %>
-              <% end %>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="items-outside section">
-
-    <div class="left-in-deal">
-      <div class="requester-items margin-bottom">
-        <h3 style="text-align: center">Your items</h3>
-        <div class="items-display">
-          <% count = 0 %>
-          <div class="box">
-          <% @deal.requester.items.each do |item| %>
-            <% if count <= 2 %>
-              <div class="item-2">
-                 <%= link_to item_path(item) do %>
-                  <%= cl_image_tag item.photo, width: 150, height: 150, radius: 10, crop: :scale %>
-                <% end %>
-                 <p class="center-deal"><%= item.category %></p>
-                 <%# link_to "Add item into deal", deal_path(@deal), class: "btn-edit" %>
-              </div>
-              <% count+= 1 %>
-              <% if count == 3 %>
-                </div>
-                <div class="box">
-                <% count = 0 %>
-              <% end %>
-            <% end %>
-          <% end %>
-        </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="right-in-deal">
-      <div class="answerer-items margin-bottom">
-        <h3 style="text-align: center">Their items</h3>
-        <div class="items-display">
-          <% count = 0 %>
-          <div class="box">
-          <% @deal.answerer.items.each do |item| %>
-            <% if count <= 2 %>
-              <div class="item-2">
-                 <%= link_to item_path(item) do %>
-                  <%= cl_image_tag item.photo, width: 150, height: 150, radius: 10, crop: :scale %>
-                <% end %>
-                 <p class="center-deal"><%= item.category %></p>
-                 <%# link_to "Add item into deal", deal_path(@deal), class: "btn-edit" %>
-              </div>
-              <% count+= 1 %>
-              <% if count == 3 %>
-                </div>
-                <div class="box">
-                <% count = 0 %>
-              <% end %>
-            <% end %>
-          <% end %>
-        </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-</div>
-
+        <li>Deal ID: <%= @deal.payer %></li>
+        <%= @payer.name %>
+        <%= @payer.email %>
 
 
 

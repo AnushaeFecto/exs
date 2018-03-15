@@ -1,5 +1,6 @@
 
 .content-row {
+
   padding: 20px;
   width: 100%;
   background-image: linear-gradient(#78C1CA, #78C1CA), linear-gradient(#EF7F69, #EF7F69);
@@ -38,10 +39,11 @@
 .content-row.flex {
   display: flex;
   justify-content: space-between;
+  padding-top: 75px;
 }
 
 .content-column {
-  flex: 0 0 50%;
+  flex: 0 0 48%;
 }
 
 
@@ -124,7 +126,19 @@
   // margin-left: 130px;
   margin: auto;
   background-size: cover;
+  background-position: center;
 }
+.dashboard-avatar{
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  border: 5px white solid;
+  margin: auto;
+  background-size: cover;
+  background-position: center;
+
+}
+
 .profile-banner{
   background-image: url("homepage2.jpg");
   background-size: cover;
@@ -181,11 +195,6 @@ border: 10px solid white;
   }
 }
 
-
-.deal-avatar{
-  // margin-top: 40px;
-}
-
 .deal-summary-container{
   display:flex;
   justify-content: flex-start;
@@ -195,18 +204,26 @@ border: 10px solid white;
 }
 
 .deal-details{
-  border-radius: 30px;
-  border-style: solid;
-  display: flex;
-  justify-content: space-between;
   width: 700px;
   margin-top: 5px;
   margin-bottom: 5px;
+  background-color: #35495D;
+}
+
+.deal-details-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.deal-number{
+  text-align: center;
+  margin-left: 10px;
+  flex: 0 20%;
 }
 
 .deal-status{
   text-align: center;
-  margin-left: 10px;
+  flex: 0 20%;
 }
 
 .deal-payer{
@@ -216,6 +233,13 @@ border: 10px solid white;
 .deal-items-number{
   text-align: center;
   margin-right: 10px;
+  flex: 0 20%;
+}
+
+.deal-items-num{
+  text-align: center;
+  margin-right: 10px;
+  flex: 0 20%;
 }
 
 .new-item-btn {
@@ -228,5 +252,15 @@ border: 10px solid white;
 }
 
 
+.dash-text{
+  color:white;
+}
+
+.deal-details{
+  color: white;
+h4{
+  color:#DDDC5F;
+}
+}
 
 

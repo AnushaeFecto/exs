@@ -1,4 +1,20 @@
+.deal-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 0 20%;
+  a {
+    color: white !important;
+  }
+}
 
+.visit-deal-btn {
+  flex-grow: 0 !important;
+  // padding: 10px;
+  // margin: 0 5px;
+  height: 40px;
+  width: 150px;
+}
 .exs-btn{
   display: block;
   padding: 10px 15px;
@@ -38,6 +54,7 @@
 .btn-destroy{
   background-color: $destroy-btn;
   color: $white;
+  min-width: 100px;
 }
 
 .btn-destroy:hover{
@@ -53,6 +70,8 @@
 
 .btn-edit{
   background-color:$edit-btn;
+  min-width: 100px;
+
 }
 
 .btn-edit:hover{
@@ -70,6 +89,16 @@
   margin: 20px 0px 0px 20px;
 }
 
+
+.btn-make-deal {
+  background-color: $submit-btn;
+  width: 150px;
+}
+.btn-make-deal:hover {
+  background-color: $submit-btn-hover;
+  color: rgba(255,255,255,0.8);
+}
+
 .sch-btn{
 background-color: transparent;
 width: 38px;
@@ -79,7 +108,7 @@ position: absolute;
 top: -2px;
 right: 0;
 transition: background-color .3s;
-z-index: 22000;
+z-index: 1;
 color: #2d2d2d;
 padding: 10px;
 box-sizing: border-box;

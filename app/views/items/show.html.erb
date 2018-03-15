@@ -16,24 +16,21 @@
 
       <!-- <button class="accordion">Show More Details</button>
       <div class="panel"> -->
-      <p><strong>Category:</strong> <%= @item.category %></p>
-      <p><strong>Size:</strong> <%= @item.size %></p>
-      <p><strong>Color:</strong> <%= @item.size %></p>
-      <p><strong>Description:</strong> <%= @item.description %></p>
+      <p class="showitem-content"><strong>Category:</strong> <%= @item.category %></p>
+      <p class="showitem-content"><strong>Size:</strong> <%= @item.size %></p>
+      <p class="showitem-content"><strong>Color:</strong> <%= @item.size %></p>
+      <p class="showitem-content"><strong>Description:</strong> <%= @item.description %></p>
      <!--  </div> -->
       <div class="showitem-buttons">
         <% if @item.user == current_user %>
-          <%= link_to "Edit Item", edit_item_path(@item), class: "showitem-style exs-btn btn-edit itemshow-btn" %>
-          <%= link_to 'Delete', { controller: :items, action: :destroy }, method: :delete, data: { confirm: 'Are you sure?' }, class: "showitem-style exs-btn btn-destroy itemshow-btn" %>
-
+          <%= link_to '', edit_item_path(@item), class: "fa fa-edit" %>
+          <%= link_to '', { controller: :items, action: :destroy }, method: :delete, data: { confirm: 'Are you sure?' }, class: "fa fa-trash" %>
         <% else %>
-          <%= link_to "Make a deal", user_path(@item.user), class: "exs-btn btn-make-deal" %>
-
+          <%= link_to "Make a Deal", user_path(@item.user), class: "btn-make-deal" %>
         <% end %>
       </div>
 
       <h5 id="similar-item"> Other Items You'll Love:</h5>
-
       <div class="row">
         <% @suggestions.each do |suggestion| %>
           <div class="col-xs-12 col-md-4">

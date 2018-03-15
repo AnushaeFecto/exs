@@ -40,6 +40,10 @@
   background-color: $submit-btn;
 }
 
+.btn-submit-red{
+  background-color: $red;
+}
+
 .btn-submit:hover {
   background-color: $submit-btn-hover;
   color: rgba(255,255,255,0.8);
@@ -71,7 +75,6 @@
 .btn-edit{
   background-color:$edit-btn;
   min-width: 100px;
-
 }
 
 .btn-edit:hover{

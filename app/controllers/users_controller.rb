@@ -3,8 +3,8 @@ class UsersController < ApplicationController
 
   def show
     @deal = Deal.new
-    # @deal.requester_id = current_user.id
-    @requester = User.find(current_user.id)
+    @deal.requester_id = current_user.id
+    #@requester = User.find(current_user.id)
     #@deal.answerer_id = @item.user.id
   end
 

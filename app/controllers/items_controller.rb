@@ -7,7 +7,7 @@ class ItemsController < ApplicationController
 
   # @items_index = Item.all
     puts params
-    @categories = ["Dress", "Shoes", "Shirts", "Bags", "Blouse", "Skirt", "Trousers", "Suits", "Shirts", "Tuxedo",]
+    @categories = ["Dress", "Shoes", "Shirts", "Bags", "Blouse", "Skirt", "Trousers", "Suits", "Shirts", "Tuxedo"]
     # @items = policy_scope(Item).order(created_at: :desc)
     # search from the homepage
     @search = params[:search]

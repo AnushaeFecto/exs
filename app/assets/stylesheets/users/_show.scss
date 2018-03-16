@@ -6,7 +6,7 @@
   background-image: linear-gradient($light-green, $light-green), linear-gradient($light-pink, $light-pink);
   background-size: cover, cover;
   background-repeat: no-repeat, no-repeat;
-  background-position: 50vw center, 0 center;
+  background-position: 50vw , 0 center;
   #deal_price {
     width: 150px;
     margin: auto;
@@ -89,7 +89,7 @@
   padding: 10px;
   background-size: cover !important;
   background-position: center;
-  color: $gray;
+  color: white;
   position: relative;
   opacity: 0.9;
   margin-top: 20px;

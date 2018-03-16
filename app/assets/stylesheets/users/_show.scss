@@ -211,7 +211,7 @@ border: 2px solid white;
     text-shadow: 2px 2px 3px rgba(0,0,0,0.2)
   }
   p {
-    color: white;
+    color: $gray;
     opacity: .7;
   }
   a {
@@ -231,7 +231,7 @@ border: 2px solid white;
   justify-content: flex-start;
   flex-wrap: wrap;
   display: inline-block;
-  background-color: #F4F4F4;
+  background-color: $dark-green;
 }
 
 .deal-details{

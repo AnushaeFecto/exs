@@ -1,9 +1,19 @@
-
-<!-- need link to items -->
-
-<!-- Deal announcement -->
+<!-- Deal announcement and status -->
 <center>
   <h1 style="text-align: center">It's a deal!</h1>
+  <% if @deal.status == "In negotiation" && @deal.requester != current_user %>
+    <div class="deal-payment-content-row flex deal-middle-page">
+      <%= button_to "Accept", deal_accept_deal_path(@deal), class: "exs-btn btn-submit" %>
+    </div>
+  <% elsif @deal.status == "In negotiation" %>
+    <div class="deal-payment-content-row flex deal-middle-page">
+      <h4>Still waiting for <%= @deal.answerer.name %> to confirm...</h4>
+    </div>
+  <% else %>
+    <div class="deal-payment-content-row flex deal-middle-page">
+      <h4>You've both agreed to this deal!</h4>
+    </div>
+  <% end %>
 </center>
 
 <!-- Items in the deal and payment button -->
@@ -37,14 +47,11 @@
   </div>
   <!-- price below -->
   <% if @deal.price.fractional != 0 %>
-    <div class="deal-payment-content-row flex">
+    <div class="deal-payment-content-row flex deal-middle-page">
       <div class="content-column">
         <% if current_user != @payer %>
           <p style="text-align: center"><%= @deal.answerer.name %> is also going to pay you £<%= @deal.price %></p>
-        <% end %>
-      </div>
-      <div class="content-column">
-        <% if current_user == @payer %>
+        <% else %>
           <p style="text-align: center">You also need to pay <%= @deal.answerer.name %> £<%= @deal.price %></p>
         <% end %>
         <% if (current_user == @payer) && (@deal.status == "Finalised") %>
@@ -84,30 +91,24 @@
   </div>
   <!-- price below -->
   <% if @deal.price.fractional != 0 %>
-    <div class="deal-payment-content-row flex">
+    <div class="deal-payment-content-row flex deal-middle-page">
       <div class="content-column">
         <% if current_user == @payer %>
           <p style="text-align: center">You also need to pay <%= @deal.requester.name %> £<%= @deal.price %></p>
+        <% else %>
+          <p style="text-align: center"><%= @deal.requester.name %> is also going to pay you £<%= @deal.price %></p>
         <% end %>
         <% if (current_user == @payer) && (@deal.status == "Finalised") %>
           <%= button_to "Pay", deal_payments_path(@deal), class: "exs-btn btn-submit" %>
-        <% end %>
-      </div>
-      <div class="content-column">
-        <% if current_user != @payer %>
-          <p style="text-align: center"><%= @deal.requester.name %> is also going to pay you £<%= @deal.price %></p>
         <% end %>
       </div>
     </div>
   <% end %>
 <% end %>
 
-<!-- Deal status and postage reminder -->
+<!-- icons to return home or destroy -->
 <center>
   <% if @deal.status == "In negotiation" && @deal.requester != current_user %>
-    <div class="deal-payment-content-row flex deal-middle-page">
-      <%= button_to "Accept", deal_accept_deal_path(@deal), class: "exs-btn btn-submit" %>
-    </div>
     <div class="deal-payment-content-row flex deal-middle-page">
       <div class="content-column">
         <%= link_to "", user_path(current_user), class: "fa fa-arrow-left deal-arrow" %>
@@ -122,11 +123,6 @@
     </div>
   <% elsif @deal.status == "In negotiation" %>
     <div class="deal-payment-content-row flex deal-middle-page">
-      <div class="section">
-        <h4>Still waiting for <%= @deal.answerer.name %> to confirm...</h4>
-      </div>
-    </div>
-    <div class="deal-payment-content-row flex deal-middle-page">
       <div class="content-column">
         <%= link_to "", user_path(current_user), class: "fa fa-arrow-left deal-arrow" %>
       </div>
@@ -139,11 +135,6 @@
       </div>
     </div>
   <% else %>
-    <div class="deal-payment-content-row flex deal-middle-page">
-      <div class="section">
-        <h4>You've both agreed to this deal!</h4>
-      </div>
-    </div>
   <% end %>
 </center>
 

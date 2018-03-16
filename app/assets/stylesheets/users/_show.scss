@@ -245,6 +245,11 @@ border: 2px solid white;
 .deal-details-content {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  p {
+    margin: 0 !important;
+  }
 }
 .involved-person{
   text-align: center;

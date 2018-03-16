@@ -1,5 +1,4 @@
 #item-content {
-background-color: white;
 margin: 10px;
 display: flex;
 justify-content: left;
@@ -8,12 +7,12 @@ border-radius: 10px;
 
 .showitem-photo {
   flex: 50%;
-  height:400px;
+  height:450px;
   width: 370px;
   background-size: cover !important;
   background-position: center;
   background-repeat: no-repeat;
-  margin-top: 7%;
+  margin-top: 17%;
   margin-left: 20px;
   border-radius: 5px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -24,8 +23,9 @@ border-radius: 10px;
   flex: 50%;
   padding-left: 75px;
   justify-content: left;
-  background-color: $light-green;
+  background-color: $sky-blue;
   border-radius: 10px 0 0 10px;
+  height: 80vh;
 }
 
 .like-counter {
@@ -106,7 +106,7 @@ border-radius: 10px;
 .showitem-right{
   flex:50%;
   // margin-top:15px;
-  background-color: $light-green;
+  background-color: $sky-blue;
   border-radius: 0 10px 10px 0;
 }
 
@@ -116,13 +116,14 @@ border-radius: 10px;
 }
 
 .showitem-content{
-  color: white;
+  color: $light-pink;
   padding-top: 5px;
 }
 
 .showitem-buttons{
   display: flex;
   justify-content: center;
+  margin-top: 25px;
 
 }
 
@@ -168,6 +169,7 @@ border-radius: 10px;
   text-align: left;
   color: $light-pink;
   font-weight: bold;
+  margin-top: 20px;
 }
 
 .fa-trash{
@@ -196,7 +198,8 @@ border-radius: 10px;
   }
 }
 
-
-
+.showitem-cont{
+  background-color: $sky-blue !important;
+}
 
 

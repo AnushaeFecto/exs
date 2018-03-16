@@ -83,7 +83,7 @@ border-radius: 10px;
 
 .accordion:after {
     content: '\002B';
-    color: #777;
+    color: $gray;
     font-weight: bold;
     float: right;
     margin-left: 5px;
@@ -116,7 +116,7 @@ border-radius: 10px;
 }
 
 .showitem-content{
-  color: white;
+  color: $gray;
   padding-top: 5px;
 }
 
@@ -161,7 +161,7 @@ border-radius: 10px;
   position: absolute;
   bottom:-5px;
   margin-left: 15px;
-  color: $white;
+  color: $gray;
 }
 
 #similar-item{

@@ -89,7 +89,7 @@
   padding: 10px;
   background-size: cover !important;
   background-position: center;
-  color: white;
+  color: $gray;
   position: relative;
   opacity: 0.9;
   margin-top: 20px;
@@ -206,7 +206,7 @@ border: 2px solid white;
   text-align: center;
   h4 {
     font-weight: bold;
-    color: white;
+    color: $gray;
     font-size: 36px;
     text-shadow: 2px 2px 3px rgba(0,0,0,0.2)
   }
@@ -215,7 +215,7 @@ border: 2px solid white;
     opacity: .7;
   }
   a {
-    color: light-gray;
+    color: $gray;
     opacity: .6;
     &:hover {
       opacity: .8;
@@ -231,14 +231,14 @@ border: 2px solid white;
   justify-content: flex-start;
   flex-wrap: wrap;
   display: inline-block;
-  background-color: $dark-green;
+  background-color: $light-green;
 }
 
 .deal-details{
   // width: 700px;
   padding-top: 5px;
   margin-bottom: 5px;
-  background-color: $dark-green;
+  background-color: $light-green;
   box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.3);
 }
 
@@ -295,7 +295,7 @@ border: 2px solid white;
 .deal-details{
   color: $gray;
 h4{
-  color:#DDDC5F;
+  color:$gray;
 }
 }
 

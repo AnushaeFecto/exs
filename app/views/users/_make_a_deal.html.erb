@@ -49,7 +49,9 @@
   <% end %>
 
     <div class="content-row">
-      <h1 class="money text-center">WHAT ABOUT MONEY?</h1>
+
+      <h1 class="text-center" style="color: #2C2C2C;">WHAT ABOUT MONEY?</h1>
+
     </div>
 
     <%= f.simple_fields_for :payer do |p| %>
@@ -57,14 +59,14 @@
     <div class="content-row flex">
       <div class="content-column text-center">
         <input class="" type="radio" value="<%= current_user.id %>" name="deal[payer]" id="deal_payer_give">
-        <label for="deal_payer_give", style="color: white">
-          I'm giving you ...
+        <label for="deal_payer_give" style="color: #2C2C2C;">
+          I'm giving you...
         </label>
       </div>
 
       <div class="content-column text-center">
         <input class="" type="radio" value="<%= @user.id %>" name="deal[payer]" id="deal_payer_recieve">
-        <label for="deal_payer_recieve", style="color: white">
+        <label for="deal_payer_recieve" style="color: #2C2C2C;">
           Can you give me?
         </label>
       </div>

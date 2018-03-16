@@ -3,7 +3,7 @@
 
   padding: 20px;
   width: 100%;
-  background-image: linear-gradient(#78C1CA, #78C1CA), linear-gradient(#EF7F69, #EF7F69);
+  background-image: linear-gradient($light-green, $light-green), linear-gradient($light-pink, $light-pink);
   background-size: cover, cover;
   background-repeat: no-repeat, no-repeat;
   background-position: 50vw center, 0 center;
@@ -15,7 +15,7 @@
     box-shadow: none;
     border-bottom: 2px solid white;
     border-radius: 0;
-    color: white;
+    color: $gray;
     font-size: 60px;
     text-align: center;
     height: 65px;
@@ -26,7 +26,7 @@
   background: transparent;
   border: 2px solid white !important;
   padding: 20px;
-  color: white;
+  color: $gray;
   font-size: 35px;
   transition: .5s;
   &:hover {
@@ -89,7 +89,7 @@
   padding: 10px;
   background-size: cover !important;
   background-position: center;
-  color: white;
+  color: $gray;
   position: relative;
   opacity: 0.9;
   margin-top: 20px;
@@ -172,7 +172,7 @@
   // border-radius: 30px;
   // border-style: solid;
   box-shadow: 0px 10px 15px rgba(0,0,0,0.3);
-  background-color: #EF7F69;
+  background-color: $light-pink;
   margin-bottom: 40px;
   border-radius: 10px;
 }
@@ -206,16 +206,16 @@ border: 2px solid white;
   text-align: center;
   h4 {
     font-weight: bold;
-    color: white;
+    color: $gray;
     font-size: 36px;
     text-shadow: 2px 2px 3px rgba(0,0,0,0.2)
   }
   p {
-    color: white;
+    color: $gray;
     opacity: .7;
   }
   a {
-    color: light-gray;
+    color: $gray;
     opacity: .6;
     &:hover {
       opacity: .8;
@@ -231,14 +231,14 @@ border: 2px solid white;
   justify-content: flex-start;
   flex-wrap: wrap;
   display: inline-block;
-  background-color: #F4F4F4;
+  background-color: $light-green;
 }
 
 .deal-details{
   // width: 700px;
   padding-top: 5px;
   margin-bottom: 5px;
-  background-color: #78C1CA;
+  background-color: $light-green;
   box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.3);
 }
 
@@ -289,13 +289,13 @@ border: 2px solid white;
 
 
 .dash-text{
-  color:white;
+  color:$gray;
 }
 
 .deal-details{
-  color: white;
+  color: $gray;
 h4{
-  color:#DDDC5F;
+  color:$gray;
 }
 }
 
@@ -304,5 +304,5 @@ h4{
 }
 
 .deal-tab{
-  background-color: #78C1CA;
+  background-color: $light-green;
 }

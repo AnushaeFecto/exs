@@ -1,7 +1,7 @@
 .deal-payment-content-row {
   padding: 20px;
   width: 100%;
-  background-image: linear-gradient(#78C1CA, #78C1CA), linear-gradient(#EF7F69, #EF7F69);
+  background-image: linear-gradient($light-green, $light-green), linear-gradient($light-pink, $light-pink);
   background-size: cover, cover;
   background-repeat: no-repeat, no-repeat;
   background-position: 50vw center, 0 center;
@@ -46,7 +46,7 @@
   text-align: center;
   text-decoration: none;
   outline: none;
-  color: $white !important;
+  color: $gray !important;
   border: none;
   box-shadow: 0 3px #999;
 }

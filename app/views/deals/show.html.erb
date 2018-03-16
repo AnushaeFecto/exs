@@ -12,28 +12,37 @@
   <div class="content-row flex">
     <div class="content-column">
       <h3 class="text-center">You're sending <%= @deal.answerer.name %>...</h3>
-      <% @deal.requester.items.each do |item| %>
-        <label class="box-content" for="deal_deal_items_my_item_id_<%= item.id %>">
-          <div class="box-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-                url(<%= cl_image_path item.photo, crop: :fill if item.photo.present? %>);">
-          </div>
-        </label>
+      <% @deal.items.each do |item| %>
+        <% if item.user == current_user %>
+          <label class="box-content" for="deal_deal_items_my_item_id_<%= item.id %>">
+            <div class="box-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+                  url(<%= cl_image_path item.photo, crop: :fill if item.photo.present? %>);">
+            </div>
+          </label>
+        <% end %>
       <% end %>
     </div>
     <div class="content-column">
       <h3 class="text-center"><%= @deal.answerer.name %>'s sending you...</h3>
-      <% @deal.answerer.items.each do |item| %>
-        <label class="box-content" for="deal_deal_items_item_id_<%= item.id %>">
-          <div class="box-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-                url(<%= cl_image_path item.photo, crop: :fill if item.photo.present? %>);">
-          </div>
-        </label>
+      <% @deal.items.each do |item| %>
+        <% if item.user != current_user %>
+          <label class="box-content" for="deal_deal_items_item_id_<%= item.id %>">
+            <div class="box-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+                  url(<%= cl_image_path item.photo, crop: :fill if item.photo.present? %>);">
+            </div>
+          </label>
+        <% end %>
       <% end %>
     </div>
   </div>
   <!-- price below -->
   <% if @deal.price.fractional != 0 %>
     <div class="deal-payment-content-row flex">
+      <div class="content-column">
+        <% if current_user != @payer %>
+          <p style="text-align: center"><%= @deal.answerer.name %> is also going to pay you £<%= @deal.price %></p>
+        <% end %>
+      </div>
       <div class="content-column">
         <% if current_user == @payer %>
           <p style="text-align: center">You also need to pay <%= @deal.answerer.name %> £<%= @deal.price %></p>
@@ -42,46 +51,40 @@
           <%= button_to "Pay", deal_payments_path(@deal), class: "exs-btn btn-submit" %>
         <% end %>
       </div>
-      <div class="content-column">
-        <% if current_user != @payer %>
-          <p style="text-align: center"><%= @deal.answerer.name %> is also going to pay you £<%= @deal.price %></p>
-        <% end %>
-      </div>
     </div>
   <% end %>
 
 <!-- answerer view -->
 <% elsif current_user == @deal.answerer %>
   <div class="content-row flex">
-    <div class="content-column">
-      <h3 class="text-center"><%= @deal.requester.name %>'s sending you...</h3>
-      <% @deal.requester.items.each do |item| %>
-        <label class="box-content" for="deal_deal_items_my_item_id_<%= item.id %>">
-          <div class="box-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-                url(<%= cl_image_path item.photo, crop: :fill if item.photo.present? %>);">
-          </div>
-        </label>
-      <% end %>
-    </div>
     <div class="content-column" >
       <h3 class="text-center">You're sending <%= @deal.requester.name %>...</h3>
-      <% @deal.answerer.items.each do |item| %>
-        <label class="box-content" for="deal_deal_items_item_id_<%= item.id %>">
-          <div class="box-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-                url(<%= cl_image_path item.photo, crop: :fill if item.photo.present? %>);">
-          </div>
-        </label>
+      <% @deal.items.each do |item| %>
+        <% if item.user == current_user %>
+          <label class="box-content" for="deal_deal_items_item_id_<%= item.id %>">
+            <div class="box-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+                  url(<%= cl_image_path item.photo, crop: :fill if item.photo.present? %>);">
+            </div>
+          </label>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="content-column">
+      <h3 class="text-center"><%= @deal.requester.name %>'s sending you...</h3>
+      <% @deal.items.each do |item| %>
+        <% if item.user != current_user %>
+          <label class="box-content" for="deal_deal_items_my_item_id_<%= item.id %>">
+            <div class="box-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+                  url(<%= cl_image_path item.photo, crop: :fill if item.photo.present? %>);">
+            </div>
+          </label>
+        <% end %>
       <% end %>
     </div>
   </div>
   <!-- price below -->
   <% if @deal.price.fractional != 0 %>
     <div class="deal-payment-content-row flex">
-      <div class="content-column">
-        <% if current_user != @payer %>
-          <p style="text-align: center"><%= @deal.requester.name %> is also going to pay you £<%= @deal.price %></p>
-        <% end %>
-      </div>
       <div class="content-column">
         <% if current_user == @payer %>
           <p style="text-align: center">You also need to pay <%= @deal.requester.name %> £<%= @deal.price %></p>
@@ -90,29 +93,63 @@
           <%= button_to "Pay", deal_payments_path(@deal), class: "exs-btn btn-submit" %>
         <% end %>
       </div>
+      <div class="content-column">
+        <% if current_user != @payer %>
+          <p style="text-align: center"><%= @deal.requester.name %> is also going to pay you £<%= @deal.price %></p>
+        <% end %>
+      </div>
     </div>
   <% end %>
 <% end %>
 
 <!-- Deal status and postage reminder -->
 <center>
-  <div class="deal-payment-content-row flex deal-middle-page">
-    <% if @deal.status == "In negotiation" && @deal.requester != current_user %>
+  <% if @deal.status == "In negotiation" && @deal.requester != current_user %>
+    <div class="deal-payment-content-row flex deal-middle-page">
       <%= button_to "Accept", deal_accept_deal_path(@deal), class: "exs-btn btn-submit" %>
-    <% elsif @deal.status == "In negotiation" %>
+    </div>
+    <div class="deal-payment-content-row flex deal-middle-page">
+      <div class="content-column">
+        <%= link_to "", user_path(current_user), class: "fa fa-arrow-left deal-arrow" %>
+      </div>
+      <div class="content-column">
+        <% if @deal.status == "In negotiation" %>
+          <%= link_to "", { controller: :deals, action: :destroy }, method: :delete, data: { confirm: "Don't want it?" }, class: "fa fa-trash deal-trash" %>
+        <% else %>
+          <%= link_to "", { controller: :deals, action: :destroy }, method: :delete, data: { confirm: 'Have you paid or received any money owed, and sent and received all the items?  This deal has been agreed' }, class: "fa fa-trash deal-trash" %>
+        <% end %>
+      </div>
+    </div>
+  <% elsif @deal.status == "In negotiation" %>
+    <div class="deal-payment-content-row flex deal-middle-page">
       <div class="section">
         <h4>Still waiting for <%= @deal.answerer.name %> to confirm...</h4>
       </div>
-    <% else %>
+    </div>
+    <div class="deal-payment-content-row flex deal-middle-page">
+      <div class="content-column">
+        <%= link_to "", user_path(current_user), class: "fa fa-arrow-left deal-arrow" %>
+      </div>
+      <div class="content-column">
+        <% if @deal.status == "In negotiation" %>
+          <%= link_to "", { controller: :deals, action: :destroy }, method: :delete, data: { confirm: "Don't want it?" }, class: "fa fa-trash deal-trash" %>
+        <% else %>
+          <%= link_to "", { controller: :deals, action: :destroy }, method: :delete, data: { confirm: 'Have you paid or received any money owed, and sent and received all the items?  This deal has been agreed' }, class: "fa fa-trash deal-trash" %>
+        <% end %>
+      </div>
+    </div>
+  <% else %>
+    <div class="deal-payment-content-row flex deal-middle-page">
       <div class="section">
         <h4>You've both agreed to this deal!</h4>
       </div>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 </center>
 
 <!-- address boxes (only visible if deal finalised or paid)-->
 <!-- requester view -->
+<center>
 <% if (@deal.requester == current_user) && (@deal.status == "Finalised") %>
   <div class="deal-payment-content-row flex">
     <div class="content-column">
@@ -128,13 +165,22 @@
       <h4><%= @deal.answerer_address %></h4></center>
     </div>
   </div>
+  <div class="deal-payment-content-row flex">
+    <div class="content-column deal-middle-page">
+      <%= link_to "", user_path(current_user), class: "fa fa-arrow-left deal-arrow" %>
+    </div>
+    <div class="content-column deal-middle-page">
+        <% if @deal.status == "In negotiation" %>
+          <%= link_to "", { controller: :deals, action: :destroy }, method: :delete, data: { confirm: "Don't want it?" }, class: "fa fa-trash deal-trash" %>
+        <% else %>
+          <%= link_to "", { controller: :deals, action: :destroy }, method: :delete, data: { confirm: 'Have you paid or received any money owed, and sent and received all the items?  This deal has been agreed' }, class: "fa fa-trash deal-trash" %>
+        <% end %>
+    </div>
+  </div>
+
 <!-- answerer view -->
 <% elsif (@deal.answerer == current_user) && (@deal.status == "Finalised") %>
   <div class="deal-payment-content-row flex">
-    <div class="content-column">
-      <center><p><%= @deal.requester.email %>'s address:</p>
-      <h4><%= @deal.requester_address %></h4></center>
-    </div>
     <div class="content-column">
       <center><p>The address I want things sent to:</p>
       <h4><%= @deal.answerer_address %></h4></center>
@@ -143,23 +189,27 @@
         <%= render "form2" %>
       </div>
     </div>
+    <div class="content-column">
+      <center><p><%= @deal.requester.email %>'s address:</p>
+      <h4><%= @deal.requester_address %></h4></center>
+    </div>
+  </div>
+  <div class="deal-payment-content-row flex">
+    <div class="content-column deal-middle-page">
+      <%= link_to "", user_path(current_user), class: "fa fa-arrow-left deal-arrow" %>
+    </div>
+    <div class="content-column deal-middle-page">
+      <% if @deal.status == "In negotiation" %>
+        <%= link_to "", { controller: :deals, action: :destroy }, method: :delete, data: { confirm: "Don't want it?" }, class: "fa fa-trash deal-trash" %>
+      <% else %>
+        <%= link_to "", { controller: :deals, action: :destroy }, method: :delete, data: { confirm: 'Have you paid or received any money owed, and sent and received all the items?  This deal has been agreed' }, class: "fa fa-trash deal-trash" %>
+      <% end %>
+    </div>
   </div>
 <% end %>
-  <!-- end of address boxes code -->
-
-<center>
-  <% if @deal.status == "In negotiation" %>
-    <%= link_to "Cancel this proposal", { controller: :deals, action: :destroy }, method: :delete, data: { confirm: 'Are you sure?' }, class: "deal-exs-btn btn-submit-red" %>
-  <% else %>
-    <%= link_to "Close this deal (have you sent everything?)", { controller: :deals, action: :destroy }, method: :delete, data: { confirm: 'Have you paid or received any money owed, and sent and received all the items?' }, class: "deal-exs-btn btn-submit-red" %>
-  <% end %>
-  <%= link_to "Back to my profile page", user_path(current_user), class: "deal-exs-btn btn-submit" %>
 </center>
-
+  <!-- end of address boxes code -->
 
 <%= javascript_pack_tag 'form' %>
 <%= javascript_pack_tag 'form2' %>
-
-
-
 

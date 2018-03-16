@@ -54,3 +54,15 @@
 .deal-middle-page {
   justify-content: center !important;
 }
+.deal-trash {
+  font-size: 40px !important;
+  color: $white !important;
+}
+.deal-arrow {
+  font-size: 40px;
+  color: $white !important;
+}
+.deal-arrow:hover {
+  opacity: 0.7;
+}
+
